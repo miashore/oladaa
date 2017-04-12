@@ -1,4 +1,4 @@
-# C4.17_fitbit_companion
+# C2.17_fitbit_companion
 
 #### Senior Devs
 - Sean M
