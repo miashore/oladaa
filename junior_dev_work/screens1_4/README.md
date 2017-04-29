@@ -1,7 +1,11 @@
 ###Reference the Yellow Numbers for Screen Numbers
 
-![Screens 1 - 4](C2.17_fitbit_companion/junior_dev_work/imgs/screens1-4.png)
-![Screens SignUp/SignIn](C2.17_fitbit_companion/junior_dev_work/imgs/signupsignin.png)
+![Screens 1 - 4](https://github.com/Learning-Fuze/C2.17_fitbit_companion/blob/junior_devs/junior_dev_work/imgs/screens1-4.png)
+![Screens SignUp/SignIn](https://github.com/Learning-Fuze/C2.17_fitbit_companion/blob/junior_devs/junior_dev_work/imgs/signupsignin.png)
+
+[See Images in Meistertask](https://www.meistertask.com/app/task/85ZiQg68/prototype-sketch-and-wireframe-the-ui)
+
+or check the ```imgs``` folder if image isn't showing
 
 ####Slack the page you're working on
 

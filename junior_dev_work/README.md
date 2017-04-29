@@ -18,8 +18,10 @@
 
 #### Screens
 
-![Full Set of Screens](C2.17_fitbit_companion/junior_dev_work/imgs/fullsetofscreens.png)
+![Full Set of Screens](https://github.com/Learning-Fuze/C2.17_fitbit_companion/blob/junior_devs/junior_dev_work/imgs/fullsetofscreens.png)
 
-or check the ```imgs``` folder
+[See Image in Meistertask](https://www.meistertask.com/app/task/85ZiQg68/prototype-sketch-and-wireframe-the-ui)
+
+or check the ```imgs``` folder if image isn't showing
 
 !!!** [link to Materialize](http://materializecss.com/getting-started.html) **!!!

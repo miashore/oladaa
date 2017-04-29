@@ -1,6 +1,10 @@
 ###Reference the Yellow Numbers for Screen Numbers
 
-![Screens 8 - 11](C2.17_fitbit_companion/junior_dev_work/imgs/screens8-11.png)
+![Screens 8 - 11](https://github.com/Learning-Fuze/C2.17_fitbit_companion/blob/junior_devs/junior_dev_work/imgs/screens8-11.png)
+
+[See Image in Meistertask](https://www.meistertask.com/app/task/85ZiQg68/prototype-sketch-and-wireframe-the-ui)
+
+or check the ```imgs``` folder if image isn't showing
 
 ####Slack the page you're working on
 
