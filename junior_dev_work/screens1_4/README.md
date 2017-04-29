@@ -1,8 +1,12 @@
 ###Reference the Yellow Numbers for Screen Numbers
 
-![Screens 1 - 4](https://github.com/Learning-Fuze/C2.17_fitbit_companion/tree/junior_devs/imgs/screens1-4.png)
+![Screens 1 - 4](C2.17_fitbit_companion/junior_dev_work/imgs/screens1-4.png)
+![Screens SignUp/SignIn](C2.17_fitbit_companion/junior_dev_work/imgs/signupsignin.png)
 
 ####Slack the page you're working on
+
+#####Note:
+- Sign up and sign in are very similar so make one and make the other in the same branch (example branches: ```screen1``` or ```sign_up_screen``` can have both, just two different files).
 
 #### Convert These Wireframes to HTML
 

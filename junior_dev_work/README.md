@@ -18,7 +18,7 @@
 
 #### Screens
 
-![Full Set of Screens](https://github.com/Learning-Fuze/C2.17_fitbit_companion/tree/junior_devs/imgs/fullsetofscreens.png)
+![Full Set of Screens](C2.17_fitbit_companion/junior_dev_work/imgs/fullsetofscreens.png)
 
 or check the ```imgs``` folder
 

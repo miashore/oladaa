@@ -1,6 +1,6 @@
 ###Reference the Yellow Numbers for Screen Numbers
 
-![Screens 5 - 7](https://github.com/Learning-Fuze/C2.17_fitbit_companion/tree/junior_devs/imgs/screens5-7.png)
+![Screens 5 - 7](C2.17_fitbit_companion/junior_dev_work/imgs/screens5-7.png)
 
 ####Slack the page you're working on
 
