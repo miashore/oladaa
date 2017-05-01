@@ -1,0 +1,41 @@
+#hey_there {
+    /*display: none; normally not displayed until needed*/
+    height: 92vh;
+    width: 71vw;
+    border: solid 2px black;
+    z-index: 4;
+    position: absolute;
+    top: 4vh;
+    background: white;
+}
+
+.greeting {
+    top: 12vh;
+    position: absolute;
+    left: -2vw;
+}
+.introducing_activities {
+    position: absolute;
+    top: 31vh;
+}
+.activities {
+    position: absolute;
+    top: 47vh;
+}
+.btn {
+    position: absolute;
+    bottom: 12vh;
+    left: 21vw;
+}
+#modal_background {
+    /*display: none;*/
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #2a3133; opacity: 0.6;
+
+}
