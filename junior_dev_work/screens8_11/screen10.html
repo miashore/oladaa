@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN FRAME - Fitbit Companion</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script>
+        $(document).ready(function() {
+            initializeMenu();
+        });
+
+        function initializeMenu() {
+            $('.button-collapse').sideNav({
+                    menuWidth: 220, // Default is 300
+                    edge: 'left', // Choose the horizontal origin
+                    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                    draggable: true // Choose whether you can drag to open on touch screens
+                }
+            );
+        }
+    </script>
+
+    <style>
+        .container {
+            margin-top: 70px;
+            margin-bottom: 70px;
+        }
+
+        .fbc-header-nav {
+            max-width: 1280px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .fbc-footer-nav {
+            max-width: 1280px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-bottom: 0;
+        }
+        .fbc-footer-nav .col {
+            padding: 0;
+        }
+        .fbc-footer-nav a {
+            color: white;
+        }
+        .fbc-footer-nav nav ul li a {
+            font-size: 0;
+        }
+        .fbc-footer-nav div i {
+            vertical-align: top;
+            display: inline-block;
+            font-size: 24px;
+            margin-right: 3px;
+        }
+        @media only screen and (min-width: 601px) {
+            .fbc-footer-nav nav ul li a {
+                font-size: initial;
+            }
+            .fbc-header-nav,
+            .fbc-footer-nav {
+                width: 85%;
+            }
+            .fbc-footer-nav div i {
+                font-size: 32px;
+                margin-right: 5px;
+            }
+        }
+        @media only screen and (min-width: 993px) {
+            .fbc-header-nav,
+            .fbc-footer-nav {
+                width: 70%;
+            }
+        }
+
+        .responsive-img {
+            position: relative;
+            width:75%;
+            height: 100%;
+        }
+        .responsive-img img {
+            display: flex;
+            position: absolute;
+            top:10px;
+            left:50%;
+            height: 50%;
+            width: 75%;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="slide-out" class="side-nav">
+    <li><a href="#">Home</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#">About Us</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#">Blog</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#">Update Location</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="#">Log Out :-(</a></li>
+</ul>
+<div class="row fbc-header-nav">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Logo</a>
+            <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+</div>
+<div class="container">
+
+    <!-- ======================================================
+    PAGE CONTENT BELOW
+    ======================================================= -->
+    <div class="responsive-img">
+        <img src="https://previews.123rf.com/images/wavebreakmediamicro/wavebreakmediamicro1108/wavebreakmediamicro110847656/10246701-Happy-diverse-business-group-toasting-with-Champagne-Stock-Photo.jpg"></div>
+
+    <div class="section white">
+        <div class="row container">
+            <h2 class="header">About Us and the App</h2>
+            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling. Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+        </div>
+    </div>
+
+
+
+    <!-- ======================================================
+    PAGE CONTENT ABOVE
+    ======================================================= -->
+
+</div>
+<div class="row center-align valign-wrapper fbc-footer-nav">
+    <nav>
+        <div class="nav-wrapper">
+            <ul id="nav-mobile" class="">
+                <li class="col s4"><a href="#"><i class="material-icons">perm_identity</i>Profile</a></li>
+                <li class="col s4"><a href="#"><i class="material-icons">stars</i>My Events</a></li>
+                <li class="col s4"><a href="#"><i class="material-icons">view_list</i>All Events</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
