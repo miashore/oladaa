@@ -5,7 +5,7 @@ var password = 'Munchen*86';
 
 //axios call for getting mock data from our user personas.  Will return an object that contains the three users and each
 //user will have three different properties; fatBurn, cardio, and peak.
-axios.get('../../beativitiesPrototypes/mock_data_call/mockData.json').then(resp=>{
+axios.get('../mock_data/mockData.json').then(resp=>{
     console.log(resp.data);
 });
 
