@@ -1,14 +1,18 @@
 import React from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import './app.css';
 import logo from './imgs/logo.svg';
 
-const App = () => (
-    <div>
-        <div className="app">
-            <img src={logo} className="rotate"/>
-            <h1>Welcome to React!</h1>
+import Header from './header/header';
+
+const App = (props) => {
+    injectTapEventPlugin();
+    return (
+        <div>
+            <Header />
+            { props.children }
         </div>
-    </div>
-);
+    )
+};
 
 export default App;
