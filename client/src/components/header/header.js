@@ -9,8 +9,6 @@ export default class Header extends React.Component {
     this.state = {open: false};
     }
 
-
-
     handleToggle = () => this.setState({open: !this.state.open});
 
     handleClose = () => this.setState({open: false});
