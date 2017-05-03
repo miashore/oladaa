@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import './app.css';
-import logo from './imgs/logo.svg';
+import Header from './header/header';
+import Footer from './footer/footer';
 
-const App = () => (
-    <div>
-        <div className="app">
-            <img src={logo} className="rotate"/>
-            <h1>Welcome to React!</h1>
-        </div>
-    </div>
-);
+class App extends Component {
+
+    componentWillMount() {
+        injectTapEventPlugin();
+    }
+
+    render() {
+
+        return (
+            <div>
+                <Header />
+                { this.children }
+                <Footer />
+            </div>
+        );
+    }
+}
 
 export default App;
