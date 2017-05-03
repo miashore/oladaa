@@ -11,7 +11,7 @@ axios.get('../mock_data/mockData.json').then(resp=>{
 
 //axios call for verifying login information.  Send the username and password to our server and check for their
 //existence in our database, it returns a 1 for true and a 0 for false.
-axios.post('login.php', {username, password}).then(resp=>{
+axios.post('../user_verification_php/login.php', {username, password}).then(resp=>{
     if(resp.data === 0){
         document.writeln('Invalid Username');
     }
