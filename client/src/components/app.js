@@ -4,16 +4,23 @@ import './app.css';
 import Header from './header/header';
 import Footer from './footer/footer';
 
-const App = (props) => {
-    injectTapEventPlugin();
 
-    return (
-        <div>
-            <Header />
-            { props.children }
-            <Footer />
-        </div>
-    );
-};
+class App extends Component {
+
+    componentWillMount() {
+        injectTapEventPlugin();
+    }
+
+    render() {
+
+        return (
+            <div>
+                <Header />
+                { props.children }
+                <Footer />
+            </div>
+        );
+    }
+}
 
 export default App;
