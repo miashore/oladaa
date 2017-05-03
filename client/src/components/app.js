@@ -4,7 +4,6 @@ import './app.css';
 import Header from './header/header';
 import Footer from './footer/footer';
 
-
 class App extends Component {
 
     componentWillMount() {
