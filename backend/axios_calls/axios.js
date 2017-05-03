@@ -75,9 +75,17 @@ axios.post('../user_verification_php/register.php', {username, password, email})
 /*const user_id = 7;
 const activity_id = [2,8];
 
-
 axios.post('../user_verification_php/insert_interests.php', {user_id, activity_id}).then(resp=>{
     console.log('Our interests being sent ', resp.data);
 }).catch(err=>{
     console.log('not sent ', err);
 });*/
+
+//**********************************************************************************************************************
+
+const activity_id = [1,4,2,3];
+axios.post('../user_verification_php/get_interests.php',{activity_id}).then(resp=>{
+    for(let i=0; i<resp.data.length; i++) {
+        console.log('Our response from get interests request ', resp.data[i]['category_id']);
+    }
+});
