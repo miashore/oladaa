@@ -59,9 +59,9 @@ axios.post('../user_verification_php/login.php', {username, password}).then(resp
 // username or email already exists, or not all fields are filled it will return an error message of user registration
 // failed.
 
-/*const username = 'Bob';
-const password = 'HiImBob';
-const email = "bob@beativities.com";
+/*const username = 'Ellie';
+const password = 'HiImEllie';
+const email = "ellie@beativities.com";
 
 axios.post('../user_verification_php/register.php', {username, password, email}).then(resp=>{
     console.log('Our response from register.php ', resp);
