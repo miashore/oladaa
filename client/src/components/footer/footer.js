@@ -15,7 +15,7 @@ class Footer extends Component {
     select = (index) => this.setState({selectedIndex: index});
 
     render(){
-        const styles = { position: 'fixed', bottom: '0', width: '100%', 'margin-left': '-10px' };
+        const styles = { position: 'fixed', bottom: '0', width: '100%', 'marginLeft': '-10px' };
 
         return (
             <Paper style={ styles } zDepth={1}>
