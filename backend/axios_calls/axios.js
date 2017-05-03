@@ -67,4 +67,17 @@ axios.post('../user_verification_php/register.php', {username, password, email})
     console.log('Our response from register.php ', resp);
 });*/
 
+//**********************************************************************************************************************
 
+//axios call for inserting interests into the request table of our database.  activity ID's are inserted into an array
+//that is looped through in our php file.  User ID is retained in our session.
+
+/*const user_id = 7;
+const activity_id = [2,8];
+
+
+axios.post('../user_verification_php/insert_interests.php', {user_id, activity_id}).then(resp=>{
+    console.log('Our interests being sent ', resp.data);
+}).catch(err=>{
+    console.log('not sent ', err);
+});*/
