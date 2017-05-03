@@ -14,13 +14,13 @@ class SelectInterests extends Component {
     }
     renderCheckbox = ({ input, label }) => (
     <Checkbox label={label}
-              value=
+              value={input.value}
               checked={input.value ? true : false}
               onCheck={input.onChange}/>
     );
     render() {
         const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
-        const { handleSubmit, val } = this.props;
+        const { handleSubmit } = this.props;
         return (
             <div>
                 <h1>Please Select At Least 3 Interests:</h1>
