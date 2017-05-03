@@ -1,15 +1,41 @@
-// var username = 'Sean';
-// var password = 'Munchen*86';
+// const username = 'Sean';
+// const password = 'Munchen*86';
 
 //**********************************************************************************************************************
 
 //axios call for getting mock data from our user personas.  Will return an object that contains the three users and each
-//user will have three different properties; fatBurn, cardio, and peak.
+//user will have three different properties; fatBurn, cardio, and peak.  It then passes that into our activity score
+//formula to calculate the users activity level/score.
 
 
 /*axios.get('../mock_data/mockData.json').then(resp=>{
-    console.log(resp.data);
-});*/
+    console.log(resp.data['Ellie']);
+    const userStats = resp.data['Ellie'];
+    const fatBurnMin = parseInt(userStats.fatBurn);
+    const cardioMin = parseInt(userStats.cardio);
+    const peakMin = parseInt(userStats.peak);
+    console.log(getActivityScore(fatBurnMin, cardioMin, peakMin));
+}).catch(err=>{
+    console.log("User not found ", err)
+});
+function getActivityScore(fatBurnMin, cardioMin, peakMin){
+    const fatBurnScore = fatBurnMin*2;
+    const cardioScore = cardioMin*3;
+    const peakScore = peakMin*4;
+    const totalScore = (fatBurnScore+cardioScore+peakScore);
+    const totalMin = 60+(fatBurnMin+cardioMin+peakMin);
+    let activityScore = totalScore/totalMin;
+    if (activityScore >= 0 && activityScore < 2){
+        activityScore = Math.round(activityScore);
+    }
+    else if(activityScore > 2){
+        activityScore = 2;
+    }
+    else{
+        activityScore = 'Invalid Inputs'
+    }
+    return activityScore
+}*/
 
 //**********************************************************************************************************************
 
@@ -35,9 +61,9 @@
 // username or email already exists, or not all fields are filled it will return an error message of user registration
 // failed.
 
-/*var username = 'Bob';
-var password = 'HiImBob';
-var email = "bob@beativities.com";
+/*const username = 'Bob';
+const password = 'HiImBob';
+const email = "bob@beativities.com";
 
 axios.post('../user_verification_php/register.php', {username, password, email}).then(resp=>{
     console.log('Our response from register.php ', resp);
