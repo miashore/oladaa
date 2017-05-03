@@ -1,6 +1,6 @@
 <?php
 session_start();
-require("connect.php");
+require("../connect.php");
 $userInfo = json_decode(file_get_contents('php://input'), true);
 
 
