@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import './app.css';
 import Header from './header/header';
 import Footer from './footer/footer';
-
 
 class App extends Component {
 
@@ -16,7 +15,7 @@ class App extends Component {
         return (
             <div>
                 <Header />
-                { props.children }
+                { this.children }
                 <Footer />
             </div>
         );
