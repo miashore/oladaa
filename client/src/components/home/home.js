@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
-import Weather from './weather';
+// import Weather from './weather';
 // import Location from './location';
-
-
 
 class Home extends Component {
 
-
     render() {
+
+        const styles = {
+            mid_container: {height: '100%', width: '100%', background: 'lightblue' }
+        };
 
         return (
             <div>
                 <Header/>
-                    Home
-                    <Weather />
-
+                    <div style={styles.mid_container}>
+                        Home
+                    </div>
                 <Footer/>
             </div>
         )
