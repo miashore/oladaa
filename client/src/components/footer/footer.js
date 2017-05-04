@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
+import { Link } from 'react-router';
 
 const updateProfileIcon = <FontIcon className="material-icons">person_pin</FontIcon>;
 const yourEventsIcon = <FontIcon className="material-icons">stars</FontIcon>;
@@ -15,14 +16,17 @@ class Footer extends Component {
     select = (index) => this.setState({selectedIndex: index});
 
     render(){
-        const styles = { position: 'fixed', bottom: '0', width: '100%', 'marginLeft': '-10px' };
+        const styles = {
+            paper: {position: 'fixed', bottom: '0', width: '100%', 'marginLeft': '-10px'},
+            bNav: {textAlign: 'center'}
+        };
 
         return (
-            <Paper style={ styles } zDepth={1}>
+            <Paper style={ styles.paper } zDepth={1}>
                 <BottomNavigation selectedIndex={ this.state.selectedIndex }>
                     <BottomNavigationItem label="Update Profile" icon={ updateProfileIcon } onTouchTap={() => this.select(0)} />
                     <BottomNavigationItem label="Your Events" icon={ yourEventsIcon } onTouchTap={() => this.select(1)} />
-                    <BottomNavigationItem label="View All Events" icon={ viewAllEventsIcon } onTouchTap={() => this.select(2)} />
+                    <BottomNavigationItem label="View All Events" icon={ viewAllEventsIcon } style={styles.bNav} onTouchTap={() => this.select(2)} containerElement={<Link to="/view_all"/>}/>
                 </BottomNavigation>
             </Paper>
         )

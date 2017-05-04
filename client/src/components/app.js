@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/header/header';
-import Footer from '../components/footer/footer';
+import Header from './header/header';
+import Footer from './footer/footer';
 
 const App = (props) => (
     <div>
@@ -9,5 +9,6 @@ const App = (props) => (
         <Footer />
     </div>
 );
+
 
 export default App;

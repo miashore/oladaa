@@ -8,6 +8,7 @@ import Blog from '../blog/blog';
 import SelectInterests from '../select_interests/select_interests_form';
 import RegisterForm from '../register_new_user/register_new_user';
 import LoginForm from '../login/login_form';
+import ViewAllList from '../view_all_events/view_all';
 
 export default  (
     <Route path="/" component={ App }>
@@ -20,5 +21,6 @@ export default  (
         <Route path="select_interests" component={ SelectInterests }/>
         <Route path="register" component={ RegisterForm }/>
         <Route path="login" component={ LoginForm }/>
+        <Route path="view_all" component={ViewAllList}/>
     </Route>
 );
