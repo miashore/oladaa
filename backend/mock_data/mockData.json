@@ -13,5 +13,10 @@
     "fatBurn":"0",
     "cardio":"0",
     "peak":"0"
+  },
+  "Sam":{
+    "fatBurn":null,
+    "cardio":null,
+    "peak":null
   }
 }

@@ -18,7 +18,12 @@ if(!empty($userStats)) {
     $activityScore = $userStats['activity_score'];
 
     //Send user id and activity score to database to retrieve category id's that contain those criteria.
-    $requestQuery = "SELECT `activity_id` FROM `request_table` WHERE `user_id`=".$userId." AND `activity_score`=".$activityScore." ";
+    if($activityScore!='Invalid Inputs') {
+        $requestQuery = "SELECT `activity_id` FROM `request_table` WHERE `user_id`=" . $userId . " AND `activity_score`=" . $activityScore . " ";
+    }
+    else{
+        $requestQuery = "SELECT `activity_id` FROM `request_table` WHERE `user_id`=" . $userId  . " ";
+    }
     $requestResult = mysqli_query($conn, $requestQuery);
     while($requestRow = mysqli_fetch_assoc($requestResult)){
         $requestData[]=$requestRow;
