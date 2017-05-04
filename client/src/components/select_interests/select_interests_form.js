@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import getIds from './ids';
 
 class SelectInterests extends Component {
@@ -13,9 +12,7 @@ class SelectInterests extends Component {
 
         console.log('ID Array:', idArray);
     }
-    // componentWillMount() {
-    //     injectTapEventPlugin();
-    // }
+
     renderCheckbox({ input: {name, onChange}, label }) {
         return (
             <Checkbox label={label}
