@@ -3,21 +3,26 @@ import { Field, reduxForm } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import getIds from './ids';
 
 class SelectInterests extends Component {
 
-    submitForm(idk) {
-        console.log('Form submitted: ', idk);
+    submitForm(vals) {
+        console.log('Form submitted: ', vals);
+        const idArray = getIds(vals);
+
+        console.log('ID Array:', idArray);
     }
     componentWillMount() {
         injectTapEventPlugin();
     }
-    renderCheckbox = ({ input, label }) => (
-    <Checkbox label={label}
-              value={input.value}
-              checked={input.value ? true : false}
-              onCheck={input.onChange}/>
-    );
+    renderCheckbox({ input: {name, onChange}, label }) {
+        return (
+            <Checkbox label={label}
+                  name={name}
+                  onCheck={onChange}/>
+        )
+    };
     render() {
         const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
         const { handleSubmit } = this.props;
