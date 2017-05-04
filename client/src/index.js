@@ -18,6 +18,10 @@ import reducers from './reducers/index';
 
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
+
 ReactDOM.render(
     <MuiThemeProvider>
         <Provider store={createStoreWithMiddleware(reducers)}>

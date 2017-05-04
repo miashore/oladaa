@@ -6,10 +6,6 @@ import Footer from './footer/footer';
 
 class App extends Component {
 
-    componentWillMount() {
-        injectTapEventPlugin();
-    }
-
     render() {
 
         return (

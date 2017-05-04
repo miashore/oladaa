@@ -4,9 +4,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import Weather from './weather';
-import Location from './location';
+// import Location from './location';
+
+
 
 class Home extends Component {
+
 
     render() {
 
@@ -14,6 +17,8 @@ class Home extends Component {
             <div>
                 <Header/>
                     Home
+                    <Weather />
+
                 <Footer/>
             </div>
         )
