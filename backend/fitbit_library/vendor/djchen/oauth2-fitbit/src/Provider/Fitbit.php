@@ -71,7 +71,7 @@ class Fitbit extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return static::BASE_FITBIT_API_URL.'/1/user/-/profile.json';
+        return static::BASE_FITBIT_API_URL.'/1/user/-/activities/heart/date/today/7d.json';
     }
 
     /**
