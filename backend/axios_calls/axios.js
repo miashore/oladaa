@@ -83,9 +83,10 @@ axios.post('../user_verification_php/insert_interests.php', {user_id, activity_i
 
 //**********************************************************************************************************************
 
-const activity_id = [1,4,2,3];
-axios.post('../user_verification_php/get_interests.php',{activity_id}).then(resp=>{
+/*const user_id = 3;
+const activity_score = 2;
+axios.post('../user_verification_php/get_interests.php',{user_id, activity_score}).then(resp=>{
     for(let i=0; i<resp.data.length; i++) {
-        console.log('Our response from get interests request ', resp.data[i]['category_id']);
+        console.log(resp.data[i])
     }
-});
+});*/
