@@ -10,6 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import RegisterForm from './components/register_new_user/register_new_user';
 import LoginForm from './components/login/login_form';
 
+import SelectInterests from './components/select_interests/select_interests_form'
 import reducers from './reducers/index';
 
 const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
@@ -20,7 +21,8 @@ ReactDOM.render(
             <Router history={browserHistory}>
                 {/*<Route path="/" component={App}/>*/}
                 {/*<Route path="/" component={RegisterForm}/>*/}
-                <Route path="/" component={LoginForm}/>
+                {/*<Route path="/" component={LoginForm}/>*/}
+                <Route path="/" component={SelectInterests}/>
             </Router>
         </Provider>
     </MuiThemeProvider>,
