@@ -13,9 +13,9 @@ class SelectInterests extends Component {
 
         console.log('ID Array:', idArray);
     }
-    componentWillMount() {
-        injectTapEventPlugin();
-    }
+    // componentWillMount() {
+    //     injectTapEventPlugin();
+    // }
     renderCheckbox({ input: {name, onChange}, label }) {
         return (
             <Checkbox label={label}

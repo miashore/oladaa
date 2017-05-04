@@ -2,6 +2,7 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import { Link } from 'react-router';
 
 export default class Header extends React.Component {
     constructor(props){
@@ -27,10 +28,10 @@ export default class Header extends React.Component {
                     width={200}
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({open})}>
-                    <MenuItem onTouchTap={this.handleClose}>Home</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>About Us</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>Blog</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>Update Location</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/home"/>}>Home</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/about"/>}>About Us</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/blog"/>}>Blog</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose}>Location</MenuItem>
                     <MenuItem onTouchTap={this.handleClose}>Log Out</MenuItem>
                 </Drawer>
             </div>
