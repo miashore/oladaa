@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-import Header from '../header/header';
-import Footer from '../footer/footer';
 
 class Blog extends Component {
 
@@ -10,9 +6,7 @@ class Blog extends Component {
 
         return (
             <div>
-                <Header/>
                 Blog
-                <Footer/>
             </div>
         )
     }

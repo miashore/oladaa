@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 class RegisterForm extends Component {
     submitForm(idk) {
         console.log('Form submitted: ', idk);
     }
-    componentWillMount() {
-        injectTapEventPlugin();
-    }
+
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <TextField hintText={label}
                    floatingLabelText={label}
