@@ -39,7 +39,7 @@
 // const username = 'Braxton';
 // const password = 'HiImBraxton';
 //
-// axios.post('../user_verification_php/login.php', {username, password}).then(resp=>{
+// axios.post('../server/login.php', {username, password}).then(resp=>{
 //     console.log('Our response from the server ', resp.data);
 //     if(resp.data === 0){
 //         console.log('Invalid Username');
@@ -61,7 +61,7 @@
 // const password = 'HiImEllie';
 // const email = "ellie@beativities.com";
 //
-// axios.post('../user_verification_php/register.php', {username, password, email}).then(resp=>{
+// axios.post('../server/register.php', {username, password, email}).then(resp=>{
 //     console.log('Our response from register.php ', resp);
 // });
 
@@ -72,7 +72,7 @@
 
 // const activity_id = [];
 //
-// axios.post('../user_verification_php/insert_interests.php', {activity_id}).then(resp=>{
+// axios.post('../server/insert_interests.php', {activity_id}).then(resp=>{
 //     console.log('Our interests being sent ', resp.data);
 // }).catch(err=>{
 //     console.log('not sent ', err);
@@ -80,11 +80,11 @@
 
 //**********************************************************************************************************************
 
-//axios call for getting category ID's from our databass to pass to the meetup api.  We will have the user_id stored in
+//axios call for getting category ID's from our database to pass to the meetup api.  We will have the user_id stored in
 //our session and the activity score stored in a cookie after we do our mockdata/fitbitData call.
 
 // const activity_score = 2;
-// axios.post('../user_verification_php/get_interests.php',{activity_score}).then(resp=>{
+// axios.post('../server/get_interests.php',{activity_score}).then(resp=>{
 //     for(let i=0; i<resp.data.length; i++) {
 //         console.log(resp.data[i])
 //     }
