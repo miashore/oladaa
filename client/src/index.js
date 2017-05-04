@@ -9,6 +9,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import App from './components/app';
 // import RegisterForm from './components/register_new_user/register_new_user';
 import LoginForm from './components/login/login_form';
+
 import SelectInterests from './components/select_interests/select_interests_form'
 import reducers from './reducers/index';
 

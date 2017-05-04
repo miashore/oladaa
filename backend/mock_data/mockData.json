@@ -1,0 +1,17 @@
+{
+  "Braxton":{
+    "fatBurn":"132",
+    "cardio":"30",
+    "peak":"10"
+  },
+  "Bernstein":{
+    "fatBurn":"20",
+    "cardio":"20",
+    "peak":"0"
+  },
+  "Ellie":{
+    "fatBurn":"0",
+    "cardio":"0",
+    "peak":"0"
+  }
+}
