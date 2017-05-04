@@ -3,7 +3,6 @@
 //user will have three different properties; fatBurn, cardio, and peak.  It then passes that into our activity score
 //formula to calculate the users activity level/score.
 
-
 /*axios.get('../mock_data/mockData.json').then(resp=>{
     console.log(resp.data['Ellie']);
     const userStats = resp.data['Ellie'];
@@ -35,8 +34,8 @@ function getActivityScore(fatBurnMin, cardioMin, peakMin){
 
 //**********************************************************************************************************************
 
-//axios call for verifying login information.  Send the username and password to login.php and check for their
-//existence in our database, it returns a 1 for true and a 0 for false.
+//axios call for verifying login information.  Get the username and password from frontend, send to login.php, and check
+//for their existence in our database, it returns a 1 for true and a 0 for false.
 
 /*const username = 'Sean';
 const password = 'Munchen*86';
@@ -82,6 +81,9 @@ axios.post('../user_verification_php/insert_interests.php', {user_id, activity_i
 });*/
 
 //**********************************************************************************************************************
+
+//axios call for getting category ID's from our databass to pass to the meetup api.  We will have the user_id stored in
+//our session and the activity score stored in a cookie after we do our mockdata/fitbitData call.
 
 /*const user_id = 3;
 const activity_score = 2;
