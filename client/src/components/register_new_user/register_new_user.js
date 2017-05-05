@@ -4,8 +4,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 class RegisterForm extends Component {
-    submitForm(idk) {
-        console.log('Form submitted: ', idk);
+    submitForm(vals) {
+        console.log('Form submitted: ', vals);
+        const registerInfo = (vals);
+        console.log('Registration Form Info: ', registerInfo)
     }
 
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
