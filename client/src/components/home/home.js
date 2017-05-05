@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 // import Weather from './weather';
-// import Location from './location';
 
 class Home extends Component {
 

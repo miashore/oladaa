@@ -21,8 +21,8 @@
 //     return activityScore
 // }
 // axios.get('../mock_data/mockData.json').then(resp=>{
-//     console.log(resp.data['Sam']);
-//     const userStats = resp.data['Sam'];
+//     console.log(resp.data['Braxton']);
+//     const userStats = resp.data['Braxton'];
 //     const fatBurnMin = parseInt(userStats.fatBurn);
 //     const cardioMin = parseInt(userStats.cardio);
 //     const peakMin = parseInt(userStats.peak);
@@ -57,9 +57,9 @@
 // username or email already exists, or not all fields are filled it will return an error message of user registration
 // failed.
 
-// const username = 'Sean';
-// const password = 'HiImDan';
-// const email = "miranda@beativities.com";
+// const username = 'Braxton';
+// const password = 'HiImBraxton';
+// const email = "braxton@beativities.com";
 //
 // axios.post('../server/register.php', {username, password, email}).then(resp=>{
 //     console.log('Our response from register.php ', resp);
@@ -80,8 +80,8 @@
 
 //axios call for inserting interests into the request table of our database.  activity ID's are inserted into an array
 //that is looped through in our php file.  User ID is retained in our session.
-
-// const activity_id = [];
+//
+// const activity_id = [1,2,3,5,6,7,9,10,11];
 //
 // axios.post('../server/insert_interests.php', {activity_id}).then(resp=>{
 //     console.log('Interests sent ', resp);
@@ -98,10 +98,15 @@
 // if(!isNaN(document.cookie.charAt(15))) {
 //     activity_score = parseInt(document.cookie.charAt(15));
 // }else{
-//     activity_score = document.cookie.substring(15,29)
+//     activity_score = false
 // }
 // axios.post('../server/get_interests.php',{activity_score}).then(resp=>{
-//     for(let i=0; i<resp.data.length; i++) {
-//         console.log(resp.data[i])
+//     if(typeof resp.data !== 'string') {
+//         for (let i = 0; i < resp.data.length; i++) {
+//             console.log(resp.data[i])
+//         }
+//     }
+//     else{
+//         console.log(resp.data);
 //     }
 // });
