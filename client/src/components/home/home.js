@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // import Weather from './weather';
-// import Location from './location';
+import Location from '../location/location';
 
 class Home extends Component {
 
@@ -15,6 +15,7 @@ class Home extends Component {
             <div>
                 <div style={styles.mid_container}>
                     Home
+                    <Location/>
                 </div>
             </div>
         )
