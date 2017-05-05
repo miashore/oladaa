@@ -42,7 +42,7 @@
 // axios.post('../server/login.php', {username, password}).then(resp=>{
 //     console.log('Our response from the server ', resp.data);
 //     if(resp.data === 0){
-//         console.log('Invalid Username');
+//         console.log('Invalid Username/Password');
 //     }
 //     else{
 //         console.log('User logged in');
@@ -57,16 +57,16 @@
 // username or email already exists, or not all fields are filled it will return an error message of user registration
 // failed.
 
-// const username = 'Dan';
+// const username = 'Sean';
 // const password = 'HiImDan';
-// const email = "dan@beativities.com";
+// const email = "miranda@beativities.com";
 //
 // axios.post('../server/register.php', {username, password, email}).then(resp=>{
 //     console.log('Our response from register.php ', resp);
 //     axios.post('../server/login.php', {username, password}).then(resp=>{
 //         console.log('Our response from the server ', resp.data);
 //         if(resp.data === 0){
-//             console.log('Invalid Username');
+//             console.log('Invalid Username/Password');
 //         }
 //         else{
 //             console.log('User logged in');
@@ -93,6 +93,7 @@
 
 //axios call for getting category ID's from our database to pass to the meetup api.  We will have the user_id stored in
 //our session and the activity score stored in a cookie after we do our mockdata/fitbitData call.
+
 // let activity_score;
 // if(!isNaN(document.cookie.charAt(15))) {
 //     activity_score = parseInt(document.cookie.charAt(15));
