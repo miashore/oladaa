@@ -1,28 +1,14 @@
-// import axios from 'axios';
-// import { REGISTER_USER } from './types';
-//
-// const username = 'Dan';
-// const password = 'HiImDan';
-// const email = "dan@beativities.com";
-//
-// axios.post('../server/register.php', {username, password, email}).then(resp=>{
-//     console.log('Our response from register.php ', resp);
-//     axios.post('../server/login.php', {username, password}).then(resp=>{
-//         console.log('Our response from the server ', resp.data);
-//         if(resp.data === 0){
-//             console.log('Invalid Username');
-//         }
-//         else{
-//             console.log('User logged in');
-//         }
-//     }).catch(err=>{
-//         console.log(err);
-//     });
-// });
-//
-// export function register_user() {
-//     return {
-//         type: REGISTER_USER,
-//         payload:
-//     }
-// }
+import axios from 'axios';
+import { FETCH_EVENTS } from './types';
+
+const MEETUP_URL = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=-117.79&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat=33.68&desc=False&status=upcoming&category=32';
+const API_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
+
+export function fetchEvents(){
+    return function(dispatch){
+        axios.get(`${MEETUP_URL}${API_KEY}`).then((response) => );
+
+    }
+
+
+}

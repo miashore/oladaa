@@ -1,1 +1,1 @@
-// export const REGISTER_USER = 'register_user';
+export const FETCH_EVENTS = 'FETCH_EVENTS';
