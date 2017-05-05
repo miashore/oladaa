@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { connect } from 'react-redux';
+import { register_user } from '../../actions/index';
 
 class RegisterForm extends Component {
     submitForm(vals) {
-        console.log('Form submitted: ', vals);
         const registerInfo = (vals);
+        this.props.register_user(vals);
         console.log('Registration Form Info: ', registerInfo)
     }
 
@@ -53,14 +55,15 @@ class RegisterForm extends Component {
                         />
                     </div>
                     <RaisedButton style={button_style} type="submit" label="Register" primary={true} />
-                    <RaisedButton label="Sign In" secondary={true} />
+                    <RaisedButton type="submit" label="Sign In" secondary={true} />
                 </form>
             </div>
         )
     }
 }
 RegisterForm = reduxForm({
-    form: 'addForm'
+    form: 'registerUser'
+
 })(RegisterForm);
 
-export default RegisterForm;
+export default connect(null, { register_user: register_user })(RegisterForm);
