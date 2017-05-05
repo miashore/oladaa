@@ -21,7 +21,7 @@ export default  (
         <Route path="select_interests" component={ SelectInterests }/>
         <Route path="register" component={ RegisterForm }/>
         <Route path="login" component={ LoginForm }/>
-        <Route path="view_all" component={ViewAllList}/>
-        <Route path="recommended_events" components={RecommendedEventList} />
+        <Route path="view_all" component={ ViewAllList }/>
+        <Route path="recommended_events" components={ RecommendedEventList }/>
     </Route>
 );
