@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { connect } from 'react-redux';
+import { login_user } from '../../actions/index'
 
 class LoginForm extends Component {
-    submitForm(idk) {
-        console.log('Form submitted: ', idk);
+    submitForm(vals) {
+        this.props.login_user(vals);
+        console.log('Form submitted: ', vals);
     }
 
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
@@ -47,4 +50,4 @@ LoginForm = reduxForm({
     form: 'loginForm'
 })(LoginForm);
 
-export default LoginForm;
+export default connect(null, { login_user: login_user })(LoginForm);
