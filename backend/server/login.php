@@ -5,6 +5,7 @@ session_start();
 //Require connection to the database
 require("../connect.php");
 header("Access-Control-Allow-Origin: *");
+
 //Catch the json object sent from our axios call and convert it into php readable code.
 $userInfo = json_decode(file_get_contents('php://input'), true);
 

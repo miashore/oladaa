@@ -2,7 +2,9 @@
 
 //Start the session
 session_start();
+
 header("Access-Control-Allow-Origin: *");
+
 //Require connection to the database
 require_once("../connect.php");
 

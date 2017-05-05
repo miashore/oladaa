@@ -2,15 +2,19 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { AUTH_ERROR, AUTH_USER, UNAUTH_USER } from './types';
 
+const instance = axios.create({
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+});
+
 export function register_user({ username, password, email }) {
     return function (dispatch) {
-        axios.post('./backend/server/register.php', {username, password, email}).then(resp=> {
+        instance.post('http://localhost:8888/server/register.php', {username, password, email}).then(resp=> {
             console.log(resp);
             dispatch({
                 type: AUTH_USER
             });
             console.log('Our response from register.php ', resp);
-            axios.post('./backend/server/login.php', {username, password}).then(resp => {
+            instance.post('http://localhost:8888/server/login.php', {username, password}).then(resp => {
                 console.log('Our response from the server ', resp.data);
                 if (resp.data === 0) {
                     console.log('Invalid Username');
@@ -30,7 +34,7 @@ export function register_user({ username, password, email }) {
 
 export function login_user({ username, password}) {
     return function (dispatch) {
-        axios.post('../server/login.php', {username, password}).then(resp=>{
+        instance.post('../server/login.php', {username, password}).then(resp=>{
             console.log('Our response from the server ', resp.data);
             dispatch({
                 type: AUTH_USER
