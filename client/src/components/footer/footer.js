@@ -17,7 +17,7 @@ class Footer extends Component {
 
     render(){
         const styles = {
-            paper: {position: 'fixed', bottom: '0', width: '105%', margin: '0 -10px'},
+            paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px'},
             bNav: {textAlign: 'center'}
         };
 
