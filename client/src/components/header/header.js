@@ -3,6 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import { Link } from 'react-router';
+import LocationModal from '../location/location_modal';
 
 export default class Header extends React.Component {
     constructor(props){
@@ -16,7 +17,7 @@ export default class Header extends React.Component {
 
     render() {
         const styles = {
-            bar: {width: '100%', textAlign: 'center'}
+            bar: {width: '100%', textAlign: 'center'},
         };
 
         return (
@@ -33,7 +34,8 @@ export default class Header extends React.Component {
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/home"/>}>Home</MenuItem>
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/about"/>}>About Us</MenuItem>
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/blog"/>}>Blog</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>Location</MenuItem>
+                    {/*<MenuItem onTouchTap={this.handleClose}><LocationModal/></MenuItem>*/}
+                    <MenuItem><LocationModal /></MenuItem>
                     <MenuItem onTouchTap={this.handleClose}>Log Out</MenuItem>
                 </Drawer>
             </div>
