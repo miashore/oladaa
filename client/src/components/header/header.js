@@ -15,13 +15,15 @@ export default class Header extends React.Component {
     handleClose = () => this.setState({open: false});
 
     render() {
-        const title_style = { textAlign: 'center'};
+        const styles = {
+            bar: {width: '100%', textAlign: 'center'}
+        };
 
         return (
             <div>
                 <AppBar title="Title"
                         onLeftIconButtonTouchTap={this.handleToggle}
-                        style={title_style}
+                        style={styles.bar}
                 />
                 <Drawer
                     docked={false}

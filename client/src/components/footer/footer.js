@@ -17,7 +17,7 @@ class Footer extends Component {
 
     render(){
         const styles = {
-            paper: {position: 'fixed', bottom: '0', width: '100%', 'marginLeft': '-10px'},
+            paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px'},
             bNav: {textAlign: 'center'}
         };
 
@@ -25,7 +25,7 @@ class Footer extends Component {
             <Paper style={ styles.paper } zDepth={1}>
                 <BottomNavigation selectedIndex={ this.state.selectedIndex }>
                     <BottomNavigationItem label="Update Profile" icon={ updateProfileIcon } onTouchTap={() => this.select(0)} />
-                    <BottomNavigationItem label="Your Events" icon={ yourEventsIcon } onTouchTap={() => this.select(1)} />
+                    <BottomNavigationItem label="Your Events" icon={ yourEventsIcon } style={styles.bNav} onTouchTap={() => this.select(1)} containerElement={<Link to="/recommended_events" />} />
                     <BottomNavigationItem label="View All Events" icon={ viewAllEventsIcon } style={styles.bNav} onTouchTap={() => this.select(2)} containerElement={<Link to="/view_all"/>}/>
                 </BottomNavigation>
             </Paper>
