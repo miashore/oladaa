@@ -17,7 +17,7 @@ if(isset($userInfo) && !empty($userInfo)){
     //Pull the username, password, and email out of the axios object.
     $username = mysqli_real_escape_string($conn, $userInfo["username"]);
     $email = mysqli_real_escape_string($conn, $userInfo["email"]);
-    $password = crypt($userInfo["password"]);
+    $password = password_hash($userInfo["password"],PASSWORD_DEFAULT);
 
     //Insert the new users information into the database.
     $sql = "INSERT INTO `user_table` (name, password, email) VALUES ('$username','$password','$email')";
