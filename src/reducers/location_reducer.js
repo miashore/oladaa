@@ -1,4 +1,4 @@
-import { FETCH_LOCATION } from '../actions/types';
+import { SAVE_LOCATION } from '../actions/types';
 
 const default_state = {
     coords: null
@@ -6,7 +6,7 @@ const default_state = {
 
 export default function(state = default_state, action){
     switch(action.type){
-        case FETCH_LOCATION:
+        case SAVE_LOCATION:
             console.log('reducer:', action.payload);
             return {
                 ...state,

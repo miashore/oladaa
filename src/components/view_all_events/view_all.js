@@ -3,19 +3,15 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import { fetchEvents, storeUserLocation } from '../../actions/index';
-import { geolocated } from 'react-geolocated';
 import EventCard from '../event_card/event_card';
 
 class ViewAllEventsList extends Component {
-    componentWillReceiveProps(nextProps){
-        const coords = nextProps.coords;
-        if(coords){
-            console.log('fetch Events:', this.props.fetchEvents(coords));
-        }
+
+    componentWillMount(){
+        console.log('props: ', this.props);
     }
 
     render(){
-        console.log('Current props', this.props.coords);
         return (
             <Paper zDepth={3}>
                 <Card>
@@ -44,10 +40,4 @@ class ViewAllEventsList extends Component {
     }
 }
 
-
-export default connect(null, { fetchEvents, storeUserLocation })(geolocated({
-    positionOptions: {
-        enableHighAccuracy: false,
-    },
-    userDecisionTimeout: 5000
-})(ViewAllEventsList));
+export default connect(null, { fetchEvents, storeUserLocation })(ViewAllEventsList);
