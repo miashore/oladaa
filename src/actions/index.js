@@ -95,8 +95,6 @@ export function storeUserLocation(location){
     }
 }
 
-}
-
 export function submit_interests( idArray ) {
     return function () {
         if(idArray.length >= 3) {
