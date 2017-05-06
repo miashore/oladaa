@@ -44,6 +44,7 @@ export default class LocationModal extends Component {
                     modal={true}
                     open={this.state.open}>
                     <Location/>
+
                 </Dialog>
             </div>
         );
