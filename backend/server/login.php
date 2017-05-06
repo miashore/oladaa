@@ -14,23 +14,28 @@ if(isset($userInfo) && !empty($userInfo)){
 
     //Pull the username and password out of the axios object.
     $username = mysqli_real_escape_string($conn, $userInfo["username"]);
-    $password = md5($userInfo["password"]);
+    $password = $userInfo["password"];
 
     //Select the user id from our main user table based on the username and password provided.
-    $sql = "SELECT `id` FROM `user_table` WHERE `name`='$username' AND `password`='$password'";
+    $sql = "SELECT `id`,`password` FROM `user_table` WHERE `name`='$username'";
     $result = mysqli_query($conn, $sql);
-    $user_id = mysqli_fetch_assoc($result)["id"];
-    $count = mysqli_num_rows($result);
+//    $user_id = mysqli_fetch_assoc($result)["id"];
+//    $hashed_password = mysqli_fetch_assoc($result)["password"];
+//
+    if($result->num_rows ===1){
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        //If a row is returned set the id key in the Global Session variable to to the user id returned from our query.
+        if(password_verify($password, $row["password"])){
+            $_SESSION["id"] = $row["id"];
+        }
+        //If it fails return a 0 to the axios call.
+        else{
+            $fmsg = 0;
+            echo $fmsg;
+        }
+    }
 
-    //If a row is returned set the id key in the Global Session variable to to the user id returned from our query.
-    if($count == 1){
-        $_SESSION["id"] = $user_id;
-    }
-    //If it fails return a 0 to the axios call.
-    else{
-        $fmsg = 0;
-        echo $fmsg;
-    }
+
 }
 
 //If the session id is set send a success message.
