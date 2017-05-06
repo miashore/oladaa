@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, FETCH_LOCATION } from './types';
 
 const instance = axios.create({
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -57,39 +57,23 @@ export function login_user({ username, password}) {
     }
 }
 
-const MEETUP_URL = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=-117.79&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat=33.68&desc=False&status=upcoming&category=32';
+//const MEETUP_URL = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=-117.79&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat=33.68&desc=False&status=upcoming&category=32';
 const MU_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
 
-const config = {
-    headers: {
-        'Content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    }
-};
+export function fetchEvents(coords){
+    console.log('Coords: ', coords);
 
-// export function fetchEvents(){
-//     return function(dispatch){
-//         meetup.get(`${MEETUP_URL}${MU_KEY}`).then((response) => {
-//             console.log('Meetup Response: ', response);
-//
-//             dispatch({
-//                 type: FETCH_EVENTS
-//             });
-//         }).catch((err) => {
-//             console.log('Error: ', err);
-//         });
-//     }
-// }
+    const lat = coords.latitude;
+    const long = coords.longitude;
 
-export function fetchEvents(){
     return function(dispatch){
+
         $.ajax({
             dataType: 'jsonp',
             crossDomain: true,
             method: 'GET',
-            url: MEETUP_URL+MU_KEY,
-            success: function(response){
+            url: 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category=32'+MU_KEY,
+        success: function(response){
                 console.log('Success Response: ', response);
                 dispatch({
                     type: FETCH_EVENTS
@@ -100,4 +84,14 @@ export function fetchEvents(){
             }
         });
     };
+}
+
+export function storeUserLocation(location){
+    return function(dispatch){
+        console.log('action:', location);
+        dispatch({
+            type: FETCH_LOCATION,
+            payload: location
+        });
+    }
 }
