@@ -10,6 +10,7 @@ import RegisterForm from './components/register_new_user/register_new_user';
 import LoginForm from './components/login/login_form';
 import ViewAllList from './components/view_all_events/view_all';
 import RecommendedEventList from './components/recommended_events/recommended_events';
+import WelcomeNote from './components/welcome_new_user/welcome_new_user';
 
 export default  (
     <Route path="/" component={ App }>
@@ -23,5 +24,6 @@ export default  (
         <Route path="login" component={ LoginForm }/>
         <Route path="view_all" component={ ViewAllList }/>
         <Route path="recommended_events" components={ RecommendedEventList }/>
+        <Route path="welcome_user" components={ WelcomeNote }/>
     </Route>
 );
