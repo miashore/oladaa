@@ -38,7 +38,7 @@ class ActivityNote extends Component {
 
 function mapStateToProps(state){
     return{
-        coords: state.coords
+        location: state.coords
     }
 }
 

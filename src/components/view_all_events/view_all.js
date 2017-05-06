@@ -8,7 +8,7 @@ import EventCard from '../event_card/event_card';
 class ViewAllEventsList extends Component {
 
     componentWillMount(){
-        console.log('props: ', this.props);
+        console.log('props: ', this.props.location);
     }
 
     render(){
@@ -40,4 +40,11 @@ class ViewAllEventsList extends Component {
     }
 }
 
-export default connect(null, { fetchEvents, storeUserLocation })(ViewAllEventsList);
+function mapStateToProps(state){
+    console.log('State', state);
+    return {
+        location: state.location.coords
+    }
+}
+
+export default connect(mapStateToProps, { fetchEvents, storeUserLocation })(ViewAllEventsList);
