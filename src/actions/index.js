@@ -18,21 +18,26 @@ export function register_user({ username, password, email }) {
                 type: AUTH_USER
             });
             console.log('Our response from register.php ', resp.data);
-            instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
-                console.log('Our response from login.php ', resp.data);
-                if (resp.data === 0) {
-                    console.log('Invalid Username');
-                }
-                else {
-                    console.log('User logged in');
-                    browserHistory.push('/welcome_user');
-                }
-            }).catch(err => {
-                console.log('error:', err);
-                dispatch({
-                    type: AUTH_ERROR,
+            if(resp.data["error"]){
+                console.log("registration failed")
+            }
+            else {
+                instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
+                    console.log('Our response from login.php ', resp.data);
+                    if (resp.data === 0) {
+                        console.log('Invalid Username/Password');
+                    }
+                    else {
+                        console.log('User logged in');
+                        browserHistory.push('/welcome_user');
+                    }
+                }).catch(err => {
+                    console.log('error:', err);
+                    dispatch({
+                        type: AUTH_ERROR,
+                    });
                 });
-            });
+            }
         });
     }
 }
