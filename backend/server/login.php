@@ -14,7 +14,7 @@ if(isset($userInfo) && !empty($userInfo)){
 
     //Pull the username and password out of the axios object.
     $username = mysqli_real_escape_string($conn, $userInfo["username"]);
-    $password = md5($userInfo["password"]);
+    $password = crypt($userInfo["password"]);
 
     //Select the user id from our main user table based on the username and password provided.
     $sql = "SELECT `id` FROM `user_table` WHERE `name`='$username' AND `password`='$password'";
