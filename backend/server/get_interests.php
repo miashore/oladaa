@@ -32,7 +32,7 @@ if(!empty($userStats)) {
 
     //Send the results from the prior query to our database to retrieve the category id's associated with those
     //activities.
-    $activityQuery = "SELECT `category_id` FROM `activity_table` WHERE ";
+    $activityQuery = "SELECT `category_id`,`description` FROM `activity_table` WHERE ";
     if(count($requestData)>0) {
         for ($i = 0; $i < count($requestData); $i++) {
             if ($i === 0) {
