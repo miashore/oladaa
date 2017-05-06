@@ -44,7 +44,12 @@ class FitbitLogin extends Component {
                                    label="Email"
                                    type="text"
                             />
-                            <TextField name="password" hintText="Password" type="password" floatingLabelText="Password"/>
+                            <Field name="password"
+                                   component={this.renderTextfield}
+                                   type="password"
+                                   label="Password"
+                                   floatingLabelText="Password"
+                            />
                         </div>
                         <RaisedButton style={styles.button} type="submit" label="Log In" primary={true} fullWidth={true} />
                     </form>
