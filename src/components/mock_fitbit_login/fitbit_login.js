@@ -12,13 +12,17 @@ class FitbitLogin extends Component {
 
     submitForm(vals){
         console.log('Form submitted: ', vals);
+
     }
 
-    renderTextfield({label, name}){
-        return (
-            <TextField floatingLabelText={label} hintText={label} name={name}/>
-        )
-    }
+    renderTextfield = ({label, input}) => (
+
+            <TextField
+                floatingLabelText={label}
+                hintText={label}
+                {...input}
+            />
+    );
 
     render(){
         const styles = {
@@ -35,10 +39,14 @@ class FitbitLogin extends Component {
                     <h1 style={styles.h1}>Log in</h1>
                     <form style={styles.form} onSubmit={ handleSubmit((formValue) => {this.submitForm(formValue)}) }>
                         <div>
-                            <Field name="email" component={this.renderTextfield} label="Email" />
+                            <Field name="email"
+                                   component={this.renderTextfield}
+                                   label="Email"
+                                   type="text"
+                            />
                             <TextField name="password" hintText="Password" type="password" floatingLabelText="Password"/>
                         </div>
-                        <RaisedButton style={styles.button} label="Log in" primary={true} fullWidth={true} />
+                        <RaisedButton style={styles.button} type="submit" label="Log In" primary={true} fullWidth={true} />
                     </form>
                 </Paper>
             </div>
@@ -49,4 +57,4 @@ FitbitLogin = reduxForm({
     form: 'fitbitForm'
 })(FitbitLogin);
 
-export default connect(null, null)(FitbitLogin);
+export default connect(null, { null })(FitbitLogin);

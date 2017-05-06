@@ -9,6 +9,7 @@ const App = (props) => (
         <Link to="/register">Go To Register</Link>
         {props.children}
         <Footer />
+        <Link to="/fitbit_login">Fit Bit Check</Link>
     </div>
 );
 
