@@ -15,7 +15,7 @@ if(!empty($userInterests)){
     $userId = $_SESSION["id"];
 
     //Pull activity id out of the axios object.  Activity id will be an array.
-    $activityId = $userInterests['activity_id'];
+    $activityId = $userInterests['idArray'];
 
     //Loop through activity id array.
     for($i=0; $i<count($activityId); $i++) {
