@@ -12,20 +12,25 @@ import ViewAllList from './components/view_all_events/view_all';
 import RecommendedEventList from './components/recommended_events/recommended_events';
 import ActivityNote from './components/activity_note/activity_note';
 import WelcomeNote from './components/welcome_new_user/welcome_new_user';
+import FitbitLogin from './components/mock_fitbit_login/fitbit_login';
 
 export default  (
+    <div>
     <Route path="/" component={ App }>
-        <Route path="home" component={ Home }/>
-        <Route path="about" component={ About }/>
-        <Route path="blog" component={ Blog }/>
+            <Route path="home" component={ Home }/>
+            <Route path="about" component={ About }/>
+            <Route path="blog" component={ Blog }/>
 
         {/*Need to reroute, currently added to app in order to navigate easier. The below should not have a header and footer*/}
-        <Route path="select_interests" component={ SelectInterests }/>
-        <Route path="register" component={ RegisterForm }/>
-        <Route path="login" component={ LoginForm }/>
-        <Route path="view_all" component={ ViewAllList }/>
-        <Route path="recommended_events" components={ RecommendedEventList }/>
-        <Route path="activity_note" component={ ActivityNote } />
-        <Route path="welcome_user" components={ WelcomeNote }/>
+            <Route path="select_interests" component={ SelectInterests }/>
+            <Route path="register" component={ RegisterForm }/>
+            <Route path="login" component={ LoginForm }/>
+            <Route path="view_all" component={ ViewAllList }/>
+            <Route path="recommended_events" components={ RecommendedEventList }/>
+            <Route path="activity_note" component={ ActivityNote } />
+            <Route path="welcome_user" components={ WelcomeNote }/>
     </Route>
+            <Route path="fitbit_login" component={ FitbitLogin } />
+    </div>
+
 );

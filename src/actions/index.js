@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, SUBMIT_INTERESTS } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER } from './types';
 
 
 const instance = axios.create({
@@ -108,5 +108,42 @@ export function submit_interests( idArray ) {
                 console.log('not sent ', err);
             });
         }
+    }
+}
+
+export function fetch_weather( ) {
+    const API_KEY = '0cb0c630afe33bff7e69f24de512c0f0'; //openweather api
+    const irvine = {
+        lat: 33.68,
+        long: -117.79
+    };
+    const boulder = {
+        lat: 40.014986,
+        long: -105.270546
+    };
+    const london = {
+        lat: 51.507351,
+        long: -0.127758
+    };
+    const tokyo = {
+        lat: 35.68,
+        long: 139.69
+    };
+
+   return function (dispatch){
+        $.ajax({
+            url: 'http://api.openweathermap.org/data/2.5/weather?APPID='+API_KEY+'&lat='+irvine.lat+'&lon='+irvine.long,
+            type: 'GET',
+            success: function(response){
+                console.log('Response: ', response);
+                dispatch({
+                    type: FETCH_WEATHER,
+                    payload: weather
+                });
+            },
+            error: function(error){
+                console.log('Error: ', error)
+            }
+        });
     }
 }
