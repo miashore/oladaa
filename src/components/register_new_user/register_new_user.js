@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { register_user } from '../../actions/index';
+import { Link } from 'react-router';
 
 class RegisterForm extends Component {
     submitForm(vals) {
@@ -55,7 +56,7 @@ class RegisterForm extends Component {
                         />
                     </div>
                     <RaisedButton style={button_style} type="submit" label="Register" primary={true} />
-                    <RaisedButton type="submit" label="Sign In" secondary={true} />
+                    <RaisedButton label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
                 </form>
             </div>
         )
@@ -63,7 +64,6 @@ class RegisterForm extends Component {
 }
 RegisterForm = reduxForm({
     form: 'registerUser'
-
 })(RegisterForm);
 
 export default connect(null, { register_user: register_user })(RegisterForm);
