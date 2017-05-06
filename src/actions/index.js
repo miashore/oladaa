@@ -87,7 +87,6 @@ export function fetchEvents(coords){
 }
 
 export function storeUserLocation(location){
-    console.log('actions index: ', location);
         return {
             type: SAVE_LOCATION,
             payload: location

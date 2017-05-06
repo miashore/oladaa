@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
-import { fetchEvents, storeUserLocation } from '../../actions/index';
+import { fetchEvents } from '../../actions/index';
 import EventCard from '../event_card/event_card';
 
 class ViewAllEventsList extends Component {
 
     componentWillMount(){
-        console.log('props: ', this.props.location);
+        console.log(this.props.fetchEvents(this.props.location));
     }
 
     render(){
@@ -47,4 +47,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { fetchEvents, storeUserLocation })(ViewAllEventsList);
+export default connect(mapStateToProps, { fetchEvents })(ViewAllEventsList);
