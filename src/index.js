@@ -7,7 +7,7 @@ import reduxThunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import routes from './components/routes/routes'
+import routes from './routes'
 
 import reducers from './reducers/index';
 

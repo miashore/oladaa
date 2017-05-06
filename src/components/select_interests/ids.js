@@ -2,7 +2,7 @@
 const ids = {
     sports_fitness: 1,
     dance: 2,
-    outdoors_adventure: 3,
+    outdoors_adventures: 3,
     health_wellness: 4,
     music: 5,
     pets: 6,

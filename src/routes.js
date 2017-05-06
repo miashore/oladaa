@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from '../app';
-import Home from '../home/home'
-import About from '../aboutus/about_us';
-import Blog from '../blog/blog';
-import SelectInterests from '../select_interests/select_interests_form';
-import RegisterForm from '../register_new_user/register_new_user';
-import LoginForm from '../login/login_form';
-import ViewAllList from '../view_all_events/view_all';
-import RecommendedEventList from '../recommended_events/recommended_events';
+import App from './components/app';
+import Home from './components/home/home'
+import About from './components/aboutus/about_us';
+import Blog from './components/blog/blog';
+import SelectInterests from './components/select_interests/select_interests_form';
+import RegisterForm from './components/register_new_user/register_new_user';
+import LoginForm from './components/login/login_form';
+import ViewAllList from './components/view_all_events/view_all';
+import RecommendedEventList from './components/recommended_events/recommended_events';
 
 export default  (
     <Route path="/" component={ App }>
