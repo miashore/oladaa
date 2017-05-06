@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, FETCH_LOCATION, SUBMIT_INTERESTS } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, SUBMIT_INTERESTS } from './types';
 
 
 const instance = axios.create({
@@ -87,13 +87,10 @@ export function fetchEvents(coords){
 }
 
 export function storeUserLocation(location){
-    return function(dispatch){
-        console.log('action:', location);
-        dispatch({
-            type: FETCH_LOCATION,
+        return {
+            type: SAVE_LOCATION,
             payload: location
-        });
-    }
+        };
 }
 
 export function submit_interests( idArray ) {
