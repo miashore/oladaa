@@ -7,21 +7,18 @@ const instance = axios.create({
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 });
 
-const meetup = axios.create({
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    responseType: 'json'
-});
+//const base_url = 'http://localhost:8888/server';
+const base_url = './backend/server';
 
 export function register_user({ username, password, email }) {
     return function (dispatch) {
-        instance.post('http://localhost:8888/server/register.php', {username, password, email}).then(resp=> {
-            console.log(resp);
+        instance.post(`${base_url}/register.php`, {username, password, email}).then(resp=> {
             dispatch({
                 type: AUTH_USER
             });
-            console.log('Our response from register.php ', resp);
-            instance.post('http://localhost:8888/server/login.php', {username, password}).then(resp => {
-                console.log('Our response from the server ', resp.data);
+            console.log('Our response from register.php ', resp.data);
+            instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
+                console.log('Our response from login.php ', resp.data);
                 if (resp.data === 0) {
                     console.log('Invalid Username');
                 }
@@ -41,7 +38,7 @@ export function register_user({ username, password, email }) {
 
 export function login_user({ username, password}) {
     return function (dispatch) {
-        instance.post('http://localhost:8888/server/login.php', {username, password}).then(resp=>{
+        instance.post(`${base_url}/login.php`, {username, password}).then(resp=>{
             console.log('Our response from the server ', resp.data);
             dispatch({
                 type: AUTH_USER

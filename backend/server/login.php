@@ -26,7 +26,6 @@ if(isset($userInfo) && !empty($userInfo)){
     if($count == 1){
         $_SESSION["id"] = $user_id;
     }
-
     //If it fails return a 0 to the axios call.
     else{
         $fmsg = 0;
