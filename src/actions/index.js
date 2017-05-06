@@ -21,7 +21,7 @@ export function register_user({ username, password, email }) {
             instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
                 console.log('Our response from login.php ', resp.data);
                 if (resp.data === 0) {
-                    console.log('Invalid Username');
+                    console.log('Invalid Username/Password');
                 }
                 else {
                     console.log('User logged in');
