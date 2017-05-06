@@ -98,7 +98,7 @@ export function storeUserLocation(location){
 export function submit_interests( idArray ) {
     return function () {
         if(idArray.length >= 3) {
-            instance.post('http://localhost:8888/server/insert_interests.php', {idArray}).then(resp => {
+            instance.post(`${base_url}/insert_interests.php`, {idArray}).then(resp => {
                 console.log('Interests sent ', resp);
 
             }).catch(err => {
@@ -107,4 +107,3 @@ export function submit_interests( idArray ) {
         }
     }
 }
-
