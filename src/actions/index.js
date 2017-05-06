@@ -3,6 +3,7 @@ import $ from 'jquery';
 import { browserHistory } from 'react-router';
 import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, SUBMIT_INTERESTS } from './types';
 
+
 const instance = axios.create({
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 });
@@ -24,7 +25,7 @@ export function register_user({ username, password, email }) {
                 }
                 else {
                     console.log('User logged in');
-                    browserHistory.push('/select_interests');
+                    browserHistory.push('/welcome_user');
                 }
             }).catch(err => {
                 console.log('error:', err);
@@ -48,7 +49,7 @@ export function login_user({ username, password}) {
             }
             else{
                 console.log('User logged in');
-                browserHistory.push('/recommended_events');
+                browserHistory.push('/welcome_user');
             }
         }).catch(err=>{
             console.log(err);
