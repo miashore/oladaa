@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, FETCH_LOCATION, SUBMIT_INTERESTS } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, SUBMIT_INTERESTS } from './types';
 
 
 const instance = axios.create({
@@ -18,21 +18,26 @@ export function register_user({ username, password, email }) {
                 type: AUTH_USER
             });
             console.log('Our response from register.php ', resp.data);
-            instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
-                console.log('Our response from login.php ', resp.data);
-                if (resp.data === 0) {
-                    console.log('Invalid Username/Password');
-                }
-                else {
-                    console.log('User logged in');
-                    browserHistory.push('/welcome_user');
-                }
-            }).catch(err => {
-                console.log('error:', err);
-                dispatch({
-                    type: AUTH_ERROR,
+            if(resp.data["error"]){
+                console.log("registration failed")
+            }
+            else {
+                instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
+                    console.log('Our response from login.php ', resp.data);
+                    if (resp.data === 0) {
+                        console.log('Invalid Username/Password');
+                    }
+                    else {
+                        console.log('User logged in');
+                        browserHistory.push('/welcome_user');
+                    }
+                }).catch(err => {
+                    console.log('error:', err);
+                    dispatch({
+                        type: AUTH_ERROR,
+                    });
                 });
-            });
+            }
         });
     }
 }
@@ -87,13 +92,10 @@ export function fetchEvents(coords){
 }
 
 export function storeUserLocation(location){
-    return function(dispatch){
-        console.log('action:', location);
-        dispatch({
-            type: FETCH_LOCATION,
+        return {
+            type: SAVE_LOCATION,
             payload: location
-        });
-    }
+        };
 }
 
 export function submit_interests( idArray ) {

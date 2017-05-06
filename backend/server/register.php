@@ -28,7 +28,9 @@ if(isset($userInfo) && !empty($userInfo)){
         echo "User Registration Successful";
     }
     else{
-        echo "User Registration Failed: ".(mysqli_error($conn));
+        $result["error"][]="User Registration Failed";
+        $result["error"][]=(mysqli_error($conn));
+        print_r(json_encode($result));
     }
 }
 ?>
