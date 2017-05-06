@@ -22,17 +22,16 @@ if(isset($userInfo) && !empty($userInfo)){
     //Insert the new users information into the database.
     $sql = "INSERT INTO `user_table` (name, password, email) VALUES ('$username','$password','$email')";
     $result = mysqli_query($conn, $sql);
+
 //    if(!mysqli_query($conn,$sql)){
 //        echo (mysqli_error($conn));
 //    }
+
     if($result){
         echo "User Registration Successful";
     }
     else{
         echo " : User Registration Failed";
     }
-}
-if(isset($_SESSION["id"])){
-    $smsg = "User Logged In";
 }
 ?>

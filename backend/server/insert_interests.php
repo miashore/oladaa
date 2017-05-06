@@ -22,7 +22,6 @@ if(!empty($userInterests)){
 
         //Insert each activity id into the request table along with the user id and the activity score associated with
         //the activity id.
-
         $sql = "INSERT INTO request_table(user_id, activity_id, activity_score) 
         VALUES ($userId,$activityId[$i],(SELECT score FROM activity_table 
         WHERE id=$activityId[$i]))";
