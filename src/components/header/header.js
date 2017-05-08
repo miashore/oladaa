@@ -16,6 +16,7 @@ class Header extends React.Component {
     logOutUser(){
         console.log("logout clicked");
         this.props.logout_user();
+        this.handleClose();
     }
 
     handleToggle = () => this.setState({open: !this.state.open});
