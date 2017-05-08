@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchWeather } from '../../actions/index';
 
 class Home extends Component {
+
+    componentWillMount(){
+
+    }
 
     render() {
 
@@ -19,4 +24,11 @@ class Home extends Component {
     }
 }
 
-export default Home;
+function mapStateToProps(state){
+    console.log('Home state: ', state);
+    return {
+        location: this.location
+    }
+}
+
+export default connect(mapStateToProps, { fetchWeather })(Home);
