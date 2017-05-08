@@ -10,21 +10,9 @@ class RecommendedEventsList extends Component {
                 <Card>
                     <CardTitle title="Your Recommended Events" />
                     <EventCard />
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
-                    {/*<EventCard />*/}
                 </Card>
             </Paper>
         )
     }
 }
-
 export default RecommendedEventsList;
