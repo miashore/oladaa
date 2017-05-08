@@ -10,7 +10,7 @@ class ViewAllEventsList extends Component {
     componentWillMount(){
         this.props.fetchEvents(this.props.location);
     }
-
+  
     renderCategories(){
         const categories = this.props.categories[0];
         if(categories !== undefined){
@@ -39,7 +39,7 @@ class ViewAllEventsList extends Component {
     }
 }
 function mapStateToProps(state){
-    console.log('State', state);
+    console.log('View All State: ', state);
     return {
         location: state.location.coords,
         events: state.events.all[0],
