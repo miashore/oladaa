@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, STORE_INTERESTS } from './types';
 
 
 const instance = axios.create({
@@ -81,7 +81,8 @@ export function fetchEvents(coords){
         success: function(response){
                 console.log('Success Response: ', response);
                 dispatch({
-                    type: FETCH_EVENTS
+                    type: FETCH_EVENTS,
+                    payload: response.results
                 });
             },
             error: function(response){
@@ -145,5 +146,12 @@ export function fetch_weather( ) {
                 console.log('Error: ', error)
             }
         });
+    }
+}
+
+export function storeInterests(interests){
+    return {
+        type: STORE_INTERESTS,
+        payload: interests
     }
 }

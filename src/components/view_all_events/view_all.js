@@ -8,55 +8,42 @@ import EventCard from '../event_card/event_card';
 class ViewAllEventsList extends Component {
 
     componentWillMount(){
-        console.log(this.props.fetchEvents(this.props.location));
+        this.props.fetchEvents(this.props.location);
+    }
+
+    renderCategories(){
+        const categories = this.props.categories[0];
+        if(categories !== undefined){
+            const list_event = categories.map((event) => {
+                return (
+                    <Card key={event}>
+                        <CardHeader actAsExpander={true}
+                                    showExpandableButton={true}
+                                    title={event} />
+                        <CardText expandable={true}>
+                            <EventCard />
+                        </CardText>
+                    </Card>
+                );
+            });
+            return list_event;
+        }
     }
 
     render(){
-
-        const categories = ['Film', 'Arts', 'Food'];
-        const list_event = categories.map((event) => <Card>
-                                <CardHeader actAsExpander={true}
-                                            showExpandableButton={true}
-                                            title={event} />
-                                            <CardText expandable={true}>
-                                                <EventCard />
-                                            </CardText>
-                                                    </Card>);
-
             return (
             <Paper zDepth={3}>
-                {/*<Card>*/}
-                    {/*<CardHeader actAsExpander={true} showExpandableButton={true} title="Sports & Fitness" />*/}
-                    {/*<CardText expandable={true}>*/}
-                        {/*<EventCard />*/}
-
-                    {/*</CardText>*/}
-                {/*</Card>*/}
-                {/*<Card>*/}
-                    {/*<CardHeader actAsExpander={true} showExpandableButton={true} title="Pets" />*/}
-                    {/*<CardText expandable={true}>*/}
-                        {/*<EventCard />*/}
-                    {/*</CardText>*/}
-                {/*</Card>*/}
-                {/*<Card>*/}
-                    {/*<CardHeader actAsExpander={true} showExpandableButton={true} title="Film" />*/}
-                    {/*<CardText expandable={true}>*/}
-                        {/*<EventCard />*/}
-                        {/*<EventCard />*/}
-                        {/*<EventCard />*/}
-                        {/*<EventCard />*/}
-                    {/*</CardText>*/}
-                {/*</Card>*/}
-                <Card>{list_event}</Card>
+                <Card>{this.renderCategories()}</Card>
             </Paper>
         );
     }
 }
-
 function mapStateToProps(state){
     console.log('State', state);
     return {
-        location: state.location.coords
+        location: state.location.coords,
+        events: state.events.all[0],
+        categories: state.events.categories
     }
 }
 
