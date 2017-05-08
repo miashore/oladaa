@@ -8,6 +8,7 @@ const default_state = {
 export default function(state = default_state, action){
     switch(action.type){
         case FETCH_EVENTS:
+            console.log('ACTION: ', action.payload);
             return {
                 ...state,
                 all: [...state, action.payload]
