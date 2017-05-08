@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { fetchWeather } from '../../actions/index';
 
 class Home extends Component {
-
     componentWillMount(){
-
+        this.props.fetchWeather(this.props.location);
     }
 
     render() {
@@ -27,7 +26,7 @@ class Home extends Component {
 function mapStateToProps(state){
     console.log('Home state: ', state);
     return {
-        location: this.location
+        location: state.location.coords
     }
 }
 
