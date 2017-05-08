@@ -6,12 +6,31 @@ import { Link } from 'react-router';
 const App = (props) => (
     <div>
         <Header />
-        <Link to="/register">Go To Register</Link>
         {props.children}
         <Footer />
-        <Link to="/fitbit_login">Fit Bit Check</Link>
+
+        {/*Remove the below later after testing is done. Used for navigation in localhost:8888*/}
+        <h3>Navigation for Testing</h3>
+        <Link to="/register">Register</Link>
+        <br/>
+        <Link to="/fitbit_login">Fit Bit Login</Link>
+        <br/>
+        <Link to="/about">About</Link>
+        <br/>
+        <Link to="/home">Home</Link>
+        <br/>
+        <Link to="/blog">Blog</Link>
+        <br/>
+        <Link to="/view_all">View All</Link>
+        <br/>
+        <Link to="/recommended_events">Recommended Events</Link>
+        <br/>
+        <Link to="/select_interests">Select Interests</Link>
+        <br/>
+        <Link to="/welcome_user">Welcome User</Link>
+        <br/>
+        <Link to="/activity_note">Activity Note</Link>
     </div>
 );
-
 
 export default App;
