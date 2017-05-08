@@ -14,12 +14,15 @@ class RegisterForm extends Component {
     }
 
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
-        <TextField hintText={label}
-                   floatingLabelText={label}
-                   errorText={touched && error}
-                   {...input}
-                   {...custom}
-        />
+        <div>
+            <TextField hintText={label}
+                       floatingLabelText={label}
+                       errorText={touched && error}
+                       {...input}
+                       {...custom}
+            />
+        </div>
+
     );
     render() {
         const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
@@ -62,8 +65,29 @@ class RegisterForm extends Component {
         )
     }
 }
+function validate(vals){
+    const errors = {};
+
+    if(!vals.username){
+        errors.username = 'Please enter a Username';
+    }
+    if(!vals.email){
+        errors.email = 'Please enter an Email Address';
+    }
+    if(!vals.password) {
+        errors.password = "Please enter a Password";
+    }
+    if(!vals.password_confirmation){
+        errors.password_confirmation = 'Please confirm your password';
+    }
+    if(vals.password !== vals.password_confirmation){
+        errors.password_confirmation = "Passwords do not match";
+    }
+    return errors;
+}
 RegisterForm = reduxForm({
-    form: 'registerUser'
+    form: 'registerUser',
+    validate
 })(RegisterForm);
 
 export default connect(null, { register_user: register_user })(RegisterForm);
