@@ -67,21 +67,36 @@ class RegisterForm extends Component {
 }
 
 function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
+    const allowedChars = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return allowedChars.test(email);
 }
 
+function validateUserName(username){
+    const allowedChars = /[*|\": <>#[\]{}%^`\\?!()';@&$]/;
+    return allowedChars.test(username)
+}
+
+function validatePassword(password){
+    const space = /[ ]/;
+    return space.test(password)
+}
 function validate(vals){
     const errors = {};
 
-    if(!vals.username){
-        errors.username = 'Please enter a Username';
+    if(!vals.username) {
+        errors.username = "Please enter a Username";
+    }
+    if(validateUserName(vals.username)){
+        errors.username = 'Please enter a valid Username';
     }
     if(!validateEmail(vals.email)){
         errors.email = 'Please enter a valid Email Address';
     }
     if(!vals.password) {
         errors.password = "Please enter a Password";
+    }
+    if(validatePassword(vals.password)){
+        errors.password = "Password must not contain spaces";
     }
     if(!vals.password_confirmation){
         errors.password_confirmation = 'Please confirm your password';
