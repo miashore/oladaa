@@ -22,22 +22,23 @@ if(isset($userInfo) && !empty($userInfo)){
 //    $user_id = mysqli_fetch_assoc($result)["id"];
 //    $hashed_password = mysqli_fetch_assoc($result)["password"];
 //
-    if($result->num_rows ===1){
+    if($result->num_rows === 1){
         $row = $result->fetch_array(MYSQLI_ASSOC);
         //If a row is returned set the id key in the Global Session variable to to the user id returned from our query.
         if(password_verify($password, $row["password"])){
             $_SESSION["id"] = $row["id"];
         }
         //If it fails return a 0 to the axios call.
-        else{
-            $fmsg = 0;
-            echo $fmsg;
-        }
     }
-
-
+    else{
+        $fmsg = 0;
+        echo $fmsg;
+    }
 }
-
+else{
+    $fmsg = 0;
+    echo $fmsg;
+}
 //If the session id is set send a success message.
 if(isset($_SESSION["id"])){
     $smsg = 1;
