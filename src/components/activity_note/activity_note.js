@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { storeUserLocation } from '../../actions/index';
 import { geolocated } from 'react-geolocated';
+import { Link } from 'react-router';
 
 class ActivityNote extends Component {
 
@@ -29,7 +30,7 @@ class ActivityNote extends Component {
                     <h1 style={styles.h1}>Hey there!</h1>
                     <h3 style={styles.h3}>You've successfully connected to Fitbit!</h3>
                     <p style={styles.p}> Based on your activity level from yesterday and your interests we've found events you may like. Come back tomorrow to see new ones!</p>
-                    <RaisedButton style={styles.button} label="Take Me to These Events!" primary={true} />
+                    <RaisedButton containerElement={<Link to="/recommended_events"/>} style={styles.button} label="Take Me to These Events!" primary={true} />
                 </div>
             </Paper>
         )
