@@ -14,12 +14,15 @@ class RegisterForm extends Component {
     }
 
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
-        <TextField hintText={label}
-                   floatingLabelText={label}
-                   errorText={touched && error}
-                   {...input}
-                   {...custom}
-        />
+        <div>
+            <TextField hintText={label}
+                       floatingLabelText={label}
+                       errorText={touched && error}
+                       {...input}
+                       {...custom}
+            />
+        </div>
+
     );
     render() {
         const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
@@ -62,8 +65,50 @@ class RegisterForm extends Component {
         )
     }
 }
+
+function validateEmail(email) {
+    const allowedChars = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return allowedChars.test(email);
+}
+
+function validateUserName(username){
+    const allowedChars = /[*|\": <>#[\]{}%^`\\?!()';@&$]/;
+    return allowedChars.test(username)
+}
+
+function validatePassword(password){
+    const space = /[ ]/;
+    return space.test(password)
+}
+function validate(vals){
+    const errors = {};
+
+    if(!vals.username) {
+        errors.username = "Please enter a Username";
+    }
+    if(validateUserName(vals.username)){
+        errors.username = 'Please enter a valid Username';
+    }
+    if(!validateEmail(vals.email)){
+        errors.email = 'Please enter a valid Email Address';
+    }
+    if(!vals.password) {
+        errors.password = "Please enter a Password";
+    }
+    if(validatePassword(vals.password)){
+        errors.password = "Password must not contain spaces";
+    }
+    if(!vals.password_confirmation){
+        errors.password_confirmation = 'Please confirm your password';
+    }
+    if(vals.password !== vals.password_confirmation){
+        errors.password_confirmation = "Passwords do not match";
+    }
+    return errors;
+}
 RegisterForm = reduxForm({
-    form: 'registerUser'
+    form: 'registerUser',
+    validate
 })(RegisterForm);
 
 export default connect(null, { register_user: register_user })(RegisterForm);
