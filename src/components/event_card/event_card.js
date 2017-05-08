@@ -8,31 +8,41 @@ class EventCard extends Component {
 
     render () {
         const events = this.props.all;
-        const list_events = events.map((event, index) => {
-            console.log('Event ' + index + ' is:', event);
+        if(events !== undefined) {
+            const list_events = events.map((event, index) => {
+                console.log('Event ' + index + ' is:', event);
+                return (
+                    <Card style={{width: '75vw', margin: '0 auto 1%'}} key={index}>
+                        <CardTitle actAsExpander={true}
+                                   showExpandableButton={true}
+                                   title={event.name}
+                                   subtitle={event.venue.address_1 + ', ' + event.venue.city + ', ' + event.venue.state}
+                                   style={{zIndex: '0'}}/>
+                        <CardText expandable={true}>
+                            {event.description}
+                            <CardActions>
+                                <RaisedButton label="Get Directions"/>
+                            </CardActions>
+                        </CardText>
+                    </Card>
+                )
+            });
             return (
-                <Card style={{width:'75vw', margin: '0 auto 1%'}} key={index}>
-                    <CardTitle actAsExpander={true}
-                               showExpandableButton={true}
-                               title={event.name}
-                               subtitle={event.venue.address_1 + ', ' + event.venue.city + ', ' + event.venue.state}
-                               subttile={event.event_url}
-                               style={{zIndex: '0'}} />
-                    <CardText expandable={true}>
-                        {event.description}
-                        <CardActions>
-                            <RaisedButton label="Get Directions" />
-                        </CardActions>
-                    </CardText>
-                </Card>
+                <div>
+                    {list_events}
+                </div>
             )
-        });
-
-        return (
-            <div>
-                {list_events}
-            </div>
-        )
+        }
+        else {
+            return (<Card style={{width: '75vw', margin: '0 auto 1%'}}>
+                <CardTitle actAsExpander={true}
+                           showExpandableButton={true}
+                           title="Loading..."
+                           style={{zIndex: '0'}}/>
+                <CardText expandable={true}>
+                </CardText>
+            </Card>)
+        }
     }
 }
 
