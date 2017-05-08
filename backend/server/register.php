@@ -17,21 +17,20 @@ if(isset($userInfo) && !empty($userInfo)){
     //Pull the username, password, and email out of the axios object.
     $username = mysqli_real_escape_string($conn, $userInfo["username"]);
     $email = mysqli_real_escape_string($conn, $userInfo["email"]);
-    $password = md5($userInfo["password"]);
+    $password = password_hash($userInfo["password"],PASSWORD_DEFAULT);
 
     //Insert the new users information into the database.
     $sql = "INSERT INTO `user_table` (name, password, email) VALUES ('$username','$password','$email')";
     $result = mysqli_query($conn, $sql);
 
-//    if(!mysqli_query($conn,$sql)){
-//        echo (mysqli_error($conn));
-//    }
 
     if($result){
         echo "User Registration Successful";
     }
     else{
-        echo " : User Registration Failed";
+        $result["error"][]="User Registration Failed";
+        $result["error"][]=(mysqli_error($conn));
+        print_r(json_encode($result));
     }
 }
 ?>

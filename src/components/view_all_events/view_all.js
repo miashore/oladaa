@@ -2,52 +2,49 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
-import { fetchEvents, storeUserLocation } from '../../actions/index';
-import { geolocated } from 'react-geolocated';
+import { fetchEvents } from '../../actions/index';
 import EventCard from '../event_card/event_card';
 
 class ViewAllEventsList extends Component {
-    componentWillReceiveProps(nextProps){
-        const coords = nextProps.coords;
-        if(coords){
-            console.log('fetch Events:', this.props.fetchEvents(coords));
+
+    componentWillMount(){
+        this.props.fetchEvents(this.props.location);
+    }
+  
+    renderCategories(){
+        const categories = this.props.categories[0];
+        if(categories !== undefined){
+            const list_event = categories.map((event) => {
+                return (
+                    <Card key={event}>
+                        <CardHeader actAsExpander={true}
+                                    showExpandableButton={true}
+                                    title={event} />
+                        <CardText expandable={true}>
+                            <EventCard />
+                        </CardText>
+                    </Card>
+                );
+            });
+            return list_event;
         }
     }
 
     render(){
-        console.log('Current props', this.props.coords);
-        return (
+            return (
             <Paper zDepth={3}>
-                <Card>
-                    <CardHeader actAsExpander={true} showExpandableButton={true} title="Sports & Fitness" />
-                    <CardText expandable={true}>
-                        <EventCard />
-                    </CardText>
-                </Card>
-                <Card>
-                    <CardHeader actAsExpander={true} showExpandableButton={true} title="Pets" />
-                    <CardText expandable={true}>
-                        <EventCard />
-                    </CardText>
-                </Card>
-                <Card>
-                    <CardHeader actAsExpander={true} showExpandableButton={true} title="Film" />
-                    <CardText expandable={true}>
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                        <EventCard />
-                    </CardText>
-                </Card>
+                <Card>{this.renderCategories()}</Card>
             </Paper>
         );
     }
 }
+function mapStateToProps(state){
+    console.log('View All State: ', state);
+    return {
+        location: state.location.coords,
+        events: state.events.all[0],
+        categories: state.events.categories
+    }
+}
 
-
-export default connect(null, { fetchEvents, storeUserLocation })(geolocated({
-    positionOptions: {
-        enableHighAccuracy: false,
-    },
-    userDecisionTimeout: 5000
-})(ViewAllEventsList));
+export default connect(mapStateToProps, { fetchEvents })(ViewAllEventsList);

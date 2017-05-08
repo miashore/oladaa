@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-// import Weather from './weather';
+import { connect } from 'react-redux';
 
 class Home extends Component {
 

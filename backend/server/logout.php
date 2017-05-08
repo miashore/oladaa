@@ -6,4 +6,4 @@ session_start();
 session_destroy();
 
 //Reroute the page after logout.
-header('location: ../axios_calls/logout.html');
+header('location: http://localhost:8888');
