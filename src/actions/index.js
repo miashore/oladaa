@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, STORE_INTERESTS } from './types';
 
 
 const instance = axios.create({
@@ -147,5 +147,12 @@ export function fetch_weather( ) {
                 console.log('Error: ', error)
             }
         });
+    }
+}
+
+export function storeInterests(interests){
+    return {
+        type: STORE_INTERESTS,
+        payload: interests
     }
 }
