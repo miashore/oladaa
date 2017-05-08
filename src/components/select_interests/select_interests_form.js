@@ -4,7 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
 import { connect } from 'react-redux';
 import getIds from './ids';
-import { submit_interests } from '../../actions/index';
+import { submit_interests, storeInterests } from '../../actions/index';
 
 class SelectInterests extends Component {
 
@@ -14,10 +14,21 @@ class SelectInterests extends Component {
         this.props.submit_interests(idArray);
         //console.log('ID Array:', idArray);
     }
+    componentWillReceiveProps(nextProps){
+        const values = nextProps.inputForm.values;
 
-    storeCategories(){
-        console.log(this.props.form.selectInterests);
+        let categoryArray = [];
+
+        if(values !== undefined) {
+            for (let key in values) {
+                if (values[key] === true) {
+                    categoryArray.push(key);
+                }
+            }
+        }
+        this.props.storeInterests(categoryArray);
     }
+
 
     renderCheckbox({ input: {name, onChange}, label }) {
         return (
@@ -29,7 +40,6 @@ class SelectInterests extends Component {
     render() {
         const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
         const { handleSubmit } = this.props;
-        this.storeCategories();
         return (
             <div>
                 <h1>Please Select At Least 3 Interests:</h1>
@@ -59,10 +69,10 @@ SelectInterests = reduxForm({
 })(SelectInterests);
 
 function mapStateToProps(state){
-    console.log('Select interests state: ', state);
     return {
-        categories: state.events.categories
+        events: state.events.categories,
+        inputForm: state.form.selectInterests
     }
 }
 
-export default connect(mapStateToProps, { submit_interests : submit_interests })(SelectInterests);
+export default connect(mapStateToProps, { submit_interests, storeInterests })(SelectInterests);
