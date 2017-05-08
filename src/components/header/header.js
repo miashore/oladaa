@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import LocationModal from '../location/location_modal';
 import {logout_user} from '../../actions/index';
 
-class Header extends React.Component {
+class Header extends Component {
     constructor(props){
     super(props);
     this.state = {open: false};
