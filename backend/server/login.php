@@ -34,10 +34,7 @@ if(isset($userInfo) && !empty($userInfo)){
             echo $fmsg;
         }
     }
-
-
 }
-
 //If the session id is set send a success message.
 if(isset($_SESSION["id"])){
     $smsg = 1;

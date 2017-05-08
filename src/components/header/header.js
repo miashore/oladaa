@@ -14,8 +14,8 @@ class Header extends React.Component {
     }
 
     logOutUser(){
-        this.props.logout_user();
         console.log("logout clicked");
+        this.props.logout_user();
     }
 
     handleToggle = () => this.setState({open: !this.state.open});
@@ -26,7 +26,7 @@ class Header extends React.Component {
         const styles = {
             bar: {width: '100%', textAlign: 'center'},
         };
-
+        console.log("Props is ",this.props);
         return (
             <div>
                 <AppBar title="Title"
@@ -43,10 +43,11 @@ class Header extends React.Component {
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/blog"/>}>Blog</MenuItem>
                     {/*<MenuItem onTouchTap={this.handleClose}><LocationModal/></MenuItem>*/}
                     <MenuItem><LocationModal /></MenuItem>
-                    <MenuItem onTouchTap={this.logOutUser}>Log Out</MenuItem>
+                    <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="/"/>}>Log Out</MenuItem>
                 </Drawer>
             </div>
         );
     }
 }
+
 export default connect(null, {logout_user: logout_user})(Header);
