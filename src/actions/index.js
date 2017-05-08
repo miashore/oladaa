@@ -157,16 +157,14 @@ export function fetchWeather(coords){
     const WEATHER_URL = 'http://api.openweathermap.org/data/2.5/weather?APPID='+WEATHER_KEY+'&lat='+lat+'&lon='+long;
     return function(dispatch){
         axios.get(WEATHER_URL).then((response) => {
-            console.log('Weather action:', response.data.weather);
+            console.log('Weather action:', response.data);
             dispatch({
                 type: FETCH_WEATHER,
-                payload: response.data.weather
+                payload: response.data
             });
         }).catch((err) => {
             console.log('Weather Error:', err);
         });
-
-
     }
 
 }
