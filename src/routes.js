@@ -13,6 +13,7 @@ import RecommendedEventList from './components/recommended_events/recommended_ev
 import ActivityNote from './components/activity_note/activity_note';
 import WelcomeNote from './components/welcome_new_user/welcome_new_user';
 import FitbitLogin from './components/mock_fitbit_login/fitbit_login';
+import EventCard from './components/event_card/event_card';
 
 export default  (
     <div>
@@ -29,6 +30,7 @@ export default  (
             <Route path="recommended_events" components={ RecommendedEventList }/>
             <Route path="activity_note" component={ ActivityNote } />
             <Route path="welcome_user" components={ WelcomeNote }/>
+        <Route path="event_card" component={ EventCard } />
     </Route>
             <Route path="fitbit_login" component={ FitbitLogin } />
     </div>

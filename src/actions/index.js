@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, LOGOUT_USER } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, STORE_INTERESTS } from './types';
 
 
 const instance = axios.create({
@@ -77,6 +77,7 @@ export function logout_user(){
 
 //const MEETUP_URL = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=-117.79&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat=33.68&desc=False&status=upcoming&category=32';
 const MU_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
+const category_id = 5;
 
 export function fetchEvents(coords){
     console.log('Coords: ', coords);
@@ -90,11 +91,12 @@ export function fetchEvents(coords){
             dataType: 'jsonp',
             crossDomain: true,
             method: 'GET',
-            url: 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category=32'+MU_KEY,
+            url: 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+category_id+MU_KEY,
         success: function(response){
                 console.log('Success Response: ', response);
                 dispatch({
-                    type: FETCH_EVENTS
+                    type: FETCH_EVENTS,
+                    payload: response.results
                 });
             },
             error: function(response){
@@ -158,5 +160,12 @@ export function fetch_weather( ) {
                 console.log('Error: ', error)
             }
         });
+    }
+}
+
+export function storeInterests(interests){
+    return {
+        type: STORE_INTERESTS,
+        payload: interests
     }
 }

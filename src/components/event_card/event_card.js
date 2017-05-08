@@ -1,17 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import { connect } from 'react-redux';
+import { fetchEvents } from '../../actions/index';
 
-export default () => {
-    return (
-        <Card style={{width:'75vw', margin: '0 auto 1%'}}>
-            <CardTitle actAsExpander={true} showExpandableButton={true} title="Event Name" subtitle="Event Subtitle" style={{zIndex: '0'}} />
-            <CardText expandable={true}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                <CardActions>
-                    <RaisedButton label="Get Directions" />
-                </CardActions>
-            </CardText>
-        </Card>
-    )
+class EventCard extends Component {
+
+    render () {
+        const events = this.props.all;
+        const list_events = events.map((event, index) => {
+            console.log('Event ' + index + ' is:', event);
+            return (
+                <Card style={{width:'75vw', margin: '0 auto 1%'}} key={index}>
+                    <CardTitle actAsExpander={true}
+                               showExpandableButton={true}
+                               title={event.name}
+                               subtitle={event.venue.address_1 + ', ' + event.venue.city + ', ' + event.venue.state}
+                               subttile={event.event_url}
+                               style={{zIndex: '0'}} />
+                    <CardText expandable={true}>
+                        {event.description}
+                        <CardActions>
+                            <RaisedButton label="Get Directions" />
+                        </CardActions>
+                    </CardText>
+                </Card>
+            )
+        });
+
+        return (
+            <div>
+                {list_events}
+            </div>
+        )
+    }
 }
+
+function mapStateToProps(state) {
+    console.log('Event Card State: ', state);
+    return {
+        all: state.events.all[0]
+    }
+}
+
+export default connect(mapStateToProps, { fetchEvents })(EventCard);
