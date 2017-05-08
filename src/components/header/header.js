@@ -22,7 +22,7 @@ export default class Header extends React.Component {
 
         return (
             <div>
-                <AppBar title="Title"
+                <AppBar title="eHana"
                         onLeftIconButtonTouchTap={this.handleToggle}
                         style={styles.bar}
                 />
