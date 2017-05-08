@@ -8,13 +8,21 @@ import EventCard from '../event_card/event_card';
 class ViewAllEventsList extends Component {
 
     componentWillMount(){
-        console.log(this.props.fetchEvents(this.props.location));
+        this.props.fetchEvents(this.props.location);
+    }
+
+    viewEvents(){
+        if(this.props.events){
+            console.log('All:', this.props.events)
+        }
     }
 
     render(){
+        this.viewEvents();
 
         const categories = ['Film', 'Arts', 'Food'];
-        const list_event = categories.map((event) => <Card>
+
+        const list_event = categories.map((event) => <Card key={event}>
                                 <CardHeader actAsExpander={true}
                                             showExpandableButton={true}
                                             title={event} />
@@ -56,7 +64,8 @@ class ViewAllEventsList extends Component {
 function mapStateToProps(state){
     console.log('State', state);
     return {
-        location: state.location.coords
+        location: state.location.coords,
+        events: state.events.all[0]
     }
 }
 

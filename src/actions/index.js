@@ -81,7 +81,8 @@ export function fetchEvents(coords){
         success: function(response){
                 console.log('Success Response: ', response);
                 dispatch({
-                    type: FETCH_EVENTS
+                    type: FETCH_EVENTS,
+                    payload: response.results
                 });
             },
             error: function(response){
