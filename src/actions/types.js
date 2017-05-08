@@ -6,3 +6,4 @@ export const SAVE_LOCATION = 'SAVE_LOCATION';
 export const FETCH_LOCATION = 'FETCH_LOCATION';
 // export const SUBMIT_INTERESTS = 'SUBMIT_INTERESTS';
 export const FETCH_WEATHER = 'FETCH_WEATHER';
+export const LOGOUT_USER = 'LOGOUT_USER';

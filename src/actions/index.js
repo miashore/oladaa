@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, LOGOUT_USER } from './types';
 
 
 const instance = axios.create({
@@ -59,6 +59,16 @@ export function login_user({ username, password}) {
         }).catch(err=>{
             console.log(err);
         });
+    }
+}
+
+export function logout_user(){
+    return function(){
+        instance.post(`${base_url}/logout.php`).then(resp=>{
+            console.log("response from logout ",resp);
+        }).catch(err=>{
+            console.log("error from logout ",err)
+        })
     }
 }
 

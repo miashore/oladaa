@@ -3,12 +3,19 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import LocationModal from '../location/location_modal';
+import {logout_user} from '../../actions/index';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
     constructor(props){
     super(props);
     this.state = {open: false};
+    }
+
+    logOutUser(){
+        this.props.logout_user();
+        console.log("logout clicked");
     }
 
     handleToggle = () => this.setState({open: !this.state.open});
@@ -36,9 +43,10 @@ export default class Header extends React.Component {
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/blog"/>}>Blog</MenuItem>
                     {/*<MenuItem onTouchTap={this.handleClose}><LocationModal/></MenuItem>*/}
                     <MenuItem><LocationModal /></MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}>Log Out</MenuItem>
+                    <MenuItem onTouchTap={this.logOutUser}>Log Out</MenuItem>
                 </Drawer>
             </div>
         );
     }
 }
+export default connect(null, {logout_user: logout_user})(Header);
