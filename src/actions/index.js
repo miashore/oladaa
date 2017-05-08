@@ -45,7 +45,7 @@ export function register_user({ username, password, email }) {
 export function login_user({ username, password}) {
     return function (dispatch) {
         instance.post(`${base_url}/login.php`, {username, password}).then(resp=>{
-            console.log('Our response from the server ', resp.data);
+            console.log(resp);
             dispatch({
                 type: AUTH_USER
             });
