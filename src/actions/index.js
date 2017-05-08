@@ -63,9 +63,12 @@ export function login_user({ username, password}) {
 }
 
 export function logout_user(){
-    return function(){
+    return function(dispatch){
         instance.post(`${base_url}/logout.php`).then(resp=>{
             console.log("response from logout ",resp);
+            dispatch({
+                type: UNAUTH_USER
+            })
         }).catch(err=>{
             console.log("error from logout ",err)
         })
