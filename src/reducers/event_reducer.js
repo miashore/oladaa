@@ -1,7 +1,9 @@
-import { FETCH_EVENTS } from '../actions/types';
+import { FETCH_EVENTS, STORE_INTERESTS } from '../actions/types';
 
 const default_state = {
     all: [],
+    categories: [],
+    recommendedEvents: [],
     single: null
 };
 
@@ -11,6 +13,11 @@ export default function(state = default_state, action){
             return {
                 ...state,
                 all: [...state, action.payload]
+            };
+        case STORE_INTERESTS:
+            return {
+                ...state,
+                categories: [...state, action.payload]
             };
         default: return state;
     }

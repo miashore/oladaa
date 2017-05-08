@@ -4,16 +4,31 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
 import { connect } from 'react-redux';
 import getIds from './ids';
-import { submit_interests } from '../../actions/index';
+import { submit_interests, storeInterests } from '../../actions/index';
 
 class SelectInterests extends Component {
 
     submitForm(vals) {
-        console.log('Form submitted: ', vals);
+        //console.log('Form submitted: ', vals);
         const idArray = getIds(vals);
         this.props.submit_interests(idArray);
-        console.log('ID Array:', idArray);
+        //console.log('ID Array:', idArray);
     }
+    componentWillReceiveProps(nextProps){
+        const values = nextProps.inputForm.values;
+
+        let categoryArray = [];
+
+        if(values !== undefined) {
+            for (let key in values) {
+                if (values[key] === true) {
+                    categoryArray.push(key);
+                }
+            }
+        }
+        this.props.storeInterests(categoryArray);
+    }
+
 
     renderCheckbox({ input: {name, onChange}, label }) {
         return (
@@ -30,18 +45,18 @@ class SelectInterests extends Component {
                 <h1>Please Select At Least 3 Interests:</h1>
                 <form onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <div>
-                        <Field name="sports_fitness" component={this.renderCheckbox} label="Sports & Fitness"/>
-                        <Field name="dance" component={this.renderCheckbox} label="Dance"/>
-                        <Field name="outdoors_adventures" component={this.renderCheckbox} label="Outdoors & Adventures"/>
-                        <Field name="health_wellness" component={this.renderCheckbox} label="Health & Wellness"/>
-                        <Field name="music" component={this.renderCheckbox} label="Music"/>
-                        <Field name="pets" component={this.renderCheckbox} label="Pets"/>
-                        <Field name="social" component={this.renderCheckbox} label="Social"/>
-                        <Field name="photography" component={this.renderCheckbox} label="Photography"/>
-                        <Field name="arts" component={this.renderCheckbox} label="Arts"/>
-                        <Field name="hobbies_crafts" component={this.renderCheckbox} label="Hobbies & Crafts"/>
-                        <Field name="scifi_games" component={this.renderCheckbox} label="Sci-Fi & Games"/>
-                        <Field name="film" component={this.renderCheckbox} label="Film"/>
+                        <Field name="Sports & Fitness" component={this.renderCheckbox} label="Sports & Fitness"/>
+                        <Field name="Dance" component={this.renderCheckbox} label="Dance"/>
+                        <Field name="Outdoors & Adventures" component={this.renderCheckbox} label="Outdoors & Adventures"/>
+                        <Field name="Health & Wellness" component={this.renderCheckbox} label="Health & Wellness"/>
+                        <Field name="Music" component={this.renderCheckbox} label="Music"/>
+                        <Field name="Pets" component={this.renderCheckbox} label="Pets"/>
+                        <Field name="Social" component={this.renderCheckbox} label="Social"/>
+                        <Field name="Photography" component={this.renderCheckbox} label="Photography"/>
+                        <Field name="Arts" component={this.renderCheckbox} label="Arts"/>
+                        <Field name="Hobbies & Crafts" component={this.renderCheckbox} label="Hobbies & Crafts"/>
+                        <Field name="Sci-Fi & Games" component={this.renderCheckbox} label="Sci-Fi & Games"/>
+                        <Field name="Film" component={this.renderCheckbox} label="Film"/>
                     </div>
                     <RaisedButton style={button_style} type="submit" label="Submit" primary={true} />
                 </form>
@@ -53,4 +68,11 @@ SelectInterests = reduxForm({
     form: 'selectInterests'
 })(SelectInterests);
 
-export default connect(null, { submit_interests : submit_interests })(SelectInterests);
+function mapStateToProps(state){
+    return {
+        events: state.events.categories,
+        inputForm: state.form.selectInterests
+    }
+}
+
+export default connect(mapStateToProps, { submit_interests, storeInterests })(SelectInterests);
