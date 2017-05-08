@@ -65,14 +65,20 @@ class RegisterForm extends Component {
         )
     }
 }
+
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
 function validate(vals){
     const errors = {};
 
     if(!vals.username){
         errors.username = 'Please enter a Username';
     }
-    if(!vals.email){
-        errors.email = 'Please enter an Email Address';
+    if(!validateEmail(vals.email)){
+        errors.email = 'Please enter a valid Email Address';
     }
     if(!vals.password) {
         errors.password = "Please enter a Password";
