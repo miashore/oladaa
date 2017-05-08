@@ -9,6 +9,7 @@ import SelectInterests from './components/select_interests/select_interests_form
 import RegisterForm from './components/register_new_user/register_new_user';
 import LoginForm from './components/login/login_form';
 import ViewAllList from './components/view_all_events/view_all';
+import require_auth from './components/auth/require_auth';
 import RecommendedEventList from './components/recommended_events/recommended_events';
 import ActivityNote from './components/activity_note/activity_note';
 import WelcomeNote from './components/welcome_new_user/welcome_new_user';
@@ -26,8 +27,8 @@ export default  (
             <Route path="select_interests" component={ SelectInterests }/>
             <Route path="register" component={ RegisterForm }/>
             <Route path="login" component={ LoginForm }/>
-            <Route path="view_all" component={ ViewAllList }/>
-            <Route path="recommended_events" components={ RecommendedEventList }/>
+            <Route path="view_all" component={ require_auth(ViewAllList) }/>
+            <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
             <Route path="activity_note" component={ ActivityNote } />
             <Route path="welcome_user" components={ WelcomeNote }/>
         <Route path="event_card" component={ EventCard } />

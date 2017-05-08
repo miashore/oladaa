@@ -45,7 +45,7 @@ export function register_user({ username, password, email }) {
 export function login_user({ username, password}) {
     return function (dispatch) {
         instance.post(`${base_url}/login.php`, {username, password}).then(resp=>{
-            console.log('Our response from the server ', resp.data);
+            console.log(resp);
             dispatch({
                 type: AUTH_USER
             });
@@ -59,6 +59,19 @@ export function login_user({ username, password}) {
         }).catch(err=>{
             console.log(err);
         });
+    }
+}
+
+export function logout_user(){
+    return function(dispatch){
+        instance.post(`${base_url}/logout.php`).then(resp=>{
+            console.log("response from logout ",resp);
+            dispatch({
+                type: UNAUTH_USER
+            })
+        }).catch(err=>{
+            console.log("error from logout ",err)
+        })
     }
 }
 
