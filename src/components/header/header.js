@@ -14,7 +14,6 @@ class Header extends Component {
     }
 
     logOutUser(){
-        console.log("logout clicked");
         this.props.logout_user();
         this.handleClose();
     }
@@ -27,7 +26,6 @@ class Header extends Component {
         const styles = {
             bar: {width: '100%', textAlign: 'center'},
         };
-        console.log("Props is ",this.props);
         return (
             <div>
                 <AppBar title="Title"
