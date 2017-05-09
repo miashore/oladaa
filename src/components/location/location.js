@@ -12,8 +12,8 @@ class Location extends Component {
                 : this.props.coords
                     ? <table>
                         <tbody>
-                        <tr><td>Latitude</td><td>{this.props.coords.latitude}</td></tr>
-                        <tr><td>Longitude</td><td>{this.props.coords.longitude}</td></tr>
+                        <tr><td>Latitude:</td><td>{this.props.coords.latitude}</td></tr>
+                        <tr><td>Longitude: </td><td>{this.props.coords.longitude}</td></tr>
                         </tbody>
                     </table>
                     : <div>Getting the location data&hellip; </div>;

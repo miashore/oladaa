@@ -6,17 +6,22 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { get_fitbit } from '../../actions/index';
 
 
 class FitbitLogin extends Component {
 
     submitForm(vals){
         console.log('Form submitted: ', vals);
+    }
 
+    get_fitbit_data(vals) {
+        this.props.get_fitbit(vals);
+        const testing = (vals);
+        console.log('TESTING ', testing);
     }
 
     renderTextfield = ({label, input}) => (
-
             <TextField
                 floatingLabelText={label}
                 hintText={label}
@@ -25,6 +30,7 @@ class FitbitLogin extends Component {
     );
 
     render(){
+
         const styles = {
             body: { margin: '15vh auto 0', width: '75vw', padding: '10%' },
             form: { margin: '0 auto' },
@@ -53,13 +59,24 @@ class FitbitLogin extends Component {
                         </div>
                         <RaisedButton style={styles.button} type="submit" label="Log In" primary={true} fullWidth={true} />
                     </form>
+
+                    <RaisedButton onClick={ handleSubmit((value) => {this.get_fitbit_data(value)}) } style={styles.button} label="Testing" primary={true} fullWidth={true} />
+
                 </Paper>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    console.log('Fitbit State: ', state);
+    return {
+        fitbit: state.fitbit.fitbit[0]
+    }
+}
+
 FitbitLogin = reduxForm({
     form: 'fitbitForm'
 })(FitbitLogin);
 
-export default connect(null, { null })(FitbitLogin);
+export default connect(mapStateToProps, { get_fitbit })(FitbitLogin);
