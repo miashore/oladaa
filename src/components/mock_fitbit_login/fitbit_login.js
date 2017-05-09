@@ -16,7 +16,7 @@ class FitbitLogin extends Component {
         this.props.get_fitbit(vals);
         const testing = (vals);
         console.log('TESTING ', testing);
-        browserHistory.push('/select_interests');
+        browserHistory.push('/activity_note');
     }
     renderTextfield = ({label, input}) => (
             <TextField
