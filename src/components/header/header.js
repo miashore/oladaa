@@ -29,7 +29,7 @@ class Header extends Component {
 
         return (
             <div>
-                <AppBar title="olada"
+                <AppBar title="oladaa"
                         onLeftIconButtonTouchTap={this.handleToggle}
                         style={styles.bar}
                 />
