@@ -14,7 +14,7 @@ class ViewAllEventsList extends Component {
     renderCategories(){
         const categories = this.props.categories[0];
         if(categories !== undefined){
-            const list_event = categories.map((event) => {
+            const list_categories = categories.map((event) => {
                 return (
                     <Card key={event}>
                         <CardHeader actAsExpander={true}
@@ -26,7 +26,7 @@ class ViewAllEventsList extends Component {
                     </Card>
                 );
             });
-            return list_event;
+            return list_categories;
         }
     }
 

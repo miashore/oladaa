@@ -26,9 +26,10 @@ class Header extends Component {
         const styles = {
             bar: {width: '100%', textAlign: 'center'},
         };
+
         return (
             <div>
-                <AppBar title="Title"
+                <AppBar title="olada"
                         onLeftIconButtonTouchTap={this.handleToggle}
                         style={styles.bar}
                 />

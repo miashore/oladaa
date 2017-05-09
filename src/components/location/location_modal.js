@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField';
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
 
 import Location from './location';
 
-export default class LocationModal extends Component {
+class LocationModal extends Component {
     state = {
         open: false,
     };
@@ -18,25 +21,36 @@ export default class LocationModal extends Component {
         this.setState({open: false});
     };
 
+    renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+        <div>
+            <TextField hintText={label}
+                       floatingLabelText={label}
+                       errorText={touched && error}
+                       {...input}
+                       {...custom}
+            />
+        </div>
+
+    );
+
     render() {
 
         const actions = [
-            <FlatButton
+            <RaisedButton
                 label="Cancel"
                 secondary={true}
                 onTouchTap={this.handleClose}
             />,
-            <FlatButton
+            <RaisedButton
                 label="Submit"
                 primary={true}
-                // disabled={true}
                 onTouchTap={this.handleClose}
+                type="submit"
             />,
         ];
 
         return (
             <div>
-                {/*<label onTouchTap={this.handleOpen}>Update Location</label>*/}
                 <MenuItem onTouchTap={this.handleOpen}>Update Location</MenuItem>
                 <Dialog
                     title="Your Current Location:"
@@ -44,9 +58,22 @@ export default class LocationModal extends Component {
                     modal={true}
                     open={this.state.open}>
                     <Location/>
-
+                    <form>
+                        <div>
+                            <Field name="Location"
+                                   component={this.renderTextField}
+                                   type="text"
+                                   label="Location"/>
+                        </div>
+                    </form>
                 </Dialog>
             </div>
         );
     }
 }
+
+LocationModal = reduxForm({
+    form: 'location'
+})(LocationModal);
+
+export default connect( null, { null })(LocationModal);
