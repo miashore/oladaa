@@ -27,9 +27,12 @@ export default  (
             <Route path="select_interests" component={ SelectInterests }/>
             <Route path="register" component={ RegisterForm }/>
             <Route path="login" component={ LoginForm }/>
-            <Route path="view_all" component={ require_auth(ViewAllList) }/>
-            <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
-            <Route path="activity_note" component={ ActivityNote } />
+            {/*<Route path="view_all" component={ require_auth(ViewAllList) }/>*/}
+            {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
+        <Route path="view_all" component={ ViewAllList }/>
+        <Route path="recommended_events" components={ RecommendedEventList }/>
+
+        <Route path="activity_note" component={ ActivityNote } />
             <Route path="welcome_user" components={ WelcomeNote }/>
         <Route path="event_card" component={ EventCard } />
     </Route>

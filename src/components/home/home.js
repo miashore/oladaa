@@ -1,66 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeather } from '../../actions/index';
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Home extends Component {
     componentWillMount(){
         this.props.fetchWeather(this.props.location);
     }
-    componentWillReceiveProps(nextProps){
-        this.chooseBackground(nextProps.weather.iconID);
-    }
 
-    chooseBackground(code){
-        let bkgdImage = '../imgs/weather/';
-        switch(code) {
-            case '11d':
-            case '11n':
-                bkgdImage += 'thunderstorm.jpg';
-                break;
-            case '09d':
-            case '09n':
-                bkgdImage += 'drizzle.jpg';
-                break;
-            case '10d':
-            case '10n':
-                bkgdImage += 'rain.jpg';
-                break;
-            case '13d':
-            case '13n':
-                bkgdImage += 'snow.jpg';
-                break;
-            case '50d':
-            case '50n':
-                bkgdImage += 'mist.jpg';
-                break;
-            case '01d':
-            case '01n':
-                bkgdImage += 'clear.jpg';
-                break;
-            case '02d':
-            case '02n':
-            case '03d':
-            case '03n':
-            case '04d':
-            case '04n':
-                bkgdImage += 'cloudy.jpg';
-                break;
-            default:
-                bkgdImage += 'default.jpeg';
+    renderImage(){
+        if(this.props.weather.iconID === undefined) {
+            return (
+                <CircularProgress />
+            )
         }
-        console.log(bkgdImage);
+        return (
+            <img src={this.props.weather.iconImg}/>
+        )
     }
-
     render() {
+        const { weather } = this.props;
 
         const styles = {
-            mid_container: {height: '100%', width: '100%', background: 'lightblue'}
+            mid_container: {height: '100vh', width: '100%', background: 'url(./src/components/imgs/weather/'+this.props.weather.background+') no-repeat center center fixed'},
+            weather_div: {zIndex: '5', position: 'fixed', top: '10vh', left: '2vh'},
+            weather_icon: {margin: '0'},
+            location_text: {margin: '3% 2% 0 1%', display: 'inline-block', verticalAlign: 'top', fontSize: '1.2em'},
         };
 
         return (
             <div>
-                <div style={styles.mid_container}>
-                    Home
+                <div style={styles.mid_container}/>
+                <div style={styles.weather_div} >
+                    { this.renderImage() }
+                    <p style={styles.location_text}>{weather.location}</p>
+                    <p>{weather.main_description}</p>
                 </div>
             </div>
         )
