@@ -12,7 +12,6 @@ class RegisterForm extends Component {
         this.props.register_user(vals);
         console.log('Registration Form Info: ', registerInfo)
     }
-
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <div>
             <TextField hintText={label}
@@ -65,17 +64,14 @@ class RegisterForm extends Component {
         )
     }
 }
-
 function validateEmail(email) {
     const allowedChars = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return allowedChars.test(email);
 }
-
 function validateUserName(username){
     const allowedChars = /[*|\": <>#[\]{}%^`\\?!()';@&$]/;
     return allowedChars.test(username)
 }
-
 function validatePassword(password){
     const space = /[ ]/;
     return space.test(password)
@@ -111,4 +107,4 @@ RegisterForm = reduxForm({
     validate
 })(RegisterForm);
 
-export default connect(null, { register_user: register_user })(RegisterForm);
+export default connect(null, { register_user })(RegisterForm);

@@ -24,7 +24,7 @@ export default  (
             <Route path="blog" component={ Blog }/>
 
         {/*Need to reroute, currently added to app in order to navigate easier. The below should not have a header and footer*/}
-            <Route path="select_interests" component={ SelectInterests }/>
+            {/*<Route path="select_interests" component={ SelectInterests }/>*/}
             <Route path="register" component={ RegisterForm }/>
             <Route path="login" component={ LoginForm }/>
 
@@ -38,9 +38,10 @@ export default  (
 
             <Route path="activity_note" component={ ActivityNote } />
             <Route path="welcome_user" components={ WelcomeNote }/>
-        <Route path="event_card" component={ EventCard } />
+            <Route path="event_card" component={ EventCard } />
     </Route>
             <Route path="fitbit_login" component={ FitbitLogin } />
+            <Route path="select_interests" component={ SelectInterests }/>
     </div>
 
 );
