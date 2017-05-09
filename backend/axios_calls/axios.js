@@ -93,10 +93,13 @@
 
 //axios call for getting category ID's from our database to pass to the meetup api.  We will have the user_id stored in
 //our session and the activity score stored in a cookie after we do our mockdata/fitbitData call.
-
+// function findCookie(cookie){
+//     const score = cookie.substr((cookie.indexOf("activity_score")+2),1);
+//     return score;
+// }
 // let activity_score;
-// if(!isNaN(document.cookie.charAt(15))) {
-//     activity_score = parseInt(document.cookie.charAt(15));
+// if(!isNaN(findCookie(document.cookie))){
+//     activity_score = parseInt(findCookie(document.cookie));
 // }else{
 //     activity_score = false
 // }
