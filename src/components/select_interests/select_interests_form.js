@@ -58,7 +58,7 @@ class SelectInterests extends Component {
                         <Field name="Sci-Fi & Games" component={this.renderCheckbox} label="Sci-Fi & Games"/>
                         <Field name="Film" component={this.renderCheckbox} label="Film"/>
                     </div>
-                    <RaisedButton style={button_style} type="submit" label="Submit" primary={true}/>}/>
+                    <RaisedButton style={button_style} type="submit" label="Submit" primary={true}/>
                 </form>
             </div>
         )
