@@ -30,7 +30,7 @@ export function register_user({ username, password, email }) {
                     }
                     else if(resp.data === 1){
                         console.log('User logged in');
-                        browserHistory.push('/welcome_user');
+                        browserHistory.push('/select_interests');
                     }
                     else{
                         console.log("user already logged in");

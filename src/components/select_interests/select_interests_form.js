@@ -13,7 +13,7 @@ class SelectInterests extends Component {
         //console.log('Form submitted: ', vals);
         const idArray = getIds(vals);
         this.props.submit_interests(idArray);
-        browserHistory.push('/activity_note');
+        browserHistory.push('/welcome_user');
         //console.log('ID Array:', idArray);
     }
     componentWillReceiveProps(nextProps){

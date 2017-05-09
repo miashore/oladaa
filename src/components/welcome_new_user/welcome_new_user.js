@@ -14,7 +14,7 @@ const WelcomeNote = () => {
     return (
         <Paper style={styles.paper} zDepth={3}>
             <div style={{padding: '10%'}}>
-                <h1 style={styles.h1}>Welcome New User!</h1>
+                <h1 style={styles.h1}>Welcome!</h1>
                 <p style={styles.p}>Lorem ipsum dolor sit amesmod tempor incididunt ut labore et dolore magna aliqua. Ut
                     enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in vot, sunt in culpa qui officia deserunt mollit
