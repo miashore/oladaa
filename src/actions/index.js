@@ -82,9 +82,7 @@ export function logout_user(){
     }
 }
 
-//const MEETUP_URL = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=-117.79&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat=33.68&desc=False&status=upcoming&category=32';
 const MU_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
-const category_id = 32;
 
 export function fetchEvents(coords){
     console.log('Coords: ', coords);
@@ -94,20 +92,52 @@ export function fetchEvents(coords){
 
     return function(dispatch){
 
-        $.ajax({
-            dataType: 'jsonp',
-            crossDomain: true,
-            method: 'GET',
-            url: 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+category_id+MU_KEY,
-        success: function(response){
-                console.log('Success Response: ', response);
-                dispatch({
-                    type: FETCH_EVENTS,
-                    payload: response.results
+        function findCookie(cookie){
+            const score = cookie.substr((cookie.indexOf("activity_score")+2),1);
+            return score;
+        }
+
+        let activity_score;
+
+        if(!isNaN(findCookie(document.cookie))){
+            activity_score = parseInt(findCookie(document.cookie));
+        }else{
+            activity_score = false
+        }
+
+        axios.post(`${base_url}/get_interests.php`,{activity_score}).then(resp=>{
+            if(typeof resp.data !== 'string') {
+                // +category_id+MU_KEY
+                let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category=';
+                for (let i = 0; i < resp.data.length; i++) {
+                    console.log(resp.data[i]);
+                    if(i===resp.data.length-1){
+                        meetup_url+=resp.data[i].category_id+MU_KEY;
+                    }
+                    else{
+                        meetup_url+=resp.data[i].category_id+"%2C";
+                    }
+                }
+                console.log(meetup_url);
+                $.ajax({
+                    dataType: 'jsonp',
+                    crossDomain: true,
+                    method: 'GET',
+                    url: meetup_url,
+                    success: function(response){
+                        console.log('Success Response: ', response);
+                        dispatch({
+                            type: FETCH_EVENTS,
+                            payload: response.results
+                        });
+                    },
+                    error: function(response){
+                        console.log('Error: ', response);
+                    }
                 });
-            },
-            error: function(response){
-                console.log('Error: ', response);
+            }
+            else{
+                console.log(resp.data);
             }
         });
     };

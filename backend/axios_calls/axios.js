@@ -36,20 +36,20 @@
 // axios call for verifying login information.  Get the username and password from frontend, send to login.php, and check
 // for their existence in our database, it returns a 1 for true and a 0 for false.
 
-// const username = 'Kevin';
-// const password = 'HiImKevin';
-//
-// axios.post('../server/login.php', {username, password}).then(resp=>{
-//     console.log('Our response from the server ', resp.data);
-//     if(resp.data === 0){
-//         console.log('Invalid Username/Password');
-//     }
-//     else{
-//         console.log('User logged in');
-//     }
-// }).catch(err=>{
-//     console.log(err);
-// });
+const username = 'Ellie';
+const password = 'HiImEllie';
+
+axios.post('../server/login.php', {username, password}).then(resp=>{
+    console.log('Our response from the server ', resp.data);
+    if(resp.data === 0){
+        console.log('Invalid Username/Password');
+    }
+    else{
+        console.log('User logged in');
+    }
+}).catch(err=>{
+    console.log(err);
+});
 
 //**********************************************************************************************************************
 
@@ -93,23 +93,23 @@
 
 //axios call for getting category ID's from our database to pass to the meetup api.  We will have the user_id stored in
 //our session and the activity score stored in a cookie after we do our mockdata/fitbitData call.
-// function findCookie(cookie){
-//     const score = cookie.substr((cookie.indexOf("activity_score")+2),1);
-//     return score;
-// }
-// let activity_score;
-// if(!isNaN(findCookie(document.cookie))){
-//     activity_score = parseInt(findCookie(document.cookie));
-// }else{
-//     activity_score = false
-// }
-// axios.post('../server/get_interests.php',{activity_score}).then(resp=>{
-//     if(typeof resp.data !== 'string') {
-//         for (let i = 0; i < resp.data.length; i++) {
-//             console.log(resp.data[i])
-//         }
-//     }
-//     else{
-//         console.log(resp.data);
-//     }
-// });
+function findCookie(cookie){
+    const score = cookie.substr((cookie.indexOf("activity_score")+2),1);
+    return score;
+}
+let activity_score;
+if(!isNaN(findCookie(document.cookie))){
+    activity_score = parseInt(findCookie(document.cookie));
+}else{
+    activity_score = false
+}
+axios.post('../server/get_interests.php',{activity_score}).then(resp=>{
+    if(typeof resp.data !== 'string') {
+        for (let i = 0; i < resp.data.length; i++) {
+            console.log("if",resp.data[i].category_id)
+        }
+    }
+    else{
+        console.log("else",resp.data);
+    }
+});
