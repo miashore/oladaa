@@ -30,7 +30,7 @@ class Header extends Component {
         console.log("Props is ",this.props);
         return (
             <div>
-                <AppBar title="Title"
+                <AppBar title="eHana"
                         onLeftIconButtonTouchTap={this.handleToggle}
                         style={styles.bar}
                 />
