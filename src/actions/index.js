@@ -19,7 +19,7 @@ export function register_user({ username, password, email }) {
             });
             console.log('Our response from register.php ', resp.data);
             if(resp.data["error"]){
-                document.writeln("user already exists");
+                console.log("registration failed")
             }
             else {
                 instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
