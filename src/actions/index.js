@@ -28,9 +28,12 @@ export function register_user({ username, password, email }) {
                     if (resp.data === 0) {
                         console.log('Invalid Username/Password');
                     }
-                    else {
+                    else if(resp.data === 1){
                         console.log('User logged in');
                         browserHistory.push('/welcome_user');
+                    }
+                    else{
+                        console.log("user already logged in");
                     }
                 }).catch(err => {
                     console.log('error:', err);
@@ -53,9 +56,12 @@ export function login_user({ username, password}) {
             if(resp.data === 0){
                 console.log('Invalid Username');
             }
-            else{
+            else if(resp.data === 1){
                 console.log('User logged in');
                 browserHistory.push('/welcome_user');
+            }
+            else{
+                console.log("user already logged in");
             }
         }).catch(err=>{
             console.log(err);
