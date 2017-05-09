@@ -188,7 +188,6 @@ export function storeInterests(interests){
     }
 }
 
-
 //  START: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
 function getActivityScore(fatBurnMin, cardioMin, peakMin){
     const fatBurnScore = fatBurnMin*2;

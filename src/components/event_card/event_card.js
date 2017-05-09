@@ -3,6 +3,7 @@ import { Card, CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions/index';
+import { Link } from 'react-router';
 
 class EventCard extends Component {
 
