@@ -27,10 +27,10 @@ class Header extends Component {
         const styles = {
             bar: {width: '100%', textAlign: 'center'},
         };
-        console.log("Props is ",this.props);
+
         return (
             <div>
-                <AppBar title="eHana"
+                <AppBar title="olada"
                         onLeftIconButtonTouchTap={this.handleToggle}
                         style={styles.bar}
                 />

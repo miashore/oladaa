@@ -133,41 +133,22 @@ export function submit_interests( idArray ) {
     }
 }
 
-export function fetch_weather( ) {
-    const API_KEY = '0cb0c630afe33bff7e69f24de512c0f0'; //openweather api
-    const irvine = {
-        lat: 33.68,
-        long: -117.79
-    };
-    const boulder = {
-        lat: 40.014986,
-        long: -105.270546
-    };
-    const london = {
-        lat: 51.507351,
-        long: -0.127758
-    };
-    const tokyo = {
-        lat: 35.68,
-        long: 139.69
-    };
-
-   return function (dispatch){
-        $.ajax({
-            url: 'http://api.openweathermap.org/data/2.5/weather?APPID='+API_KEY+'&lat='+irvine.lat+'&lon='+irvine.long,
-            type: 'GET',
-            success: function(response){
-                console.log('Response: ', response);
-                dispatch({
-                    type: FETCH_WEATHER,
-                    payload: weather
-                });
-            },
-            error: function(error){
-                console.log('Error: ', error)
-            }
+export function fetchWeather(coords){
+    const WEATHER_KEY = '0cb0c630afe33bff7e69f24de512c0f0';
+    const lat = coords.latitude;
+    const long = coords.longitude;
+    const WEATHER_URL = 'http://api.openweathermap.org/data/2.5/weather?APPID='+WEATHER_KEY+'&lat='+lat+'&lon='+long;
+    return function(dispatch){
+        axios.get(WEATHER_URL).then((response) => {
+            dispatch({
+                type: FETCH_WEATHER,
+                payload: response.data
+            });
+        }).catch((err) => {
+            console.log('Weather Error:', err);
         });
     }
+
 }
 
 export function storeInterests(interests){
