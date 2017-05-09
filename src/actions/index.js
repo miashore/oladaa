@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, STORE_INTERESTS } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS } from './types';
 
 
 const instance = axios.create({
@@ -10,6 +10,7 @@ const instance = axios.create({
 
 //const base_url = 'http://localhost:8888/server';
 const base_url = './backend/server';
+
 
 export function register_user({ username, password, email }) {
     return function (dispatch) {
@@ -169,3 +170,48 @@ export function storeInterests(interests){
         payload: interests
     }
 }
+
+
+//  START: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
+function getActivityScore(fatBurnMin, cardioMin, peakMin){
+    const fatBurnScore = fatBurnMin*2;
+    const cardioScore = cardioMin*3;
+    const peakScore = peakMin*4;
+    const totalScore = (fatBurnScore+cardioScore+peakScore);
+    const totalMin = 60+(fatBurnMin+cardioMin+peakMin);
+    let activityScore = totalScore/totalMin;
+    if (activityScore >= 0 && activityScore < 2){
+        activityScore = Math.round(activityScore);
+    }
+    else if(activityScore > 2){
+        activityScore = 2;
+    }
+    else{
+        activityScore = 'Invalid Inputs'
+    }
+    return activityScore
+}
+
+const test_url = './backend/mock_data';
+const email = "braxton@beativities.com";
+
+export function get_fitbit() {
+    return function (dispatch) {
+        instance.get(`${test_url}/mockData.json`, {email}).then(resp=>{
+            const user_state = resp.data[email];
+            console.log('User state: ', user_state);
+            dispatch({
+                type: FETCH_FITBIT,
+                payload: resp
+            });
+            const fatBurnMin = parseInt(user_state.fatBurn);
+            const cardioMin = parseInt(user_state.cardio);
+            const peakMin = parseInt(user_state.peak);
+            document.cookie = "activity_score="+getActivityScore(fatBurnMin, cardioMin, peakMin);
+        }).catch(err=>{
+            console.log(err);
+        });
+    }
+}
+//  END: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
+
