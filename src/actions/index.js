@@ -126,6 +126,8 @@ export function fetchEvents(coords){
             else{
                 console.log(resp.data);
             }
+        }).catch(err=>{
+            console.log("error catch: ", err)
         });
     };
 }
