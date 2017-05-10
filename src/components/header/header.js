@@ -14,8 +14,11 @@ class Header extends Component {
     }
 
     logOutUser(){
+        document.cookie = 'activity_score=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
         this.props.logout_user();
         this.handleClose();
+        console.log("hello");
+
     }
 
     handleToggle = () => this.setState({open: !this.state.open});
