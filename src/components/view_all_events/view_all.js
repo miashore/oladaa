@@ -7,10 +7,6 @@ import EventCard from '../event_card/event_card';
 
 class ViewAllEventsList extends Component {
 
-    componentWillMount(){
-        this.props.fetchEvents(this.props.location);
-    }
-  
     renderCategories(){
         const categories = this.props.categories[0];
         if(categories !== undefined){
@@ -19,7 +15,8 @@ class ViewAllEventsList extends Component {
                     <Card key={event}>
                         <CardHeader actAsExpander={true}
                                     showExpandableButton={true}
-                                    title={event} />
+                                    title={event}
+                        />
                         <CardText expandable={true}>
                             <EventCard />
                         </CardText>
