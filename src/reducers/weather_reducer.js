@@ -2,7 +2,7 @@ import { FETCH_WEATHER } from '../actions/types';
 
 const default_state = {
     weather: {
-        background: 'default2.jpg',
+        background: '',
         summary: '',
         timezone: ''
     }

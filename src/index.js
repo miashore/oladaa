@@ -6,6 +6,7 @@ import { Router, browserHistory } from 'react-router';
 import reduxThunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import muiTheme from './theme.js';
 
 import routes from './routes'
 
@@ -16,7 +17,7 @@ const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 injectTapEventPlugin();
 
 ReactDOM.render(
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={muiTheme}>
         <Provider store={createStoreWithMiddleware(reducers)}>
             <Router history={browserHistory} routes={routes}/>
         </Provider>
