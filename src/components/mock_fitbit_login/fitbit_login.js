@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
-import { get_fitbit } from '../../actions/index';
+import { get_fitbit, loadSpinner } from '../../actions/index';
 import FitbitHeader from './fitbit_header';
 
 class FitbitLogin extends Component {
@@ -15,6 +15,7 @@ class FitbitLogin extends Component {
         const testing = (vals);
         console.log('TESTING ', testing);
         browserHistory.push('/activity_note');
+        this.props.loadSpinner(true);
     }
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <div>
@@ -75,4 +76,4 @@ FitbitLogin = reduxForm({
     form: 'fitbitForm'
 })(FitbitLogin);
 
-export default connect(mapStateToProps, { get_fitbit })(FitbitLogin);
+export default connect(mapStateToProps, { get_fitbit, loadSpinner })(FitbitLogin);
