@@ -65,7 +65,7 @@ if (!isset($_GET['code'])) {
             else{
                 $activityScore = 'Invalid Inputs';
             }
-            $_SESSION['activity_score'] = $activityScore;
+            $_SESSION["activity_score"] = $activityScore;
             return $activityScore;
         }
         echo(getActivityScore($fatBurnMin,$cardioMin,$peakMin));
