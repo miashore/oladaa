@@ -144,7 +144,7 @@ export function fetchEvents(coords){
     };
 }
 
-export function ç(cat_id){
+export function getEvent(cat_id){
     let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
 
     $.ajax({
