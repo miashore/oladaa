@@ -91,8 +91,9 @@ export function fetchEvents(coords){
     const long = coords.longitude;
 
     return function(dispatch){
-
+        console.log("function run");
         axios.post(`${base_url}/get_interests.php`).then(resp=>{
+            console.log("response from axios: ",resp);
             if(typeof resp.data !== 'string') {
                 // +category_id+MU_KEY
                 let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=10&radius=10&lat='+lat+'&desc=False&status=upcoming&category=';
