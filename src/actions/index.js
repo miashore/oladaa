@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS, LOAD_SPINNER } from './types';
 
 
 const instance = axios.create({
@@ -252,4 +252,11 @@ export function get_fitbit({email}) {
     }
 }
 //  END: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
+
+export function loadSpinner(value){
+    return {
+        type: LOAD_SPINNER,
+        payload: value
+    }
+}
 
