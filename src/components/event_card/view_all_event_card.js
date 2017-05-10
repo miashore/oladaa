@@ -3,12 +3,24 @@ import { connect } from 'react-redux';
 import { Card, CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import { fetchEvents } from '../../actions/index';
+import { getEvent, storeUserLocation } from '../../actions/index';
 
 class ViewAllEventCard extends Component {
 
+    componentWillReceiveProps(nextProps){
+        const coords = nextProps.coords;
+        if(coords && this.props.coords !== coords && coords !== undefined && this.props.coords !== undefined){
+            this.props.storeUserLocation(coords);
+        }
+    }
+
+    getEvent(){
+        console.log('TESTING GET EVENT:');
+        this.props.getEvent(this.props.location);
+    }
+
     render () {
-        const events = this.props.all;
+        const events = this.props.viewall;
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
                 console.log('Event ' + index + ' is:', event);
@@ -47,10 +59,10 @@ class ViewAllEventCard extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('Event Card State: ', state);
+    console.log('View All Card Event State: ', state);
     return {
-        all: state.events.all[0]
+        viewall: state.events.viewall[0]
     }
 }
 
-export default connect(mapStateToProps, { fetchEvents })(ViewAllEventCard);
+export default connect(mapStateToProps, { getEvent, storeUserLocation })(ViewAllEventCard);
