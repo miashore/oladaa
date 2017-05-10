@@ -9,7 +9,7 @@ require('../connect.php');
 //$userStats = json_decode(file_get_contents('php://input'), true);
 
 //If user stats contains information, then process it.
-if(!empty($userStats)) {
+if(!empty($_SESSION)) {
 
     //Get user id from the user session variable.
     $userId = $_SESSION["id"];
