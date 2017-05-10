@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 use djchen\OAuth2\Client\Provider\Fitbit;
 require_once __DIR__ . '/vendor/autoload.php';
 require('fitbit_credentials.php');
@@ -10,7 +11,7 @@ $provider = new Fitbit([
 ]);
 
 session_start();
-header("Access-Control-Allow-Origin: *");
+
 
 if (!isset($_GET['code'])) {
 
