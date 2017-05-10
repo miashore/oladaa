@@ -9,15 +9,21 @@ const yourEventsIcon = <FontIcon className="material-icons">stars</FontIcon>;
 const viewAllEventsIcon = <FontIcon className="material-icons">view_list</FontIcon>;
 
 class Footer extends Component {
-    state = {
-        selectedIndex: null
-    };
+    constructor(props){
+        super(props);
 
-    select = (index) => this.setState({selectedIndex: index});
+        this.state = {
+            selectedIndex: null
+        };
+    }
+
+    select(index){
+        this.setState({selectedIndex: index});
+    }
 
     render(){
         const styles = {
-            paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px'},
+            paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px', zIndex: '3'},
             bNav: {textAlign: 'center'}
         };
 
