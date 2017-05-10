@@ -10,6 +10,7 @@ $provider = new Fitbit([
 ]);
 
 session_start();
+header("Access-Control-Allow-Origin: *");
 
 if (!isset($_GET['code'])) {
 
