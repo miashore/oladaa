@@ -230,22 +230,22 @@ function getActivityScore(fatBurnMin, cardioMin, peakMin){
     return activityScore
 }
 
-const test_url = './backend/mock_data';
+const test_url = './backend/fitbit_library';
 // const email = "braxton@beativities.com";
 
-export function get_fitbit({email}) {
+export function get_fitbit() {
     return function (dispatch) {
-        instance.get(`${test_url}/mockData.json`, {email}).then(resp=>{
-            const user_state = resp.data[email];
+        instance.get(`${test_url}/call_fitbit.php`).then(resp=>{
+            const user_state = resp.data;
             console.log('User state: ', user_state);
             dispatch({
                 type: FETCH_FITBIT,
                 payload: resp
             });
-            const fatBurnMin = parseInt(user_state.fatBurn);
-            const cardioMin = parseInt(user_state.cardio);
-            const peakMin = parseInt(user_state.peak);
-            document.cookie = "activity_score="+getActivityScore(fatBurnMin, cardioMin, peakMin);
+            // const fatBurnMin = parseInt(user_state.fatBurn);
+            // const cardioMin = parseInt(user_state.cardio);
+            // const peakMin = parseInt(user_state.peak);
+            // document.cookie = "activity_score="+getActivityScore(fatBurnMin, cardioMin, peakMin);
         }).catch(err=>{
             console.log(err);
         });
