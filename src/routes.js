@@ -8,13 +8,14 @@ import Blog from './components/blog/blog';
 import SelectInterests from './components/select_interests/select_interests_form';
 import RegisterForm from './components/register_new_user/register_new_user';
 import LoginForm from './components/login/login_form';
-import ViewAllList from './components/view_all_events/view_all';
+import ViewAllEventsList from './components/view_all_events/view_all';
 import require_auth from './components/auth/require_auth';
 import RecommendedEventList from './components/recommended_events/recommended_events';
 import ActivityNote from './components/activity_note/activity_note';
 import WelcomeNote from './components/welcome_new_user/welcome_new_user';
 import FitbitLogin from './components/mock_fitbit_login/fitbit_login';
 import EventCard from './components/event_card/event_card';
+import ViewAllEventCard from './components/event_card/view_all_event_card';
 
 export default  (
     <div>
@@ -32,7 +33,8 @@ export default  (
             {/* Commented out for Testing */}
             {/*<Route path="view_all" component={ require_auth(ViewAllList) }/>*/}
             {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
-            <Route path="view_all" component={ ViewAllList }/>
+            <Route path="view_all" component={ ViewAllEventsList }/>
+            <Route path="view_all_event_card" component={ ViewAllEventCard }/>
             <Route path="recommended_events" components={ RecommendedEventList }/>
 
 
