@@ -17,12 +17,12 @@ class EventCard extends Component {
                         <CardTitle actAsExpander={true}
                                    showExpandableButton={true}
                                    title={event.name}
-                                   subtitle={event.event_url}
+                                   {/*subtitle={event.event_url}*/}
                                    style={{zIndex: '0'}}/>
                         <CardText expandable={true}>
                             {event.description}
                             <CardActions>
-                                <RaisedButton label="Get Directions"/>
+                                <a target="_blank" href={event.event_url}><RaisedButton secondary={true} label="See More Details..."/></a>
                             </CardActions>
                         </CardText>
                     </Card>
