@@ -16,12 +16,16 @@ class FitbitLogin extends Component {
         console.log('TESTING ', testing);
         browserHistory.push('/activity_note');
     }
-    renderTextfield = ({label, input}) => (
-            <TextField
-                floatingLabelText={label}
-                hintText={label}
-                {...input}
+    renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+        <div>
+            <TextField hintText={label}
+                       floatingLabelText={label}
+                       errorText={touched && error}
+                       {...input}
+                       {...custom}
             />
+        </div>
+
     );
     render(){
         const styles = {
@@ -35,19 +39,18 @@ class FitbitLogin extends Component {
             <div>
                 <FitbitHeader />
                 <Paper style={styles.body}>
-                    <h1 style={styles.h1}>Log in</h1>
+                    <h1 style={styles.h1}>Login</h1>
                     <form style={styles.form}>
                         <div>
                             <Field name="email"
-                                   component={this.renderTextfield}
+                                   component={this.renderTextField}
                                    label="Email"
                                    type="text"
                             />
                             <Field name="password"
-                                   component={this.renderTextfield}
+                                   component={this.renderTextField}
                                    type="password"
                                    label="Password"
-                                   floatingLabelText="Password"
                             />
                         </div>
                         <RaisedButton onClick={ handleSubmit((value) => {this.get_fitbit_data(value)}) }
