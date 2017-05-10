@@ -62,3 +62,6 @@ if(!empty($userStats)) {
         print_r($activityData);
     }
 }
+else{
+    echo "No User Stats";
+}
