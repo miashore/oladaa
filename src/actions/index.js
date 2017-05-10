@@ -142,14 +142,14 @@ export function getEvent(cat_id){
         method: 'GET',
         url: meetup_url,
         success: function(response){
-            console.log('Success Response: ', response);
+            console.log('VIEW ALL SUCCESS RESPONSE: ', response);
             dispatch({
-                type: FETCH_EVENTS,
+                type: VIEW_ALL,
                 payload: response.results
             });
         },
         error: function(response){
-            console.log('Error: ', response);
+            console.log('VIEW ALL ERROR RESPONSE: ', response);
         }
     });
 }
@@ -161,7 +161,7 @@ export function storeUserLocation(location){
         };
 }
 
-export function submit_interests( idArray ) {
+export function submit_interests(idArray) {
     return function () {
         if(idArray.length >= 3) {
             instance.post(`${base_url}/insert_interests.php`, {idArray}).then(resp => {
@@ -175,18 +175,25 @@ export function submit_interests( idArray ) {
 }
 
 export function fetchWeather(coords){
-    const WEATHER_KEY = '0cb0c630afe33bff7e69f24de512c0f0';
+    const WEATHER_KEY = 'cd2cd88ff4314ac744adc903f6f5a68d';
     const lat = coords.latitude;
     const long = coords.longitude;
-    const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather?APPID='+WEATHER_KEY+'&lat='+lat+'&lon='+long;
+    const WEATHER_URL = `https://api.darksky.net/forecast/${WEATHER_KEY}/${lat},${long}`;
     return function(dispatch){
-        axios.get(WEATHER_URL).then((response) => {
-            dispatch({
-                type: FETCH_WEATHER,
-                payload: response.data
-            });
-        }).catch((err) => {
-            console.log('Weather Error:', err);
+        $.ajax({
+            dataType: 'jsonp',
+            crossDomain: true,
+            method: 'GET',
+            url: WEATHER_URL,
+            success: function(response){
+                dispatch({
+                    type: FETCH_WEATHER,
+                    payload: response
+                });
+            },
+            error: function(response){
+                console.log('Error: ', response);
+            }
         });
     }
 

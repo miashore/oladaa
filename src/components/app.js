@@ -14,6 +14,8 @@ const App = (props) => (
         <h3>Navigation for Testing</h3>
         <Link to="/register">Register</Link>
         <br/>
+        <Link to="/login">Sign In</Link>
+        <br/>
         <Link to="/fitbit_login">Fit Bit Login</Link>
         <br/>
         <Link to="/about">About</Link>

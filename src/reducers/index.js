@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     events: eventReducer,
     location: locationReducer,
     weather: weatherReducer,
-    fitbit: fitbitReducer
+    fitbit: fitbitReducer,
 });
 
 export default rootReducer;
