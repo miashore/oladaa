@@ -37,10 +37,9 @@ export default  (
             <Route path="view_all_event_card" component={ ViewAllEventCard }/>
             <Route path="recommended_events" components={ RecommendedEventList }/>
 
-
-            <Route path="activity_note" component={ ActivityNote } />
             <Route path="welcome_user" components={ WelcomeNote }/>
             <Route path="event_card" component={ EventCard } />
+            <Route path="activity_note" component={ ActivityNote } />
     </Route>
             <Route path="fitbit_login" component={ FitbitLogin } />
             <Route path="select_interests" component={ SelectInterests }/>
