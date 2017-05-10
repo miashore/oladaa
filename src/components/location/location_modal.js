@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
-import TextField from 'material-ui/TextField';
-import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-
 import Location from './location';
 
 class LocationModal extends Component {
@@ -59,8 +55,4 @@ class LocationModal extends Component {
     }
 }
 
-LocationModal = reduxForm({
-    form: 'location'
-})(LocationModal);
-
-export default connect( null, { null })(LocationModal);
+export default LocationModal;
