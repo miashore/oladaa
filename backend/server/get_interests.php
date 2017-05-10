@@ -6,7 +6,7 @@ header("Access-Control-Allow-Origin: *");
 require('../connect.php');
 
 //Catch the json object sent from our axios call and convert it into php readable code.
-$userStats = json_decode(file_get_contents('php://input'), true);
+//$userStats = json_decode(file_get_contents('php://input'), true);
 
 //If user stats contains information, then process it.
 if(!empty($userStats)) {
@@ -15,7 +15,7 @@ if(!empty($userStats)) {
     $userId = $_SESSION["id"];
 
     //Pull activity score out of the axios object.
-    $activityScore = $userStats['activity_score'];
+    $activityScore = $_SESSION["activity_score"];
 
     //Send user id and activity score to database to retrieve category id's that contain those criteria.
     if($activityScore || $activityScore === 0) {

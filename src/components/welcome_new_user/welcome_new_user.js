@@ -1,6 +1,8 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import {connect} from 'react-redux';
+import { get_fitbit } from '../../actions/index';
 import { Link } from 'react-router';
 
 const WelcomeNote = () => {
@@ -19,11 +21,11 @@ const WelcomeNote = () => {
                     enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in vot, sunt in culpa qui officia deserunt mollit
                     anim id est laborum.</p>
-                <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Go to FitBit"
+                <RaisedButton style={styles.button} onTouchTap={get_fitbit()} label="Go to FitBit"
                               primary={true}/>
             </div>
         </Paper>
     )
 };
 
-export default WelcomeNote;
+export default connect(null, { get_fitbit })(WelcomeNote);

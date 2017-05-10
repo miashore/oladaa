@@ -211,24 +211,24 @@ export function storeInterests(interests){
 }
 
 //  START: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
-function getActivityScore(fatBurnMin, cardioMin, peakMin){
-    const fatBurnScore = fatBurnMin*2;
-    const cardioScore = cardioMin*3;
-    const peakScore = peakMin*4;
-    const totalScore = (fatBurnScore+cardioScore+peakScore);
-    const totalMin = 60+(fatBurnMin+cardioMin+peakMin);
-    let activityScore = totalScore/totalMin;
-    if (activityScore >= 0 && activityScore < 2){
-        activityScore = Math.round(activityScore);
-    }
-    else if(activityScore > 2){
-        activityScore = 2;
-    }
-    else{
-        activityScore = 'Invalid Inputs'
-    }
-    return activityScore
-}
+// function getActivityScore(fatBurnMin, cardioMin, peakMin){
+//     const fatBurnScore = fatBurnMin*2;
+//     const cardioScore = cardioMin*3;
+//     const peakScore = peakMin*4;
+//     const totalScore = (fatBurnScore+cardioScore+peakScore);
+//     const totalMin = 60+(fatBurnMin+cardioMin+peakMin);
+//     let activityScore = totalScore/totalMin;
+//     if (activityScore >= 0 && activityScore < 2){
+//         activityScore = Math.round(activityScore);
+//     }
+//     else if(activityScore > 2){
+//         activityScore = 2;
+//     }
+//     else{
+//         activityScore = 'Invalid Inputs'
+//     }
+//     return activityScore
+// }
 
 const test_url = './backend/fitbit_library';
 // const email = "braxton@beativities.com";
