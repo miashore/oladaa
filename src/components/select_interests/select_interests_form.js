@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Link, browserHistory } from 'react-router'
+import { browserHistory } from 'react-router'
 import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
 import { connect } from 'react-redux';
