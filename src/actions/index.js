@@ -86,19 +86,24 @@ const MU_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
 
 export function fetchEvents(coords){
     console.log('Coords: ', coords);
+
     const lat = coords.latitude;
     const long = coords.longitude;
+
     return function(dispatch){
+
+
         $.ajax({
             dataType: 'jsonp',
             crossDomain: true,
             url: 'backend/fitbit_library/call_fitbit.php',
             method: 'POST',
             success: function (resp) {
-                console.log("response from server: ", resp);
                 if (typeof resp.data !== 'string') {
+                    // +category_id+MU_KEY
                     let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon=' + long + '&limited_events=False&text_format=plain&photo-host=public&page=10&radius=10&lat=' + lat + '&desc=False&status=upcoming&category=';
                     for (let i = 0; i < resp.data.length; i++) {
+                        console.log("data from axios: ", resp.data[i]);
                         if (i === resp.data.length - 1) {
                             meetup_url += resp.data[i].category_id + MU_KEY;
                         }
@@ -125,11 +130,8 @@ export function fetchEvents(coords){
                     });
                 }
                 else {
-                    console.log(resp);
+                    console.log(resp.data);
                 }
-            },
-            error: function(err){
-                console.log("No Connection: ", err);
             }
         });
     };
