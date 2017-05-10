@@ -28,6 +28,7 @@ class ViewAllEventsList extends Component {
     }
 
     render(){
+        const category_id_array = [32,5,23,14,21,26,31,27,1,15,29,20];
             return (
             <Paper zDepth={3}>
                 <Card>{this.renderCategories()}</Card>
