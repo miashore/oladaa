@@ -3,12 +3,12 @@ import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions/index';
-import EventCard from '../event_card/event_card';
+import ViewAllEventCard from '../event_card/event_card';
 
 class ViewAllEventsList extends Component {
 
     renderCategories(){
-        const categories = this.props.categories[0];
+        const categories = this.props.categories;
         if(categories !== undefined){
             const list_categories = categories.map((event) => {
                 return (
@@ -18,7 +18,7 @@ class ViewAllEventsList extends Component {
                                     title={event}
                         />
                         <CardText expandable={true}>
-                            <EventCard />
+                            <ViewAllEventCard />
                         </CardText>
                     </Card>
                 );

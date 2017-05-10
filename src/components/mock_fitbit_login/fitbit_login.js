@@ -12,8 +12,6 @@ class FitbitLogin extends Component {
 
     get_fitbit_data(vals) {
         this.props.get_fitbit(vals);
-        const testing = (vals);
-        console.log('TESTING ', testing);
         browserHistory.push('/activity_note');
         this.props.loadSpinner(true);
     }
@@ -26,7 +24,6 @@ class FitbitLogin extends Component {
                        {...custom}
             />
         </div>
-
     );
     render(){
         const styles = {
