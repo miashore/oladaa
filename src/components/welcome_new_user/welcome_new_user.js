@@ -21,8 +21,8 @@ const WelcomeNote = () => {
                     enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in vot, sunt in culpa qui officia deserunt mollit
                     anim id est laborum.</p>
-                <RaisedButton style={styles.button} onTouchTap={get_fitbit()} label="Go to FitBit"
-                              primary={true}/>
+                <a href="../../../backend/fitbit_library/call_fitbit.php"><RaisedButton style={styles.button} label="Go to FitBit"
+                                                                                        primary={true}/></a>
             </div>
         </Paper>
     )
