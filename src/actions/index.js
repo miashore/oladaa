@@ -144,7 +144,7 @@ export function fetchEvents(coords){
     };
 }
 
-export function getEvent(cat_id){
+export function ç(cat_id){
     let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
 
     $.ajax({
@@ -153,14 +153,14 @@ export function getEvent(cat_id){
         method: 'GET',
         url: meetup_url,
         success: function(response){
-            console.log('Success Response: ', response);
+            console.log('VIEW ALL SUCCESS RESPONSE: ', response);
             dispatch({
-                type: FETCH_EVENTS,
+                type: VIEW_ALL,
                 payload: response.results
             });
         },
         error: function(response){
-            console.log('Error: ', response);
+            console.log('VIEW ALL ERROR RESPONSE: ', response);
         }
     });
 }
@@ -172,7 +172,7 @@ export function storeUserLocation(location){
         };
 }
 
-export function submit_interests( idArray ) {
+export function submit_interests(idArray) {
     return function () {
         if(idArray.length >= 3) {
             instance.post(`${base_url}/insert_interests.php`, {idArray}).then(resp => {
@@ -231,7 +231,6 @@ function getActivityScore(fatBurnMin, cardioMin, peakMin){
 }
 
 const test_url = './backend/mock_data';
-// const email = "braxton@beativities.com";
 
 export function get_fitbit({email}) {
     return function (dispatch) {

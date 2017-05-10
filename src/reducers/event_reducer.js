@@ -2,7 +2,7 @@ import { FETCH_EVENTS, STORE_INTERESTS } from '../actions/types';
 
 const default_state = {
     all: [],
-    categories: [],
+    categories: ['Sports & Fitness', 'Dance', 'Outdoors & Adventures', 'Health & Wellness', 'Music', 'Pets', 'Social', 'Photography', 'Arts', 'Hobbies & Crafts', 'Sci-Fi & Games', 'Film'],
     recommendedEvents: [],
     single: null
 };

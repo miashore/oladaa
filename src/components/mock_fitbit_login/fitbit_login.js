@@ -12,8 +12,6 @@ class FitbitLogin extends Component {
 
     get_fitbit_data(vals) {
         this.props.get_fitbit(vals);
-        const testing = (vals);
-        console.log('TESTING ', testing);
         browserHistory.push('/activity_note');
     }
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
@@ -25,7 +23,6 @@ class FitbitLogin extends Component {
                        {...custom}
             />
         </div>
-
     );
     render(){
         const styles = {
