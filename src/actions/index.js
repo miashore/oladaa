@@ -186,7 +186,7 @@ export function submit_interests( idArray ) {
 }
 
 export function fetchWeather(coords){
-    const WEATHER_KEY = 'e73cb570c1edb2ff71995ea64669e531';
+    const WEATHER_KEY = 'cd2cd88ff4314ac744adc903f6f5a68d';
     const lat = coords.latitude;
     const long = coords.longitude;
     const WEATHER_URL = `https://api.darksky.net/forecast/${WEATHER_KEY}/${lat},${long}`;
@@ -197,7 +197,6 @@ export function fetchWeather(coords){
             method: 'GET',
             url: WEATHER_URL,
             success: function(response){
-                console.log('Success Response: ', response);
                 dispatch({
                     type: FETCH_WEATHER,
                     payload: response

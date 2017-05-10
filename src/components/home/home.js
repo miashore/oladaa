@@ -9,6 +9,7 @@ class Home extends Component {
 
     render() {
         const { weather } = this.props;
+        console.log('Props: ', this.props);
 
         const styles = {
             mid_container: {height: '100vh', width: '100%', 'backgroundImage': `url(../src/components/imgs/weather/${weather.background})`, backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover'},
@@ -30,6 +31,7 @@ class Home extends Component {
 }
 
 function mapStateToProps(state){
+    console.log('Home state: ', state);
     return {
         location: state.location.coords,
         weather: state.weather.weather
