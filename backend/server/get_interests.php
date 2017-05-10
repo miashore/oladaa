@@ -32,9 +32,11 @@ if(!empty($userStats)) {
 
     //Send the results from the prior query to our database to retrieve the category id's associated with those
     //activities.
-    $activityQuery = "SELECT `category_id`,`description` FROM `activity_table` WHERE ";
-    if(count($requestData)>0) {
-        for ($i = 0; $i < count($requestData); $i++) {
+    $requestCount = count($requestData);
+    if($requestCount>0) {
+        $activityQuery = "SELECT `category_id`,`description` FROM `activity_table` WHERE ";
+
+        for ($i = 0; $i < $requestCount; $i++) {
             if ($i === 0) {
                 $activityQuery .= " `id`=" . $requestData[$i]['activity_id'] . " ";
             } else {
@@ -50,6 +52,13 @@ if(!empty($userStats)) {
         print_r($activityData);
     }
     else{
-        echo"No Activity Data Found";
+        $activityQuery = "SELECT `category_id`,`description` FROM `activity_table`";
+        $activityResult = mysqli_query($conn, $activityQuery);
+        while ($activityRow = mysqli_fetch_assoc($activityResult)) {
+            $activityData[] = $activityRow;
+        };
+        //Transform our new data back to json to send back to our JavaScript file.
+        $activityData = json_encode($activityData);
+        print_r($activityData);
     }
 }
