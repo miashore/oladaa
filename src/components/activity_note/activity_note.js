@@ -12,11 +12,8 @@ class ActivityNote extends Component {
         const coords = nextProps.coords;
         if(coords && this.props.coords !== coords){
             this.props.storeUserLocation(coords);
+            this.props.fetchEvents(this.props.location);
         }
-    }
-
-    componentDidMount(){
-        this.props.fetchEvents(this.props.location);
     }
 
     render(){

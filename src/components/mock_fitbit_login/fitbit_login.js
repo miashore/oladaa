@@ -64,7 +64,6 @@ class FitbitLogin extends Component {
     }
 }
 function mapStateToProps(state) {
-    console.log('Fitbit State: ', state);
     return {
         fitbit: state.fitbit.fitbit[0]
     }
