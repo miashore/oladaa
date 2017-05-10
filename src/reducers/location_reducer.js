@@ -10,7 +10,6 @@ const default_state = {
 export default function(state = default_state, action){
     switch(action.type){
         case SAVE_LOCATION:
-            console.log('reducer:', action.payload.latitude, action.payload.longitude);
             return {
                 ...state,
                 coords: {

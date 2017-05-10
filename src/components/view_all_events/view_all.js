@@ -26,6 +26,9 @@ class ViewAllEventsList extends Component {
             return list_categories;
         }
     }
+    idLoop(array){
+
+    }
 
     render(){
         const category_id_array = [32,5,23,14,21,26,31,27,1,15,29,20];
