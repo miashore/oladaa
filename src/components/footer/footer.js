@@ -12,52 +12,57 @@ const viewAllEventsIcon = <FontIcon className="material-icons">view_list</FontIc
 class Footer extends Component {
     constructor(props){
         super(props);
-
         this.state = {
             selectedIndex: null,
-            open: false,
-
+            open: false
         };
     }
 
-    select(index){
+    select = (index) => {
         this.setState({selectedIndex: index});
-    }
+    };
 
-    handleRequestClose() {
+    handleRequestClose = () => {
         this.setState({
             open: false
         });
-    }
+    };
 
-    handleTouchTap() {
+    handleTouchTap = () => {
+        event.preventDefault();
         this.setState({
             open: true
         });
-    }
+    };
 
-    render(){
+    render() {
         const styles = {
             paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px', zIndex: '3'},
             bNav: {textAlign: 'center'},
-            snackbar: {textAlign: 'center', marginBottom: '15vmin'}
+            snackbar: {textAlign: 'center', marginBottom: '15vmin', zIndex: '-2'}
         };
 
         return (
             <Paper style={ styles.paper } zDepth={1}>
                 <BottomNavigation selectedIndex={ this.state.selectedIndex }>
-                    <BottomNavigationItem label="Update Profile" icon={ updateProfileIcon } onTouchTap={() => {this.select(0); this.handleTouchTap()}}  />
-                    <Snackbar
-                        style={styles.snackbar}
-                        open={this.state.open}
-                        message="Update Profile Coming Soon! ☆"
-                        autoHideDuration={2500}
-                        onRequestClose={() => {this.handleRequestClose()}}
-                        bodyStyle={{width: '100vw'}}
-                    />
-                    <BottomNavigationItem label="Your Events" icon={ yourEventsIcon } style={styles.bNav} onTouchTap={() => this.select(1)} containerElement={<Link to="/recommended_events" />} />
-                    <BottomNavigationItem label="View All Events" icon={ viewAllEventsIcon } style={styles.bNav} onTouchTap={() => this.select(2)} containerElement={<Link to="/view_all"/>}/>
+                    <BottomNavigationItem label="Update Profile" icon={ updateProfileIcon } onTouchTap={() => {
+                        this.select(0); this.handleTouchTap()
+                    }}/>
+                    <BottomNavigationItem label="Your Events" icon={ yourEventsIcon } style={styles.bNav}
+                                          onTouchTap={() => this.select(1)}
+                                          containerElement={<Link to="/recommended_events"/>}/>
+                    <BottomNavigationItem label="View All Events" icon={ viewAllEventsIcon } style={styles.bNav}
+                                          onTouchTap={() => this.select(2)} containerElement={<Link to="/view_all"/>}/>
                 </BottomNavigation>
+                <Snackbar
+                    style={styles.snackbar}
+                    open={this.state.open}
+                    message="Update Profile Coming Soon! ☆"
+                    autoHideDuration={2500}
+                    onRequestClose={() => {
+                        this.handleRequestClose()
+                    }}
+                />
             </Paper>
         )
     }

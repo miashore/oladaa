@@ -34,7 +34,8 @@ export default  (
             <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
 
             <Route path="activity_note" component={ require_auth(ActivityNote) } />
-            <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
+            {/*<Route path="welcome_user" components={ require_auth(WelcomeNote) }/>*/}
+            <Route path="welcome_user" components={ WelcomeNote }/>
             <Route path="event_card" component={ require_auth(EventCard) } />
     </Route>
             <Route path="login" component={ LoginForm }/>

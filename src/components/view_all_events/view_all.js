@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
-import { getEvent, storeUserLocation, expander } from '../../actions/index';
+import { getEvent } from '../../actions/index';
 import ViewAllEventCard from '../event_card/view_all_event_card';
 
 class ViewAllEventsList extends Component {
@@ -47,9 +47,8 @@ function mapStateToProps(state){
     return {
         location: state.location.coords,
         events: state.events.all[0],
-        categories: state.events.categories,
-        expand: state.events.expand
+        categories: state.events.categories
     }
 }
 
-export default connect(mapStateToProps, { getEvent, storeUserLocation, expander })(ViewAllEventsList);
+export default connect(mapStateToProps, { getEvent })(ViewAllEventsList);
