@@ -11,7 +11,7 @@ class EventCard extends Component {
         const events = this.props.all;
 
         const styles = {
-            card: {width: '75vw', margin: '0 auto 1%'}
+            card: {width: '75vw', margin: '0 auto 3%'}
         };
 
         if(events !== undefined) {
