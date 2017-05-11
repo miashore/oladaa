@@ -7,14 +7,21 @@ import { connect } from 'react-redux';
 import getIds from './ids';
 import { submit_interests } from '../../actions/index';
 import Paper from 'material-ui/Paper';
-
 class SelectInterests extends Component {
-
+    /**
+     * @param vals
+     */
     submitForm(vals) {
         const idArray = getIds(vals);
         this.props.submit_interests(idArray);
         browserHistory.push('/welcome_user');
     }
+    /**
+     * @param name
+     * @param onChange
+     * @param label
+     * @returns {XML}
+     */
     renderCheckbox({ input: {name, onChange}, label }) {
         return (
             <Checkbox label={label}
@@ -24,7 +31,9 @@ class SelectInterests extends Component {
     };
     render() {
         const { handleSubmit } = this.props;
-
+        /**
+         * @type {{submit: {width: string, margin: string}, form: {width: string, margin: string}, fields: {width: string, float: string}, centeredText: {textAlign: string, color: string}, body: {width: string, margin: string, background: string, padding: string}}}
+         */
         const styles = {
             submit: { width: '100%', margin: '5% auto' },
             form: { width: '50vmin', margin: '5% auto 0' },
@@ -32,7 +41,6 @@ class SelectInterests extends Component {
             centeredText: { textAlign: 'center', color: '#444' },
             body: { width: '85vw', margin:' 8vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
         };
-
         return (
             <Paper style={styles.body} zDepth={4}>
                 <h2 style={styles.centeredText}>Please Select At Least 3 Interests:</h2>
@@ -58,11 +66,15 @@ class SelectInterests extends Component {
 SelectInterests = reduxForm({
     form: 'selectInterests'
 })(SelectInterests);
-
+/**
+ * @param state
+ * @returns {{events: (Array|*|string)}}
+ */
 function mapStateToProps(state){
     return {
         events: state.events.categories
     }
 }
+
 
 export default connect(mapStateToProps, { submit_interests })(SelectInterests);

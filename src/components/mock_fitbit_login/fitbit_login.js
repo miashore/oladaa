@@ -7,14 +7,22 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
 import { get_fitbit, loadSpinner } from '../../actions/index';
 import FitbitHeader from './fitbit_header';
-
 class FitbitLogin extends Component {
-
+    /**
+     * @param vals
+     */
     get_fitbit_data(vals) {
         this.props.get_fitbit(vals);
         browserHistory.push('/activity_note');
         this.props.loadSpinner(true);
     }
+    /**
+     * @param input
+     * @param label
+     * @param touched
+     * @param error
+     * @param custom
+     */
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <div>
             <TextField hintText={label}
@@ -64,6 +72,10 @@ class FitbitLogin extends Component {
         )
     }
 }
+/**
+ * @param state
+ * @returns {{fitbit}}
+ */
 function mapStateToProps(state) {
     return {
         fitbit: state.fitbit.fitbit[0]
@@ -72,5 +84,4 @@ function mapStateToProps(state) {
 FitbitLogin = reduxForm({
     form: 'fitbitForm'
 })(FitbitLogin);
-
 export default connect(mapStateToProps, { get_fitbit, loadSpinner })(FitbitLogin);

@@ -1,10 +1,16 @@
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from '../actions/types';
-
+/**
+ * @type {{authenticated: boolean, authError: null}}
+ */
 const default_state = {
     authenticated: false,
     authError: null,
 };
-
+/**
+ * @param state
+ * @param action
+ * @returns {*}
+ */
 export default function (state = default_state, action) {
     switch ( action.type ){
         case AUTH_USER:

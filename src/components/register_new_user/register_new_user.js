@@ -7,13 +7,22 @@ import { register_user } from '../../actions/index';
 import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import { blue700 } from 'material-ui/styles/colors';
-
 class RegisterForm extends Component {
+    /**
+     * @param vals
+     */
     submitForm(vals) {
         const registerInfo = (vals);
         this.props.register_user(vals);
         console.log('Registration Form Info: ', registerInfo)
     }
+    /**
+     * @param input
+     * @param label
+     * @param touched
+     * @param error
+     * @param custom
+     */
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <div>
             <TextField hintText={label}
@@ -73,7 +82,6 @@ class RegisterForm extends Component {
                         />
                     </div>
                     <RaisedButton style={styles.register} type="submit" label="Register" primary={true} />
-
                     <h3 style={styles.centeredText}>Already have an account?</h3>
                     <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
                 </form>
@@ -81,21 +89,36 @@ class RegisterForm extends Component {
         )
     }
 }
+/**
+ * @param email
+ * @returns {boolean}
+ */
 function validateEmail(email) {
     const allowedChars = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return allowedChars.test(email);
 }
+/**
+ * @param username
+ * @returns {boolean}
+ */
 function validateUserName(username){
     const allowedChars = /[*|\": <>#[\]{}%^`\\?!()';@&$]/;
     return allowedChars.test(username)
 }
+/**
+ * @param password
+ * @returns {boolean}
+ */
 function validatePassword(password){
     const space = /[ ]/;
     return space.test(password)
 }
+/**
+ * @param vals
+ * @returns {{}}
+ */
 function validate(vals){
     const errors = {};
-
     if(!vals.username) {
         errors.username = "Please enter a Username";
     }
