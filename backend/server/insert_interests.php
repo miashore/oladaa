@@ -1,7 +1,10 @@
 <?php
 //Start the session.
 session_start();
+
+//Set headers to avoid CORS errors
 header("Access-Control-Allow-Origin: *");
+
 //Require connection to the database.
 require('../connect.php');
 
