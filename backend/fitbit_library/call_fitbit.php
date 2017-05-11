@@ -71,7 +71,7 @@ if (!isset($_GET['code'])) {
 
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
-    exit($e->getMessage());
+//    exit($e->getMessage());
 
     }
 }
