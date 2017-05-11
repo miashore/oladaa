@@ -1,7 +1,10 @@
 <?php
 //Start our session
 session_start();
+
+//Set headers to disable CORS errors
 header("Access-Control-Allow-Origin: *");
+
 //Require connection to the database
 require('../connect.php');
 
@@ -51,6 +54,7 @@ if(!empty($_SESSION)) {
         $activityData = json_encode($activityData);
         print_r($activityData);
     }
+    //If the user contains no interests at the activity level that they've received then we return all categories
     else{
         $activityQuery = "SELECT `category_id`,`description` FROM `activity_table`";
         $activityResult = mysqli_query($conn, $activityQuery);

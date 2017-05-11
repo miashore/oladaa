@@ -24,11 +24,6 @@ export default  (
             <Route path="about" component={ (About) }/>
             <Route path="blog" component={ (Blog) }/>
 
-        {/*Need to reroute, currently added to app in order to navigate easier. The below should not have a header and footer*/}
-            {/*<Route path="select_interests" component={ SelectInterests }/>*/}
-            {/* Commented out for Testing */}
-            {/*<Route path="view_all" component={ require_auth(ViewAllList) }/>*/}
-            {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
             <Route path="view_all" component={ (ViewAllEventsList) }/>
             <Route path="view_all_event_card" component={ (ViewAllEventCard) }/>
             <Route path="recommended_events" components={ (RecommendedEventList) }/>
