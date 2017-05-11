@@ -11,6 +11,7 @@ $provider = new Fitbit([
 'redirectUri'       => $my_callback_url
 ]);
 
+
 if (!isset($_GET['code'])) {
 
     $authorizationUrl = $provider->getAuthorizationUrl(['scope' =>['heartrate']]);
@@ -43,6 +44,30 @@ if (!isset($_GET['code'])) {
             ['headers' => [Fitbit::HEADER_ACCEPT_LANG => 'en_US'], [Fitbit::HEADER_ACCEPT_LOCALE => 'en_US']]
         );
         $response = $provider->getParsedResponse($request);
+        $_SESSION["response"] = $response;
+        $fatBurnMin = $response['activities-heart'][5]['value']['heartRateZones'][1]['minutes'];
+        $cardioMin = $response['activities-heart'][5]['value']['heartRateZones'][2]['minutes'];
+        $peakMin = $response['activities-heart'][5]['value']['heartRateZones'][3]['minutes'];
+        function getActivityScore($fatBurnMin, $cardioMin, $peakMin){
+            $fatBurnScore = $fatBurnMin*3;
+            $cardioScore = $cardioMin*4;
+            $peakScore = $peakMin*5;
+            $totalScore = ($fatBurnScore+$cardioScore+$peakScore);
+            $totalMin = 60+($fatBurnMin+$cardioMin+$peakMin);
+            $activityScore = $totalScore/$totalMin;
+            if ($activityScore >= 0 && $activityScore < 2){
+                $activityScore = round($activityScore);
+            }
+            else if($activityScore > 2){
+                $activityScore = 2;
+            }
+            else{
+                $activityScore = 'Invalid Inputs';
+            }
+            $_SESSION["activity_score"] = $activityScore;
+            return $activityScore;
+        }
+        $_SESSION["activity_score"] = getActivityScore($fatBurnMin,$cardioMin,$peakMin);
 
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
@@ -50,28 +75,4 @@ if (!isset($_GET['code'])) {
 
     }
 }
-$fatBurnMin = $response['activities-heart'][5]['value']['heartRateZones'][1]['minutes'];
-$cardioMin = $response['activities-heart'][5]['value']['heartRateZones'][2]['minutes'];
-$peakMin = $response['activities-heart'][5]['value']['heartRateZones'][3]['minutes'];
-function getActivityScore($fatBurnMin, $cardioMin, $peakMin){
-    $fatBurnScore = $fatBurnMin*3;
-    $cardioScore = $cardioMin*4;
-    $peakScore = $peakMin*5;
-    $totalScore = ($fatBurnScore+$cardioScore+$peakScore);
-    $totalMin = 60+($fatBurnMin+$cardioMin+$peakMin);
-    $activityScore = $totalScore/$totalMin;
-    if ($activityScore >= 0 && $activityScore < 2){
-        $activityScore = round($activityScore);
-    }
-    else if($activityScore > 2){
-        $activityScore = 2;
-    }
-    else{
-        $activityScore = 'Invalid Inputs';
-    }
-    $_SESSION["activity_score"] = $activityScore;
-    return $activityScore;
-}
-//$_SESSION["activity_score"] = getActivityScore($fatBurnMin,$cardioMin,$peakMin);
-$_SESSION["fatburn"] = $response;
 
