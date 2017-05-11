@@ -1,3 +1,3 @@
 <?php
 
-print_r($_SESSION);
+print_r($_SESSION["activity_score"]);
