@@ -7,15 +7,13 @@ import reduxThunk from 'redux-thunk';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import muiTheme from './theme.js';
-
 import routes from './routes'
-
 import reducers from './reducers/index';
-
+/**
+ * @type {StoreEnhancerStoreCreator<S>}
+ */
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-
 injectTapEventPlugin();
-
 ReactDOM.render(
     <MuiThemeProvider muiTheme={muiTheme}>
         <Provider store={createStoreWithMiddleware(reducers)}>

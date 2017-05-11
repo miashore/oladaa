@@ -1,19 +1,6 @@
-
-// const ids = {
-//     sports_fitness: 1,
-//     dance: 2,
-//     outdoors_adventures: 3,
-//     health_wellness: 4,
-//     music: 5,
-//     pets: 6,
-//     social: 7,
-//     photography: 8,
-//     arts: 9,
-//     hobbies_crafts: 10,
-//     scifi_games: 11,
-//     film: 12
-// };
-
+/**
+ * @type {{Sports & Fitness: number, Dance: number, Outdoors & Adventures: number, Health & Wellness: number, Music: number, Pets: number, Social: number, Photography: number, Arts: number, Hobbies & Crafts: number, Sci-Fi & Games: number, Film: number}}
+ */
 const ids= {
     'Sports & Fitness': 1,
     'Dance': 2,
@@ -28,10 +15,12 @@ const ids= {
     'Sci-Fi & Games': 11,
     'Film': 12
 };
-
+/**
+ * @param choices
+ * @returns {Array}
+ */
 export default function(choices){
     const output = [];
-
     for(const cat in choices){
         if(choices[cat] && ids[cat]){
             output.push(ids[cat]);

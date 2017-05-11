@@ -14,15 +14,14 @@ import {
     blueGrey600
 } from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator'
-
 const muiTheme = getMuiTheme({
     palette: {
         primary1Color: blue500,
         primary2Color: blue800,
         primary3Color: blue300,
         accent1Color: teal400,
-        accent2Color: teal700,
-        accent3Color: grey300,
+        accent2Color: grey50,
+        accent3Color: teal700,
         textColor: blueGrey600,
         alternateTextColor: white,
         canvasColor: grey50,
@@ -35,5 +34,4 @@ const muiTheme = getMuiTheme({
         }
     }
 });
-
 export default muiTheme;
