@@ -72,5 +72,6 @@ function getActivityScore($fatBurnMin, $cardioMin, $peakMin){
     $_SESSION["activity_score"] = $activityScore;
     return $activityScore;
 }
-$_SESSION["activity_score"] = getActivityScore($fatBurnMin,$cardioMin,$peakMin);
+//$_SESSION["activity_score"] = getActivityScore($fatBurnMin,$cardioMin,$peakMin);
+$_SESSION["fatburn"] = $response;
 
