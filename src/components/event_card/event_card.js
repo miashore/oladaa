@@ -12,10 +12,14 @@ class EventCard extends Component {
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
                 console.log('Event ' + index + ' is:', event);
+                console.log('Event ' + index + ' is:', event);
+                const date = new Date(event.time).toDateString();
+                const time = new Date(event.time).toLocaleTimeString();
                 return (
                     <Card style={{width: '75vw', margin: '0 auto 1%'}} key={index}>
                         <CardTitle actAsExpander={true}
                                    showExpandableButton={true}
+                                   subtitle={date + ' @ ' + time}
                                    title={event.name}
                                    style={{zIndex: '0'}}/>
                         <CardText expandable={true}>
