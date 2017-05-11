@@ -89,7 +89,7 @@ export function fetchEvents(coords){
 
     const lat = coords.latitude;
     const long = coords.longitude;
-    axios.get('./backend/fitbit_library/call_fitbit.php').then(resp=>{
+    instance.get('backend/fitbit_library/call_fitbit.php').then(resp=>{
         console.log("Please be an activity score: ", resp);
     }).catch(err=>{
         console.log("This is not working!!!: ", err);
@@ -97,7 +97,7 @@ export function fetchEvents(coords){
     return function(dispatch){
 
         console.log("function run");
-        axios.post(`${base_url}/get_interests.php`).then(resp=>{
+        instance.post(`${base_url}/get_interests.php`).then(resp=>{
             console.log("response from axios: ",resp);
             if(typeof resp.data !== 'string') {
                 let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=10&radius=10&lat='+lat+'&desc=False&status=upcoming&category=';
