@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchWeather } from '../../actions/index';
-
 class Home extends Component {
     componentWillMount(){
         this.props.fetchWeather(this.props.location);
     }
-
     render() {
         const { weather } = this.props;
-        console.log('Props: ', this.props);
-
         const styles = {
             mid_container: {height: '100vh', width: '100%', 'backgroundImage': `url(../src/components/imgs/weather/${weather.background})`, backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover'},
             weather_div: {zIndex: '5', position: 'fixed', top: '10vh', left: '2vh'},
             weather_icon: {margin: '0'},
             location_text: {margin: '3% 2% 0 1%', display: 'inline-block', verticalAlign: 'top', fontSize: '1.2em'},
         };
-
         return (
             <div>
                 <div style={styles.mid_container}/>
@@ -29,7 +24,10 @@ class Home extends Component {
         )
     }
 }
-
+/**
+ * @param state
+ * @returns {{location, weather: (*|weather|{background, summary, timezone}|default_state.weather)}}
+ */
 function mapStateToProps(state){
     console.log('Home state: ', state);
     return {
@@ -37,5 +35,4 @@ function mapStateToProps(state){
         weather: state.weather.weather
     }
 }
-
 export default connect(mapStateToProps, { fetchWeather })(Home);

@@ -1,5 +1,7 @@
 import { FETCH_EVENTS, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL, EXPAND_CAT } from '../actions/types';
-
+/**
+ * @type {{all: Array, categories: [*], recommendedEvents: Array, single: null, ready: boolean, viewall: {}, expander: boolean}}
+ */
 const default_state = {
     all: [],
     categories: [
@@ -22,7 +24,11 @@ const default_state = {
     viewall: {},
     expander: true
 };
-
+/**
+ * @param state
+ * @param action
+ * @returns {*}
+ */
 export default function(state = default_state, action){
     switch(action.type){
         case FETCH_EVENTS:

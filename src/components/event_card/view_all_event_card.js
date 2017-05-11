@@ -2,26 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import { getEvent, storeUserLocation } from '../../actions/index';
-
 class ViewAllEventCard extends Component {
-
     componentWillMount(){
         this.props.getEvent(this.props.eventId, this.props.location, this.props.catIndex);
     }
-
+    /**
+     * @param nextProps
+     */
     componentWillReceiveProps(nextProps){
         const coords = nextProps.coords;
         if(coords && this.props.coords !== coords && coords !== undefined && this.props.coords !== undefined){
             this.props.storeUserLocation(coords);
         }
     }
-
     getEvent(){
         this.props.getEvent(this.props.location);
     }
-
+    /**
+     * @returns {XML}
+     */
     render () {
         const events = this.props.viewall[this.props.catIndex];
         if(events !== undefined) {
@@ -63,12 +63,14 @@ class ViewAllEventCard extends Component {
         }
     }
 }
-
+/**
+ * @param state
+ * @returns {{viewall: (*|viewall|{}|default_state.viewall)}}
+ */
 function mapStateToProps(state) {
     console.log('View All Card Event State: ', state);
     return {
         viewall: state.events.viewall
     }
 }
-
 export default connect(mapStateToProps, { getEvent, storeUserLocation })(ViewAllEventCard);

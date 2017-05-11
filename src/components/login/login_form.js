@@ -6,13 +6,21 @@ import { connect } from 'react-redux';
 import { login_user } from '../../actions/index'
 import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
-
 class LoginForm extends Component {
+    /**
+     * @param vals
+     */
     submitForm(vals) {
         this.props.login_user(vals);
         console.log('Form submitted: ', vals);
     }
-
+    /**
+     * @param input
+     * @param label
+     * @param touched
+     * @param error
+     * @param custom
+     */
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <TextField hintText={label}
                    floatingLabelText={label}
@@ -23,7 +31,6 @@ class LoginForm extends Component {
     );
     render() {
         const { handleSubmit } = this.props;
-
         const styles = {
             register: { width: '100%', margin: '1% auto' },
             form: { width: '70vmin', margin: '0 auto' },
@@ -50,11 +57,9 @@ class LoginForm extends Component {
                                type="password"
                                label="Password"
                                style={styles.fields}
-
                         />
                     </div>
                     <RaisedButton style={styles.signIn} type="submit" label="Sign In" secondary={true} />
-
                     <h3 style={styles.centeredText}>Don't Have an Account?</h3>
                     <RaisedButton label="Register" style={styles.register} containerElement={<Link to="/register"/>} secondary={true} />
                 </form>
@@ -62,8 +67,8 @@ class LoginForm extends Component {
         )
     }
 }
+
 LoginForm = reduxForm({
     form: 'loginForm'
 })(LoginForm);
-
 export default connect(null, { login_user })(LoginForm);

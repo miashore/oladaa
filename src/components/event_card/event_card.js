@@ -3,15 +3,14 @@ import { Card, CardTitle, CardText, CardActions } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions/index';
-import { Link } from 'react-router';
-
 class EventCard extends Component {
-
+    /**
+     * @returns {XML}
+     */
     render () {
         const events = this.props.all;
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
-                console.log('Event ' + index + ' is:', event);
                 console.log('Event ' + index + ' is:', event);
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
@@ -49,12 +48,14 @@ class EventCard extends Component {
         }
     }
 }
-
+/**
+ * @param state
+ * @returns {{all}}
+ */
 function mapStateToProps(state) {
     console.log('Event Card State: ', state);
     return {
         all: state.events.all[0]
     }
 }
-
 export default connect(mapStateToProps, { fetchEvents })(EventCard);
