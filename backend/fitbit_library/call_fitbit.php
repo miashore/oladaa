@@ -67,7 +67,7 @@ if (!isset($_GET['code'])) {
             $_SESSION["activity_score"] = $activityScore;
             return $activityScore;
         }
-        print_r($_SESSION);
+        echo(getActivityScore($fatBurnMin,$cardioMin,$peakMin));
 
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 

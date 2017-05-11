@@ -91,6 +91,8 @@ export function fetchEvents(coords){
     const long = coords.longitude;
     axios.get('./backend/fitbit_library/call_fitbit.php').then(resp=>{
         console.log("Please be an activity score: ", resp);
+    }).catch(err=>{
+        console.log("This is not working!!!: ", err);
     });
     return function(dispatch){
 
