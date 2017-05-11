@@ -26,10 +26,6 @@ export default  (
 
         {/*Need to reroute, currently added to app in order to navigate easier. The below should not have a header and footer*/}
             {/*<Route path="select_interests" component={ SelectInterests }/>*/}
-            <Route path="register" component={ RegisterForm }/>
-            <Route path="login" component={ LoginForm }/>
-
-
             {/* Commented out for Testing */}
             {/*<Route path="view_all" component={ require_auth(ViewAllList) }/>*/}
             {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
@@ -41,8 +37,12 @@ export default  (
             <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
             <Route path="event_card" component={ require_auth(EventCard) } />
     </Route>
+            <Route path="login" component={ LoginForm }/>
+            <Route path="register" component={ RegisterForm }/>
             <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
-            <Route path="select_interests" component={ require_auth(SelectInterests) }/>
+            {/*<Route path="select_interests" component={ require_auth(SelectInterests) }/>*/}
+            <Route path="select_interests" component={ SelectInterests }/>
+
     </div>
 
 );

@@ -16,10 +16,9 @@ class Location extends Component {
                         <tr><td>Longitude: </td><td>{this.props.coords.longitude}</td></tr>
                         </tbody>
                     </table>
-                    : <div>Getting the location data&hellip; </div>;
+                    : <div>Updating to your location&hellip; </div>;
     }
 }
-
 
 export default geolocated({
     positionOptions: {

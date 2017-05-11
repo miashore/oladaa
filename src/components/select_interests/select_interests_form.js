@@ -5,30 +5,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Checkbox from 'material-ui/Checkbox'
 import { connect } from 'react-redux';
 import getIds from './ids';
-import { submit_interests, storeInterests } from '../../actions/index';
+import { submit_interests } from '../../actions/index';
+import Paper from 'material-ui/Paper';
 
 class SelectInterests extends Component {
 
     submitForm(vals) {
-        //console.log('Form submitted: ', vals);
         const idArray = getIds(vals);
         this.props.submit_interests(idArray);
         browserHistory.push('/welcome_user');
-        //console.log('ID Array:', idArray);
-    }
-    componentWillReceiveProps(nextProps){
-        const values = nextProps.inputForm.values;
-
-        let categoryArray = [];
-
-        if(values !== undefined) {
-            for (let key in values) {
-                if (values[key] === true) {
-                    categoryArray.push(key);
-                }
-            }
-        }
-        this.props.storeInterests(categoryArray);
     }
     renderCheckbox({ input: {name, onChange}, label }) {
         return (
@@ -38,13 +23,20 @@ class SelectInterests extends Component {
         )
     };
     render() {
-        const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
         const { handleSubmit } = this.props;
+
+        const styles = {
+            submit: { width: '100%', margin: '5% auto' },
+            form: { width: '50vmin', margin: '5% auto 0' },
+            fields: { width: '100%', float: 'left' },
+            centeredText: { textAlign: 'center', color: '#444' },
+            body: { width: '85vw', margin:' 8vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
+        };
+
         return (
-            <div>
-                <h1>Please Select At Least 3 Interests:</h1>
-                <form onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
-                    <div>
+            <Paper style={styles.body} zDepth={4}>
+                <h2 style={styles.centeredText}>Please Select At Least 3 Interests:</h2>
+                <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                         <Field name="Sports & Fitness" component={this.renderCheckbox} label="Sports & Fitness"/>
                         <Field name="Dance" component={this.renderCheckbox} label="Dance"/>
                         <Field name="Outdoors & Adventures" component={this.renderCheckbox} label="Outdoors & Adventures"/>
@@ -57,10 +49,9 @@ class SelectInterests extends Component {
                         <Field name="Hobbies & Crafts" component={this.renderCheckbox} label="Hobbies & Crafts"/>
                         <Field name="Sci-Fi & Games" component={this.renderCheckbox} label="Sci-Fi & Games"/>
                         <Field name="Film" component={this.renderCheckbox} label="Film"/>
-                    </div>
-                    <RaisedButton style={button_style} type="submit" label="Submit" primary={true}/>
+                    <RaisedButton style={styles.submit} type="submit" label="Submit" primary={true}/>
                 </form>
-            </div>
+            </Paper>
         )
     }
 }
@@ -70,9 +61,8 @@ SelectInterests = reduxForm({
 
 function mapStateToProps(state){
     return {
-        events: state.events.categories,
-        inputForm: state.form.selectInterests
+        events: state.events.categories
     }
 }
 
-export default connect(mapStateToProps, { submit_interests, storeInterests })(SelectInterests);
+export default connect(mapStateToProps, { submit_interests })(SelectInterests);

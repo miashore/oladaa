@@ -5,6 +5,8 @@ import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { register_user } from '../../actions/index';
 import { Link } from 'react-router';
+import Paper from 'material-ui/Paper';
+import { blue700 } from 'material-ui/styles/colors';
 
 class RegisterForm extends Component {
     submitForm(vals) {
@@ -24,43 +26,58 @@ class RegisterForm extends Component {
 
     );
     render() {
-        const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
         const { handleSubmit } = this.props;
+
+        const styles = {
+            register: { width: '100%', margin: '2% auto' },
+            form: { width: '70vmin', margin: '0 auto' },
+            signIn: { width: '100%', margin: '1% auto' },
+            fields: { width: '100%' },
+            centeredText: { textAlign: 'center', color: '#444' },
+            body: { width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'}
+        };
         return (
-            <div>
-                <form onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
-                    <div className="form-group">
+            <Paper style={styles.body} zDepth={4}>
+                <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
+                    <h2 style={styles.centeredText}>Register a New Account</h2>
+                    <div>
                         <Field name="username"
                                component={this.renderTextField}
                                type="text"
                                label="Username"
+                               style={styles.fields}
                                />
                     </div>
-                    <div className="form-group">
+                    <div>
                         <Field name="email"
                                component={this.renderTextField}
                                type="text"
                                label="Email"
+                               style={styles.fields}
                         />
                     </div>
-                    <div className="form-group">
+                    <div>
                         <Field name="password"
                                component={this.renderTextField}
                                type="password"
                                label="Password"
+                               style={styles.fields}
                         />
                     </div>
-                    <div className="form-group">
+                    <div>
                         <Field name="password_confirmation"
                                component={this.renderTextField}
                                type="password"
                                label="Password Confirmation"
+                               style={styles.fields}
                         />
                     </div>
-                    <RaisedButton style={button_style} type="submit" label="Register" primary={true} />
-                    <RaisedButton label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
+                    <RaisedButton style={styles.register} type="submit" label="Register" primary={true} />
+
+                    <h3 style={styles.centeredText}>Already have an account?</h3>
+                    <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
                 </form>
-            </div>
+            </Paper>
         )
     }
 }
