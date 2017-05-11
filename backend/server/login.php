@@ -2,9 +2,11 @@
 //Start the users session.
 session_start();
 
+//Set headers to avoid CORS errors
+header("Access-Control-Allow-Origin: *");
+
 //Require connection to the database
 require("../connect.php");
-header("Access-Control-Allow-Origin: *");
 
 //Catch the json object sent from our axios call and convert it into php readable code.
 $userInfo = json_decode(file_get_contents('php://input'), true);
@@ -19,11 +21,11 @@ if(isset($userInfo) && !empty($userInfo)){
     //Select the user id from our main user table based on the username and password provided.
     $sql = "SELECT `id`,`password` FROM `user_table` WHERE `name`='$username'";
     $result = mysqli_query($conn, $sql);
-//    $user_id = mysqli_fetch_assoc($result)["id"];
-//    $hashed_password = mysqli_fetch_assoc($result)["password"];
-//
+
+    //Check to make sure the password hash in our database and the password provided are compatible
     if($result->num_rows === 1){
         $row = $result->fetch_array(MYSQLI_ASSOC);
+
         //If a row is returned set the id key in the Global Session variable to to the user id returned from our query.
         if(password_verify($password, $row["password"])){
             $_SESSION["id"] = $row["id"];
@@ -35,6 +37,7 @@ if(isset($userInfo) && !empty($userInfo)){
         echo $fmsg;
     }
 }
+//If user info does not contain any information return a 0 to the axios call
 else{
     $fmsg = 0;
     echo $fmsg;

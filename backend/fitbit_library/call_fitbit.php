@@ -47,6 +47,14 @@ if (!isset($_GET['code'])) {
         $fatBurnMin = $response['activities-heart'][5]['value']['heartRateZones'][1]['minutes'];
         $cardioMin = $response['activities-heart'][5]['value']['heartRateZones'][2]['minutes'];
         $peakMin = $response['activities-heart'][5]['value']['heartRateZones'][3]['minutes'];
+        /**
+         * @param $fatBurnMin
+         * @param $cardioMin
+         * @param $peakMin
+         * @return float|int|string
+         * @description - Pass in amount of minutes spent at different heart rate levels
+         * to obtain an activity level based around the prior day.
+         */
         function getActivityScore($fatBurnMin, $cardioMin, $peakMin){
             $fatBurnScore = $fatBurnMin*3;
             $cardioScore = $cardioMin*4;

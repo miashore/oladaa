@@ -5,9 +5,7 @@ session_start();
 //Destroy the session key.
 session_destroy();
 
-//Reroute the page after logout.
-//header('location: http://localhost:8888');
-
+//return success for testing purposes on logout
 $output = [
     'success' => true
 ];
