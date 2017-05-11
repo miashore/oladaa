@@ -11,7 +11,7 @@ $provider = new Fitbit([
 'redirectUri'       => $my_callback_url
 ]);
 
-
+$_SESSION["test"] = "hello";
 if (!isset($_GET['code'])) {
 
     $authorizationUrl = $provider->getAuthorizationUrl(['scope' =>['heartrate']]);

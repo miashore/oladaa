@@ -7,7 +7,7 @@ require('../connect.php');
 
 //Catch the json object sent from our axios call and convert it into php readable code.
 //$userStats = json_decode(file_get_contents('php://input'), true);
-
+echo($_SESSION["test"]);
 //If user stats contains information, then process it.
 if(!empty($_SESSION)) {
 
