@@ -13,7 +13,7 @@ $provider = new Fitbit([
 
 
 if (!isset($_GET['code'])) {
-
+    
     $authorizationUrl = $provider->getAuthorizationUrl(['scope' =>['heartrate']]);
 
     $_SESSION['oauth2state'] = $provider->getState();
@@ -28,7 +28,7 @@ if (!isset($_GET['code'])) {
 } else {
 
     try {
-
+        
         $accessToken = $provider->getAccessToken('authorization_code', [
             'code' => $_GET['code']
         ]);
@@ -68,11 +68,11 @@ if (!isset($_GET['code'])) {
             return $activityScore;
         }
         $_SESSION["activity_score"] = getActivityScore($fatBurnMin,$cardioMin,$peakMin);
-
+	print_r($_SESSION);
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
     exit($e->getMessage());
 
     }
 }
-
+header("location: https://dev.oladaa.com/activity_note");
