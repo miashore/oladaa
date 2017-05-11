@@ -9,12 +9,21 @@ import { get_fitbit, loadSpinner } from '../../actions/index';
 import FitbitHeader from './fitbit_header';
 
 class FitbitLogin extends Component {
-
+    /**
+     * @param vals
+     */
     get_fitbit_data(vals) {
         this.props.get_fitbit(vals);
         browserHistory.push('/activity_note');
         this.props.loadSpinner(true);
     }
+    /**
+     * @param input
+     * @param label
+     * @param touched
+     * @param error
+     * @param custom
+     */
     renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
         <div>
             <TextField hintText={label}
@@ -68,6 +77,7 @@ class FitbitLogin extends Component {
         )
     }
 }
+
 function validateEmail(email) {
     const allowedChars = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return allowedChars.test(email);
@@ -83,7 +93,10 @@ function validate(vals){
     return errors;
 }
 
-
+/**
+ * @param state
+ * @returns {{fitbit}}
+ */
 function mapStateToProps(state) {
     return {
         fitbit: state.fitbit.fitbit[0]
@@ -93,5 +106,4 @@ FitbitLogin = reduxForm({
     form: 'fitbitForm',
     validate
 })(FitbitLogin);
-
 export default connect(mapStateToProps, { get_fitbit, loadSpinner })(FitbitLogin);

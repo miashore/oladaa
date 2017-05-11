@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { geolocated } from 'react-geolocated';
-
 class Location extends Component {
-
     render() {
         console.log('this.props.coords', this.props.coords);
         return !this.props.isGeolocationAvailable
@@ -19,7 +17,6 @@ class Location extends Component {
                     : <div>Updating to your location&hellip; </div>;
     }
 }
-
 export default geolocated({
     positionOptions: {
         enableHighAccuracy: false,

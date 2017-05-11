@@ -10,13 +10,10 @@ const yourEventsIcon = <FontIcon className="material-icons">stars</FontIcon>;
 const viewAllEventsIcon = <FontIcon className="material-icons">view_list</FontIcon>;
 
 class Footer extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
+    state = {
             selectedIndex: null,
             open: false
-        };
-    }
+    };
 
     select = (index) => {
         this.setState({selectedIndex: index});
@@ -35,13 +32,15 @@ class Footer extends Component {
         });
     };
 
-    render() {
+    /**
+     * @returns {XML}
+     */
+    render(){
         const styles = {
             paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px', zIndex: '3'},
             bNav: {textAlign: 'center'},
             snackbar: {textAlign: 'center', marginBottom: '15vmin', zIndex: '-2'}
         };
-
         return (
             <Paper style={ styles.paper } zDepth={1}>
                 <BottomNavigation selectedIndex={ this.state.selectedIndex }>
@@ -67,5 +66,4 @@ class Footer extends Component {
         )
     }
 }
-
 export default Footer;

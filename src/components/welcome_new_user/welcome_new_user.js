@@ -3,8 +3,14 @@ import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router';
 
+/**
+ * @returns {XML}
+ * @constructor
+ */
 const WelcomeNote = () => {
-
+    /**
+     * @type {object}
+     */
     const styles = {
         paper: {width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
         h1: {'fontSize': '2em', textAlign: 'center'},
@@ -24,5 +30,4 @@ const WelcomeNote = () => {
         </Paper>
     )
 };
-
 export default WelcomeNote;

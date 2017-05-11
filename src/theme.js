@@ -14,7 +14,6 @@ import {
     blueGrey600
 } from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator'
-
 const muiTheme = getMuiTheme({
     palette: {
         primary1Color: blue500,
@@ -35,5 +34,4 @@ const muiTheme = getMuiTheme({
         }
     }
 });
-
 export default muiTheme;

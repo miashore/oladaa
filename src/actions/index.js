@@ -2,16 +2,22 @@ import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
 import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL, EXPAND_CAT } from './types';
-
-
+/**
+ * @type {AxiosInstance}
+ */
 const instance = axios.create({
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 });
-
-//const base_url = 'http://localhost:8888/server';
+/**
+ * @type {string}
+ */
 const base_url = './backend/server';
-
-
+/**
+ * @param username
+ * @param password
+ * @param email
+ * @returns {Function}
+ */
 export function register_user({ username, password, email }) {
     return function (dispatch) {
         instance.post(`${base_url}/register.php`, {username, password, email}).then(resp=> {
@@ -45,7 +51,11 @@ export function register_user({ username, password, email }) {
         });
     }
 }
-
+/**
+ * @param username
+ * @param password
+ * @returns {Function}
+ */
 export function login_user({ username, password}) {
     return function (dispatch) {
         instance.post(`${base_url}/login.php`, {username, password}).then(resp=>{
@@ -68,7 +78,9 @@ export function login_user({ username, password}) {
         });
     }
 }
-
+/**
+ * @returns {Function}
+ */
 export function logout_user(){
     return function(dispatch){
         instance.post(`${base_url}/logout.php`).then(resp=>{
@@ -81,30 +93,33 @@ export function logout_user(){
         })
     }
 }
-
+/**
+ * @type {string}
+ */
 const MU_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
-
+/**
+ * @param coords
+ * @returns {Function}
+ */
 export function fetchEvents(coords){
-    console.log('Coords: ', coords);
-
+//  Cords for lat and long expected:
     const lat = coords.latitude;
     const long = coords.longitude;
-
     return function(dispatch){
-
+        /**
+         * @param cookie
+         */
         function findCookie(cookie){
             const score = cookie.substr((cookie.indexOf("activity_score")+15),1);
             console.log(score);
             return score;
         }
         let activity_score;
-
         if(!isNaN(findCookie(document.cookie))){
             activity_score = parseInt(findCookie(document.cookie));
         }else{
             activity_score = false
         }
-
         axios.post(`${base_url}/get_interests.php`,{activity_score}).then(resp=>{
             if(typeof resp.data !== 'string') {
                 // +category_id+MU_KEY
@@ -118,7 +133,6 @@ export function fetchEvents(coords){
                         meetup_url+=resp.data[i].category_id+"%2C";
                     }
                 }
-                console.log(meetup_url);
                 $.ajax({
                     dataType: 'jsonp',
                     crossDomain: true,
@@ -142,15 +156,17 @@ export function fetchEvents(coords){
         });
     };
 }
-
 //  START: FOR DISPLAYING ALL THE EVENTS IN VIEW ALL
+/**
+ * @param cat_id
+ * @param coords
+ * @param catIndex
+ * @returns {Function}
+ */
 export function getEvent(cat_id, coords, catIndex){
-
     const lat = coords.latitude;
     const long = coords.longitude;
-
     let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=5&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
-
     return function (dispatch) {
         $.ajax({
             dataType: 'jsonp',
@@ -172,15 +188,20 @@ export function getEvent(cat_id, coords, catIndex){
     }
 }
 //  END: FOR DISPLAYING ALL THE EVENTS IN VIEW ALL
-
-
+/**
+ * @param location
+ * @returns {{type, payload: *}}
+ */
 export function storeUserLocation(location){
         return {
             type: SAVE_LOCATION,
             payload: location
         };
 }
-
+/**
+ * @param idArray
+ * @returns {Function}
+ */
 export function submit_interests(idArray) {
     return function () {
         if(idArray.length >= 3) {
@@ -193,7 +214,10 @@ export function submit_interests(idArray) {
         }
     }
 }
-
+/**
+ * @param coords
+ * @returns {Function}
+ */
 export function fetchWeather(coords){
     const WEATHER_KEY = 'cd2cd88ff4314ac744adc903f6f5a68d';
     const lat = coords.latitude;
@@ -216,17 +240,24 @@ export function fetchWeather(coords){
             }
         });
     }
-
 }
-
+/**
+ * @param interests
+ * @returns {{type, payload: *}}
+ */
 export function storeInterests(interests){
     return {
         type: STORE_INTERESTS,
         payload: interests
     }
 }
-
 //  START: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
+/**
+ * @param fatBurnMin
+ * @param cardioMin
+ * @param peakMin
+ * @returns {number}
+ */
 function getActivityScore(fatBurnMin, cardioMin, peakMin){
     const fatBurnScore = fatBurnMin*2;
     const cardioScore = cardioMin*3;
@@ -245,9 +276,14 @@ function getActivityScore(fatBurnMin, cardioMin, peakMin){
     }
     return activityScore
 }
-
+/**
+ * @type {string}
+ */
 const test_url = './backend/mock_data';
-
+/**
+ * @param email
+ * @returns {Function}
+ */
 export function get_fitbit({email}) {
     return function (dispatch) {
         instance.get(`${test_url}/mockData.json`, {email}).then(resp=>{
@@ -267,15 +303,21 @@ export function get_fitbit({email}) {
     }
 }
 //  END: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
-
+/**
+ * @param value
+ * @returns {{type, payload: *}}
+ */
 export function loadSpinner(value){
     return {
         type: LOAD_SPINNER,
         payload: value
     }
 }
-
 //  START: EXPANDER
+/**
+ * @param boo
+ * @returns {{type, payload: *}}
+ */
 export function expander(boo) {
     return{
         type: EXPAND_CAT,

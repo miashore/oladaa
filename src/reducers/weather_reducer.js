@@ -1,5 +1,7 @@
 import { FETCH_WEATHER } from '../actions/types';
-
+/**
+ * @type {{weather: {background: string, summary: string, timezone: string}}}
+ */
 const default_state = {
     weather: {
         background: '',
@@ -7,7 +9,11 @@ const default_state = {
         timezone: ''
     }
 };
-
+/**
+ * @param state
+ * @param action
+ * @returns {*}
+ */
 export default function(state = default_state, action){
     switch(action.type){
         case FETCH_WEATHER:

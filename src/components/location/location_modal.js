@@ -3,27 +3,22 @@ import Dialog from 'material-ui/Dialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 import Location from './location';
-
 class LocationModal extends Component {
     state = {
         open: false,
     };
-
     handleOpen = () => {
         this.setState({open: true});
     };
-
     handleClose = () => {
         this.setState({open: false});
     };
-
     render() {
         const styles = {
             button: {
                 marginRight: '2%'
             }
         };
-
         const actions = [
             <RaisedButton
                 label="Cancel"
@@ -38,8 +33,6 @@ class LocationModal extends Component {
                 type="submit"
             />,
         ];
-
-
         return (
             <div>
                 <MenuItem onTouchTap={this.handleOpen}>Update Location</MenuItem>
@@ -54,5 +47,4 @@ class LocationModal extends Component {
         );
     }
 }
-
 export default LocationModal;

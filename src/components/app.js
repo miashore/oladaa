@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './app.css';
 import Header from './header/header';
 import Footer from './footer/footer';
 import { Link } from 'react-router';
-
 const App = (props) => (
     <div>
         <Header />
         {props.children}
         <Footer />
-
         {/*Remove the below later after testing is done. Used for navigation in localhost:8888*/}
         <h3>Navigation for Testing</h3>
+            <br/>
+            <Link to="/teapot">Teapot</Link>
+            <br/>
         <Link to="/register">Register</Link>
         <br/>
         <Link to="/login">Sign In</Link>
@@ -33,5 +34,4 @@ const App = (props) => (
         <Link to="/activity_note">Activity Note</Link>
     </div>
 );
-
 export default App;
