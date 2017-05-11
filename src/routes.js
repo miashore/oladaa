@@ -20,7 +20,7 @@ import ViewAllEventCard from './components/event_card/view_all_event_card';
 export default  (
     <div>
     <Route path="/" component={ App }>
-            <Route path="home" component={ (Home) }/>
+            <Route path="home" component={ require_auth(Home) }/>
             <Route path="about" component={ require_auth(About) }/>
             <Route path="blog" component={ require_auth(Blog) }/>
 
