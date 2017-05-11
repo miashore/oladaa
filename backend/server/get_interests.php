@@ -7,8 +7,8 @@ require('../connect.php');
 
 //Catch the json object sent from our axios call and convert it into php readable code.
 //$userStats = json_decode(file_get_contents('php://input'), true);
-echo($_SESSION["test"]);
 //If user stats contains information, then process it.
+echo($_SESSION["activity_score"]);
 if(!empty($_SESSION)) {
 
     //Get user id from the user session variable.
