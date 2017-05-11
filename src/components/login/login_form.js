@@ -25,16 +25,16 @@ class LoginForm extends Component {
         const { handleSubmit } = this.props;
 
         const styles = {
-            register: { width: '100%', margin: '2% auto' },
-            form: { width: '100%', margin: '0 auto' },
+            register: { width: '100%', margin: '1% auto' },
+            form: { width: '70vmin', margin: '0 auto' },
             signIn: { width: '100%', margin: '2% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '80vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' }
+            body: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' }
         };
         return (
             <Paper style={styles.body} zDepth={4}>
-                <h1 style={styles.centeredText}>Log In</h1>
+                <h2 style={styles.centeredText}>Sign In</h2>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <div>
                         <Field name="username"

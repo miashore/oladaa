@@ -40,7 +40,8 @@ export default  (
             <Route path="login" component={ LoginForm }/>
             <Route path="register" component={ RegisterForm }/>
             <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
-            <Route path="select_interests" component={ require_auth(SelectInterests) }/>
+            {/*<Route path="select_interests" component={ require_auth(SelectInterests) }/>*/}
+            <Route path="select_interests" component={ SelectInterests }/>
 
     </div>
 
