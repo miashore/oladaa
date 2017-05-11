@@ -8,3 +8,4 @@ export const STORE_INTERESTS = 'STORE_INTERESTS';
 export const FETCH_FITBIT = 'FETCH_FITBIT';
 export const LOAD_SPINNER = 'LOAD_SPINNER';
 export const VIEW_ALL = 'VIEW_ALL';
+export const EXPAND_CAT = 'EXPAND_CAT';

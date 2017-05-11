@@ -7,7 +7,13 @@ import { getEvent, storeUserLocation } from '../../actions/index';
 
 class ViewAllEventCard extends Component {
 
+    componentWillMount(){
+        console.log('COMPONENT WILL MOUNT!!!!!!!!!!');
+        this.props.getEvent(this.props.eventId, this.props.location, this.props.catIndex);
+    }
+
     componentWillReceiveProps(nextProps){
+        console.log('CWRP!!!!!!!!!!!');
         const coords = nextProps.coords;
         if(coords && this.props.coords !== coords && coords !== undefined && this.props.coords !== undefined){
             this.props.storeUserLocation(coords);
@@ -15,18 +21,25 @@ class ViewAllEventCard extends Component {
     }
 
     getEvent(){
-        console.log('TESTING GET EVENT:');
         this.props.getEvent(this.props.location);
     }
 
     render () {
-        const events = this.props.viewall;
+        console.log('Render events props:', this.props.viewall);
+
+        const events = this.props.viewall[this.props.catIndex];
+
+        console.log('EVENTS!!!!!!!!', events);
+
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
                 console.log('Event ' + index + ' is:', event);
+                const date = new Date(event.time).toDateString();
+                const time = new Date(event.time).toLocaleTimeString();
                 return (
                     <Card style={{width: '75vw', margin: '0 auto 1%'}} key={index}>
                         <CardTitle actAsExpander={true}
+                                   subtitle={date + ' @ ' + time}
                                    showExpandableButton={true}
                                    title={event.name}
                                    style={{zIndex: '0'}}/>
@@ -61,7 +74,7 @@ class ViewAllEventCard extends Component {
 function mapStateToProps(state) {
     console.log('View All Card Event State: ', state);
     return {
-        viewall: state.events.viewall[0]
+        viewall: state.events.viewall
     }
 }
 

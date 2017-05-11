@@ -1,7 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL, EXPAND_CAT } from './types';
 
 
 const instance = axios.create({
@@ -144,12 +144,12 @@ export function fetchEvents(coords){
 }
 
 //  START: FOR DISPLAYING ALL THE EVENTS IN VIEW ALL
-export function getEvent(cat_id, coords){
+export function getEvent(cat_id, coords, catIndex){
 
     const lat = coords.latitude;
     const long = coords.longitude;
 
-    let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
+    let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=5&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
 
     return function (dispatch) {
         $.ajax({
@@ -161,6 +161,7 @@ export function getEvent(cat_id, coords){
                 console.log('VIEW ALL SUCCESS RESPONSE: ', response);
                 dispatch({
                     type: VIEW_ALL,
+                    catIndex,
                     payload: response.results
                 });
             },
@@ -274,3 +275,11 @@ export function loadSpinner(value){
     }
 }
 
+//  START: EXPANDER
+export function expander(boo) {
+    return{
+        type: EXPAND_CAT,
+        payload: boo
+    }
+}
+//  END: EXPANDER

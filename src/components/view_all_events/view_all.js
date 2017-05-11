@@ -2,30 +2,29 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
-import { getEvent, storeUserLocation } from '../../actions/index';
+import { getEvent, storeUserLocation, expander } from '../../actions/index';
 import ViewAllEventCard from '../event_card/view_all_event_card';
 
 class ViewAllEventsList extends Component {
 
-    getEvent(id){
-        console.log('TESTING GET EVENT ID:', id);
-        this.props.getEvent(id, this.props.location);
+    getEvent(id, index){
+        this.props.getEvent(id, this.props.location, index);
     }
 
     renderCategories(){
-        const category_id_array = [32,5,23,14,21,26,31,27,1,15,29,20];
+        console.log(this.props);
         const categories = this.props.categories;
         if(categories !== undefined){
-            const list_categories = categories.map((event, value) => {
+            const list_categories = categories.map((event, index) => {
 
                 return (
-                    <Card key={event.id} value={value} onClick={() => this.getEvent(event.id)}>
+                    <Card key={event.id} value={index} onTouchTap={() => this.getEvent(event.id, index)}>
                         <CardHeader actAsExpander={true}
                                     showExpandableButton={true}
                                     title={event.name}
                         />
                         <CardText expandable={true}>
-                            <ViewAllEventCard />
+                            <ViewAllEventCard catIndex={index} eventId={event.id} location={this.props.location} />
                         </CardText>
                     </Card>
                 );
@@ -48,8 +47,9 @@ function mapStateToProps(state){
     return {
         location: state.location.coords,
         events: state.events.all[0],
-        categories: state.events.categories
+        categories: state.events.categories,
+        expand: state.events.expand
     }
 }
 
-export default connect(mapStateToProps, { getEvent, storeUserLocation })(ViewAllEventsList);
+export default connect(mapStateToProps, { getEvent, storeUserLocation, expander })(ViewAllEventsList);
