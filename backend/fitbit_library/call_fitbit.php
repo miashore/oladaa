@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Access-Control-Allow-Origin: *");
 use djchen\OAuth2\Client\Provider\Fitbit;
 require_once __DIR__ . '/vendor/autoload.php';
@@ -9,8 +10,6 @@ $provider = new Fitbit([
 'clientSecret'      => $my_client_secret_from_fitbit,
 'redirectUri'       => $my_callback_url
 ]);
-
-session_start();
 
 
 if (!isset($_GET['code'])) {
