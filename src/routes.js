@@ -20,28 +20,28 @@ import ViewAllEventCard from './components/event_card/view_all_event_card';
 export default  (
     <div>
     <Route path="/" component={ App }>
-            <Route path="home" component={ Home }/>
-            <Route path="about" component={ About }/>
-            <Route path="blog" component={ Blog }/>
+            <Route path="home" component={ require_auth(Home) }/>
+            <Route path="about" component={ require_auth(About) }/>
+            <Route path="blog" component={ require_auth(Blog) }/>
 
         {/*Need to reroute, currently added to app in order to navigate easier. The below should not have a header and footer*/}
             {/*<Route path="select_interests" component={ SelectInterests }/>*/}
             {/* Commented out for Testing */}
             {/*<Route path="view_all" component={ require_auth(ViewAllList) }/>*/}
             {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
-            <Route path="view_all" component={ ViewAllEventsList }/>
-            <Route path="view_all_event_card" component={ ViewAllEventCard }/>
-            <Route path="recommended_events" components={ RecommendedEventList }/>
+            <Route path="view_all" component={ require_auth(ViewAllEventsList) }/>
+            <Route path="view_all_event_card" component={ require_auth(ViewAllEventCard) }/>
+            <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
 
-            <Route path="welcome_user" components={ WelcomeNote }/>
-            <Route path="event_card" component={ EventCard } />
-            <Route path="activity_note" component={ ActivityNote } />
+            <Route path="activity_note" component={ require_auth(ActivityNote) } />
+            <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
+            <Route path="event_card" component={ require_auth(EventCard) } />
     </Route>
             <Route path="login" component={ LoginForm }/>
-
             <Route path="register" component={ RegisterForm }/>
-            <Route path="fitbit_login" component={ FitbitLogin } />
-            <Route path="select_interests" component={ SelectInterests }/>
+            <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
+            <Route path="select_interests" component={ require_auth(SelectInterests) }/>
+
     </div>
 
 );
