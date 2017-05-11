@@ -53,7 +53,7 @@ class LoginForm extends Component {
 
                         />
                     </div>
-                    <RaisedButton style={styles.signIn} type="submit" label="Sign In" secondary={true} />
+                    <RaisedButton style={styles.signIn} type="submit" label="Sign In" primary={true} />
 
                     <h3 style={styles.centeredText}>Don't Have an Account?</h3>
                     <RaisedButton label="Register" style={styles.register} containerElement={<Link to="/register"/>} secondary={true} />
