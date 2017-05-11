@@ -1,7 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Link } from 'react-router';
 
 /**
  * @returns {XML}
@@ -23,7 +22,7 @@ const WelcomeNote = () => {
                 <h1 style={styles.h1}>Welcome!</h1>
                 <p style={styles.p}>With your interests we will find the events and activities that you'll actually enjoy.</p>
                 <p style={styles.p}>Next you'll log in to your Fitbit so we can combine your interests with your activity level. </p>
-                <a href="../../../backend/fitbit_library/call_fitbit.php"><RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect to FitBit"
+                <a href="../../../backend/fitbit_library/call_fitbit.php"><RaisedButton style={styles.button} label="Connect to FitBit"
                                                                                         secondary={true}/></a>
 
             </div>

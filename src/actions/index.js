@@ -2,7 +2,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
 
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, LOAD_SPINNER, VIEW_ALL } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, LOAD_SPINNER, VIEW_ALL } from './types';
 /**
  * @type {AxiosInstance}
  */
@@ -233,22 +233,7 @@ export function fetchWeather(coords){
         });
     }
 }
-// const test_url = './backend/fitbit_library';
-//
-// export function get_fitbit() {
-//     return function (dispatch) {
-//         instance.get(`${test_url}/call_fitbit.php`).then(resp=>{
-//             const user_state = resp.data;
-//             console.log('User state: ', user_state);
-//             dispatch({
-//                 type: FETCH_FITBIT,
-//                 payload: resp
-//             });
-//         }).catch(err=>{
-//             console.log(err);
-//         });
-//     }
-// }
+
 //  END: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
 /**
  * @param value

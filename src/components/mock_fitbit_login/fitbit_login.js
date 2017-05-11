@@ -5,15 +5,14 @@ import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
-import { get_fitbit, loadSpinner } from '../../actions/index';
+import { loadSpinner } from '../../actions/index';
 import FitbitHeader from './fitbit_header';
 
 class FitbitLogin extends Component {
     /**
-     * @param vals
+     * @param
      */
-    setupSpinner(vals) {
-        // this.props.get_fitbit(vals);
+    setupSpinner() {
         browserHistory.push('/activity_note');
         this.props.loadSpinner(true);
     }
