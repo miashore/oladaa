@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { login_user } from '../../actions/index'
 import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
+
 class LoginForm extends Component {
     /**
      * @param vals
@@ -59,7 +60,7 @@ class LoginForm extends Component {
                                style={styles.fields}
                         />
                     </div>
-                    <RaisedButton style={styles.signIn} type="submit" label="Sign In" secondary={true} />
+                    <RaisedButton style={styles.signIn} type="submit" label="Sign In" primary={true} />
                     <h3 style={styles.centeredText}>Don't Have an Account?</h3>
                     <RaisedButton label="Register" style={styles.register} containerElement={<Link to="/register"/>} secondary={true} />
                 </form>

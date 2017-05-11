@@ -20,24 +20,26 @@ class Header extends Component {
     handleClose = () => this.setState({open: false});
     render() {
         const styles = {
-            bar: {width: '100%', textAlign: 'center'},
+            bar: {textAlign: 'center'},
+            logo: {marginTop: '5px'}
         };
         return (
             <div>
-                <AppBar title="oladaa"
+                <AppBar
                         onLeftIconButtonTouchTap={this.handleToggle}
                         style={styles.bar}
+                        title={<img style={styles.logo} src="../../src/components/imgs/oladaa.png" />}
                 />
                 <Drawer
                     docked={false}
                     width={200}
                     open={this.state.open}
+                    style={styles.bar}
                     onRequestChange={(open) => this.setState({open})}>
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/home"/>}>Home</MenuItem>
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/about"/>}>About Us</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/blog"/>}>Blog</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose}><LocationModal/></MenuItem>
-                    {/*<MenuItem><LocationModal /></MenuItem>*/}
+                    {/*<MenuItem onTouchTap={this.handleClose}><LocationModal/></MenuItem>*/}
+                    <MenuItem><LocationModal /></MenuItem>
                     <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="/"/>}>Log Out</MenuItem>
                 </Drawer>
             </div>

@@ -9,13 +9,18 @@ class EventCard extends Component {
      */
     render () {
         const events = this.props.all;
+
+        const styles = {
+            card: {width: '75vw', margin: '0 auto 1%'}
+        };
+
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
                 console.log('Event ' + index + ' is:', event);
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
                 return (
-                    <Card style={{width: '75vw', margin: '0 auto 1%'}} key={index}>
+                    <Card style={styles.card} key={index}>
                         <CardTitle actAsExpander={true}
                                    showExpandableButton={true}
                                    subtitle={date + ' @ ' + time}
@@ -37,7 +42,7 @@ class EventCard extends Component {
             )
         }
         else {
-            return (<Card style={{width: '75vw', margin: '0 auto 1%'}}>
+            return (<Card style={styles.card}>
                 <CardTitle actAsExpander={true}
                            showExpandableButton={true}
                            title="Loading..."
