@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { register_user } from '../../actions/index';
 import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
-import { blue700 } from 'material-ui/styles/colors';
 
 class RegisterForm extends Component {
     submitForm(vals) {

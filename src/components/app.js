@@ -22,8 +22,6 @@ const App = (props) => (
         <br/>
         <Link to="/home">Home</Link>
         <br/>
-        <Link to="/blog">Blog</Link>
-        <br/>
         <Link to="/view_all">View All</Link>
         <br/>
         <Link to="/recommended_events">Recommended Events</Link>

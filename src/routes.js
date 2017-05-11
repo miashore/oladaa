@@ -4,7 +4,6 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/app';
 import Home from './components/home/home'
 import About from './components/aboutus/about_us';
-import Blog from './components/blog/blog';
 import SelectInterests from './components/select_interests/select_interests_form';
 import RegisterForm from './components/register_new_user/register_new_user';
 import LoginForm from './components/login/login_form';
@@ -20,9 +19,9 @@ import ViewAllEventCard from './components/event_card/view_all_event_card';
 export default  (
     <div>
     <Route path="/" component={ App }>
-            <Route path="home" component={ require_auth(Home) }/>
+            {/*<Route path="home" component={ require_auth(Home) }/>*/}
+            <Route path="home" component={ Home }/>
             <Route path="about" component={ require_auth(About) }/>
-            <Route path="blog" component={ require_auth(Blog) }/>
 
         {/*Need to reroute, currently added to app in order to navigate easier. The below should not have a header and footer*/}
             {/*<Route path="select_interests" component={ SelectInterests }/>*/}

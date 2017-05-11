@@ -27,9 +27,10 @@ class FitbitLogin extends Component {
     );
     render(){
         const styles = {
-            body: { margin: '15vh auto 0', width: '75vw', padding: '10%' },
-            form: { margin: '0 auto' },
-            button: { marginTop: '5%' },
+            body: { width: '90vw', margin:'20% auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
+            form: { width: '75vw', margin: '0 auto' },
+            button: { width: '50vw', margin: '5% 0 10% 0' },
+            fields: { width: '100%'},
             h1: { textAlign: 'center', color: '#444' }
         };
         const { handleSubmit } = this.props;
@@ -37,26 +38,29 @@ class FitbitLogin extends Component {
             <div>
                 <FitbitHeader />
                 <Paper style={styles.body}>
-                    <h1 style={styles.h1}>Login</h1>
+                    <h1 style={styles.h1}>Log in</h1>
                     <form style={styles.form}>
                         <div>
                             <Field name="email"
                                    component={this.renderTextField}
                                    label="Email"
                                    type="text"
+                                   style={styles.fields}
                             />
                             <Field name="password"
                                    component={this.renderTextField}
                                    type="password"
                                    label="Password"
+                                   style={styles.fields}
                             />
                         </div>
                         <RaisedButton onClick={ handleSubmit((value) => {this.get_fitbit_data(value)}) }
                                       style={styles.button}
-                                      label="Login"
-                                      primary={true}
+                                      label="Log in"
+                                      secondary={true}
                                       fullWidth={true}
                                       type="submit"
+
                         />
                     </form>
                 </Paper>
@@ -64,13 +68,30 @@ class FitbitLogin extends Component {
         )
     }
 }
+function validateEmail(email) {
+    const allowedChars = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return allowedChars.test(email);
+}
+function validate(vals){
+    const errors = {};
+    if(!validateEmail(vals.email)){
+        errors.email = 'Please enter a valid Email Address';
+    }
+    if(!vals.password) {
+        errors.password = "Please enter a Password";
+    }
+    return errors;
+}
+
+
 function mapStateToProps(state) {
     return {
         fitbit: state.fitbit.fitbit[0]
     }
 }
 FitbitLogin = reduxForm({
-    form: 'fitbitForm'
+    form: 'fitbitForm',
+    validate
 })(FitbitLogin);
 
 export default connect(mapStateToProps, { get_fitbit, loadSpinner })(FitbitLogin);
