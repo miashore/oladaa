@@ -5,6 +5,8 @@ import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { register_user } from '../../actions/index';
 import { Link } from 'react-router';
+import Paper from 'material-ui/Paper';
+import { blue700 } from 'material-ui/styles/colors';
 
 class RegisterForm extends Component {
     submitForm(vals) {
@@ -32,10 +34,10 @@ class RegisterForm extends Component {
             signIn: { width: '100%', margin: '2% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '75vw', margin:' 8vw auto 0' }
+            body: { width: '90vw', margin:' 8vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'}
         };
         return (
-            <div style={styles.body}>
+            <Paper style={styles.body} zDepth={4}>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <h2 style={styles.centeredText}>Register a New Account</h2>
                     <div>
@@ -75,7 +77,7 @@ class RegisterForm extends Component {
                     <h3 style={styles.centeredText}>Already have an account?</h3>
                     <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
                 </form>
-            </div>
+            </Paper>
         )
     }
 }

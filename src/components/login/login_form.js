@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import { login_user } from '../../actions/index'
 import { Link } from 'react-router';
+import Paper from 'material-ui/Paper';
 
 class LoginForm extends Component {
     submitForm(vals) {
@@ -21,16 +22,26 @@ class LoginForm extends Component {
         />
     );
     render() {
-        const button_style = { marginLeft: '2%', marginRight: '2%', marginTop: '1%'};
         const { handleSubmit } = this.props;
+
+        const styles = {
+            register: { width: '100%', margin: '2% auto' },
+            form: { width: '100%', margin: '0 auto' },
+            signIn: { width: '100%', margin: '2% auto' },
+            fields: { width: '100%' },
+            centeredText: { textAlign: 'center', color: '#444' },
+            body: { width: '80vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' }
+        };
         return (
-            <div>
-                <form onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
-                    <div className="form-group">
+            <Paper style={styles.body} zDepth={4}>
+                <h2 style={styles.centeredText}>Log In</h2>
+                <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
+                    <div>
                         <Field name="username"
                                component={this.renderTextField}
                                type="text"
                                label="Username"
+                               style={styles.fields}
                         />
                     </div>
                     <div className="form-group">
@@ -38,12 +49,16 @@ class LoginForm extends Component {
                                component={this.renderTextField}
                                type="password"
                                label="Password"
+                               style={styles.fields}
+
                         />
                     </div>
-                    <RaisedButton style={button_style} type="submit" label="Sign In" primary={true} />
-                    <RaisedButton label="Register" containerElement={<Link to="/register"/>} secondary={true} />
+                    <RaisedButton style={styles.signIn} type="submit" label="Sign In" secondary={true} />
+
+                    <h3 style={styles.centeredText}>Don't Have an Account?</h3>
+                    <RaisedButton label="Register" style={styles.register} containerElement={<Link to="/register"/>} secondary={true} />
                 </form>
-            </div>
+            </Paper>
         )
     }
 }
@@ -51,4 +66,4 @@ LoginForm = reduxForm({
     form: 'loginForm'
 })(LoginForm);
 
-export default connect(null, { login_user: login_user })(LoginForm);
+export default connect(null, { login_user })(LoginForm);
