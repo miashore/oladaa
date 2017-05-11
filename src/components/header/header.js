@@ -25,7 +25,7 @@ class Header extends Component {
 
     render() {
         const styles = {
-            bar: {width: '100%', textAlign: 'center'},
+            bar: {textAlign: 'center'},
             logo: {marginTop: '5px'}
         };
 

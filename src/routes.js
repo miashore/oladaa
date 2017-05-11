@@ -30,7 +30,8 @@ export default  (
             {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
             <Route path="view_all" component={ require_auth(ViewAllEventsList) }/>
             <Route path="view_all_event_card" component={ require_auth(ViewAllEventCard) }/>
-            <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
+            {/*<Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>*/}
+            <Route path="recommended_events" components={ RecommendedEventList }/>
 
             <Route path="activity_note" component={ require_auth(ActivityNote) } />
             {/*<Route path="welcome_user" components={ require_auth(WelcomeNote) }/>*/}

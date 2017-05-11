@@ -18,7 +18,7 @@ const WelcomeNote = () => {
                 <p style={styles.p}>With your interests we will find the events and activities that you'll actually enjoy.</p>
                 <p style={styles.p}>Next you'll log in to your Fitbit so we can combine your interests with your activity level. </p>
 
-                <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect with FitBit"
+                <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect to FitBit"
                               secondary={true}/>
             </div>
         </Paper>
