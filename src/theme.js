@@ -1,14 +1,13 @@
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
-    red700,
-    red900,
-    redA200,
     blue500,
-    indigoA700,
+    blue800,
+    blue300,
+    teal400,
+    teal700,
     grey300,
-    indigo900,
-    blueGrey50,
+    grey50,
     white,
     darkBlack,
     teal50,
@@ -18,15 +17,15 @@ import { fade } from 'material-ui/utils/colorManipulator'
 
 const muiTheme = getMuiTheme({
     palette: {
-        primary1Color: red700,
-        primary2Color: red900,
-        primary3Color: redA200,
-        accent1Color: blue500,
-        accent2Color: indigoA700,
-        accent3Color: indigo900,
+        primary1Color: blue500,
+        primary2Color: blue800,
+        primary3Color: blue300,
+        accent1Color: teal400,
+        accent2Color: teal700,
+        accent3Color: grey300,
         textColor: blueGrey600,
         alternateTextColor: white,
-        canvasColor: blueGrey50,
+        canvasColor: grey50,
         borderColor: grey300,
         disabledColor: fade( darkBlack, 0.3 ),
         pickerHeaderColor: teal50,

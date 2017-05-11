@@ -39,7 +39,7 @@ class RegisterForm extends Component {
         return (
             <Paper style={styles.body} zDepth={4}>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
-                    <h2 style={styles.centeredText}>Register a New Account</h2>
+                    <h1 style={styles.centeredText}>Register a New Account</h1>
                     <div>
                         <Field name="username"
                                component={this.renderTextField}
@@ -72,7 +72,7 @@ class RegisterForm extends Component {
                                style={styles.fields}
                         />
                     </div>
-                    <RaisedButton style={styles.register} type="submit" label="Register" secondary={true} />
+                    <RaisedButton style={styles.register} type="submit" label="Register" primary={true} />
 
                     <h3 style={styles.centeredText}>Already have an account?</h3>
                     <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />

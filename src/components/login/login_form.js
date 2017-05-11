@@ -34,7 +34,7 @@ class LoginForm extends Component {
         };
         return (
             <Paper style={styles.body} zDepth={4}>
-                <h2 style={styles.centeredText}>Log In</h2>
+                <h1 style={styles.centeredText}>Log In</h1>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <div>
                         <Field name="username"
