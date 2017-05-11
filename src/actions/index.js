@@ -89,7 +89,7 @@ export function fetchEvents(coords){
 
     const lat = coords.latitude;
     const long = coords.longitude;
-    instance.get('backend/fitbit_library/call_fitbit.php').then(resp=>{
+    instance.get('./backend/fitbit_library/call_fitbit.php').then(resp=>{
         console.log("Please be an activity score: ", resp);
     }).catch(err=>{
         console.log("This is not working!!!: ", err);
