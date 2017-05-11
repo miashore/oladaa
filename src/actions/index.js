@@ -92,9 +92,6 @@ export function fetchEvents(coords){
 
     return function(dispatch){
 
-        axios.get(`${base_url}/test_session.php`).then(resp=>{
-            console.log("response from session test: ", resp);
-        });
 
         console.log("function run");
         instance.post(`${base_url}/get_interests.php`).then(resp=>{
