@@ -1,14 +1,13 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL } from './types';
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, LOAD_SPINNER, VIEW_ALL, EXPAND_CAT } from './types';
 
 
 const instance = axios.create({
     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 });
 
-//const base_url = 'http://localhost:8888/server';
 const base_url = './backend/server';
 
 
@@ -134,12 +133,12 @@ export function fetchEvents(coords){
 }
 
 //  START: FOR DISPLAYING ALL THE EVENTS IN VIEW ALL
-export function getEvent(cat_id, coords){
+export function getEvent(cat_id, coords, catIndex){
 
     const lat = coords.latitude;
     const long = coords.longitude;
 
-    let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=50&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
+    let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=5&radius=10&lat='+lat+'&desc=False&status=upcoming&category='+cat_id+MU_KEY;
 
     return function (dispatch) {
         $.ajax({
@@ -151,6 +150,7 @@ export function getEvent(cat_id, coords){
                 console.log('VIEW ALL SUCCESS RESPONSE: ', response);
                 dispatch({
                     type: VIEW_ALL,
+                    catIndex,
                     payload: response.results
                 });
             },
@@ -208,35 +208,7 @@ export function fetchWeather(coords){
 
 }
 
-export function storeInterests(interests){
-    return {
-        type: STORE_INTERESTS,
-        payload: interests
-    }
-}
-
-//  START: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
-// function getActivityScore(fatBurnMin, cardioMin, peakMin){
-//     const fatBurnScore = fatBurnMin*2;
-//     const cardioScore = cardioMin*3;
-//     const peakScore = peakMin*4;
-//     const totalScore = (fatBurnScore+cardioScore+peakScore);
-//     const totalMin = 60+(fatBurnMin+cardioMin+peakMin);
-//     let activityScore = totalScore/totalMin;
-//     if (activityScore >= 0 && activityScore < 2){
-//         activityScore = Math.round(activityScore);
-//     }
-//     else if(activityScore > 2){
-//         activityScore = 2;
-//     }
-//     else{
-//         activityScore = 'Invalid Inputs'
-//     }
-//     return activityScore
-// }
-
 const test_url = './backend/fitbit_library';
-// const email = "braxton@beativities.com";
 
 export function get_fitbit() {
     return function (dispatch) {
@@ -247,10 +219,6 @@ export function get_fitbit() {
                 type: FETCH_FITBIT,
                 payload: resp
             });
-            // const fatBurnMin = parseInt(user_state.fatBurn);
-            // const cardioMin = parseInt(user_state.cardio);
-            // const peakMin = parseInt(user_state.peak);
-            // document.cookie = "activity_score="+getActivityScore(fatBurnMin, cardioMin, peakMin);
         }).catch(err=>{
             console.log(err);
         });
@@ -265,3 +233,11 @@ export function loadSpinner(value){
     }
 }
 
+//  START: EXPANDER
+export function expander(boo) {
+    return{
+        type: EXPAND_CAT,
+        payload: boo
+    }
+}
+//  END: EXPANDER
