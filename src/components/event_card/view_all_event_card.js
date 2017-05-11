@@ -8,12 +8,10 @@ import { getEvent, storeUserLocation } from '../../actions/index';
 class ViewAllEventCard extends Component {
 
     componentWillMount(){
-        console.log('COMPONENT WILL MOUNT!!!!!!!!!!');
         this.props.getEvent(this.props.eventId, this.props.location, this.props.catIndex);
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('CWRP!!!!!!!!!!!');
         const coords = nextProps.coords;
         if(coords && this.props.coords !== coords && coords !== undefined && this.props.coords !== undefined){
             this.props.storeUserLocation(coords);
@@ -25,12 +23,7 @@ class ViewAllEventCard extends Component {
     }
 
     render () {
-        console.log('Render events props:', this.props.viewall);
-
         const events = this.props.viewall[this.props.catIndex];
-
-        console.log('EVENTS!!!!!!!!', events);
-
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
                 console.log('Event ' + index + ' is:', event);
