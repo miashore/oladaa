@@ -42,10 +42,14 @@ class RegisterForm extends Component {
             signIn: { width: '100%', margin: '1% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'}
+            body: { width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
+            logo: { textAlign: 'center' }
         };
         return (
             <Paper style={styles.body} zDepth={4}>
+                <p style={styles.logo}>
+                    <img src="../../src/components/imgs/oladaablue.png" />
+                </p>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <h2 style={styles.centeredText}>Register a New Account</h2>
                     <div>

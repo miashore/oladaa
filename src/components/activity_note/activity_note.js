@@ -27,7 +27,7 @@ class ActivityNote extends Component {
             h3: {color: '#9CCC65', 'textAlign': 'center'},
             p: {textAlign: 'center', width: '75%', margin: '0 auto'},
             button: { zIndex: 0, width: '100%', margin: '3% auto' },
-            spinner: { width: '40vw', margin: '0 auto' },
+            spinner: { textAlign: 'center' },
             body: {width: '50vw', margin: '0 auto' }
         };
         if(!this.props.ready){
@@ -37,9 +37,9 @@ class ActivityNote extends Component {
                         <h1 style={styles.h1}>Hey there!</h1>
                         <h3 style={styles.h3}>You've successfully connected to Fitbit!</h3>
                         <p style={styles.p}> Based on your activity level from yesterday and your interests we've found events you may like. Come back tomorrow to see new ones!</p>
-                        <div style={styles.spinner}>
+                        <p style={styles.spinner}>
                             <CircularProgress />
-                        </div>
+                        </p>
                     </div>
                 </Paper>
             );
@@ -57,7 +57,7 @@ class ActivityNote extends Component {
     }
 }
 function mapStateToProps(state){
-    console.log('State: ', state);
+    console.log('Activity Note State: ', state);
     return{
         location: state.location.coords,
         ready: state.events.ready

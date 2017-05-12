@@ -38,7 +38,7 @@ class Footer extends Component {
         const styles = {
             paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px', zIndex: '3'},
             bNav: {textAlign: 'center'},
-            snackbar: {textAlign: 'center', marginBottom: '15vmin', zIndex: '-2'}
+            snackbar: {textAlign: 'center', marginBottom: '15vmin', zIndex: '-2', width: '100vw'}
         };
         return (
             <Paper style={ styles.paper } zDepth={1}>

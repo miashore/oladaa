@@ -1,15 +1,17 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+
 const About = () => {
     const styles = {
-        paper: {position: 'relative', height: '90%', width: '80%'},
+        paper: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
         heading: {marginLeft: '1%', textAlign: 'center', paddingTop: '1%'},
         us_pic: {height: '60%', width: '60%', marginLeft: '20%'},
         heading4: {marginLeft: '2%', paddingBottom: '2%'},
         para: {textAlign: 'center', fontSize: '13px'}
     };
+
     return (
-        <Paper>
+        <Paper zDepth={3} style={styles.paper}>
             <div>
                 <h1 style={styles.heading}>About Us</h1>
                 <img style={styles.us_pic} src="../../src/components/imgs/beats_peeps.jpg"/>

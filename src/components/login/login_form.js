@@ -37,11 +37,14 @@ class LoginForm extends Component {
             signIn: { width: '100%', margin: '2% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' }
+            body: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
+            logo: { textAlign: 'center' }
         };
         return (
             <Paper style={styles.body} zDepth={4}>
-                <img src="../../src/components/imgs/oladaa.png" />
+                <p style={styles.logo}>
+                    <img src="../../src/components/imgs/oladaablue.png" />
+                </p>
                 <h2 style={styles.centeredText}>Sign In</h2>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <div>

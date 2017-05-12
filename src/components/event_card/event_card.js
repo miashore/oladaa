@@ -14,7 +14,7 @@ class EventCard extends Component {
             card: {width: '75vw', margin: '0 auto 3%'},
             button: {marginTop: '4%'},
             text: {letterSpacing: '1px', fontSize: '.9em', padding: '0 16px'},
-            title: {zIndex: '0', fontSize: '1em', lineHeight: '1.1em', textAlign: 'center'}
+            title: {zIndex: '0', fontSize: '1.2em', lineHeight: '1.1em', textAlign: 'center'}
         };
 
         if(events !== undefined) {
@@ -27,7 +27,8 @@ class EventCard extends Component {
                                    showExpandableButton={true}
                                    subtitle={date + ' @ ' + time}
                                    title={event.name}
-                                   style={styles.title}/>
+                                   style={styles.title}
+                                   />
                         <CardText style={styles.text} expandable={true}>
                             {event.description}
                             <CardActions>
