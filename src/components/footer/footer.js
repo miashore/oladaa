@@ -31,7 +31,6 @@ class Footer extends Component {
             open: true
         });
     };
-
     /**
      * @returns {XML}
      */
