@@ -57,7 +57,6 @@ class ActivityNote extends Component {
     }
 }
 function mapStateToProps(state){
-    console.log('Activity Note State: ', state);
     return{
         location: state.location.coords,
         ready: state.events.ready

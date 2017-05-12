@@ -95,7 +95,6 @@ function validate(vals){
  * @returns {{fitbit}}
  */
 function mapStateToProps(state) {
-    console.log('Fitbit Login State: ', state);
     return {
         fitbit: state.fitbit.fitbit[0]
     }

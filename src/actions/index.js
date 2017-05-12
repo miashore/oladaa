@@ -25,25 +25,22 @@ export function register_user({ username, password, email }) {
             dispatch({
                 type: AUTH_USER
             });
-            console.log('Our response from register.php ', resp.data);
             if(resp.data["error"]){
-                console.log("registration failed")
+               //Create a client-side response for the user based on failed registration
             }
             else {
                 instance.post(`${base_url}/login.php`, {username, password}).then(resp => {
-                    console.log('Our response from login.php ', resp.data);
                     if (resp.data === 0) {
-                        console.log('Invalid Username/Password');
+                        //Create a client-side response for the user based on invalid login credentials
                     }
                     else if(resp.data === 1){
-                        console.log('User logged in');
                         browserHistory.push('/select_interests');
                     }
                     else{
-                        console.log("user already logged in");
+                        //Create a client-side response to inform the user that they're already logged in based on the username provided
                     }
                 }).catch(err => {
-                    console.log('error:', err);
+                    //Create a client-side response to inform the user that the server is not responding
                     dispatch({
                         type: AUTH_ERROR,
                     });
@@ -60,22 +57,20 @@ export function register_user({ username, password, email }) {
 export function login_user({ username, password}) {
     return function (dispatch) {
         instance.post(`${base_url}/login.php`, {username, password}).then(resp=>{
-            console.log(resp);
             dispatch({
                 type: AUTH_USER
             });
             if(resp.data === 0){
-                console.log('Invalid Username');
+                //Create a client-side response for the user based on invalid login credentials
             }
             else if(resp.data === 1){
-                console.log('User logged in');
                 browserHistory.push('/app/welcome_user');
             }
             else{
-                console.log("user already logged in");
+                //Create a client-side response to inform the user that they're already logged in based on the username provided
             }
         }).catch(err=>{
-            console.log(err);
+            //Create a client-side response to inform the user that the server is not responding
         });
     }
 }
@@ -85,12 +80,12 @@ export function login_user({ username, password}) {
 export function logout_user(){
     return function(dispatch){
         instance.post(`${base_url}/logout.php`).then(resp=>{
-            console.log("response from logout ",resp);
+            //Create a client-side response to inform the user that their logout was successful
             dispatch({
                 type: UNAUTH_USER
             })
         }).catch(err=>{
-            console.log("error from logout ",err)
+            //Create a client-side response to inform the user that their logout was unsuccessful
         })
     }
 }
@@ -103,13 +98,11 @@ const MU_KEY = '&key=1012337b1a2c2a5974255a4412b237a';
  * @returns {Function}
  */
 export function fetchEvents(coords){
-//  Cords for lat and long expected:
     const lat = coords.latitude;
     const long = coords.longitude;
     return function(dispatch){
-        console.log("function run");
+
         instance.post(`${base_url}/get_interests.php`).then(resp=>{
-            console.log("response from axios: ",resp);
             if(typeof resp.data !== 'string') {
                 let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=10&radius=10&lat='+lat+'&desc=False&status=upcoming&category=';
                 for (let i = 0; i < resp.data.length; i++) {
@@ -126,22 +119,21 @@ export function fetchEvents(coords){
                     method: 'GET',
                     url: meetup_url,
                     success: function(response){
-                        console.log('Success Response: ', response);
                         dispatch({
                             type: FETCH_EVENTS,
                             payload: response.results
                         });
                     },
                     error: function(response){
-                        console.log('Error: ', response);
+                        //Create a client-side response to inform the user that their connection to meetup was unsuccessful
                     }
                 });
             }
             else{
-                console.log(resp.data);
+                //Create a client-side response to inform the user that the server is not responding
             }
         }).catch(err=>{
-            console.log("error catch: ", err)
+            //Create a client-side response to inform the user that the server is not responding
         });
     };
 }
@@ -163,7 +155,6 @@ export function getEvent(cat_id, coords, catIndex){
             method: 'GET',
             url: meetup_url,
             success: function(response){
-                console.log('VIEW ALL SUCCESS RESPONSE: ', response);
                 dispatch({
                     type: VIEW_ALL,
                     catIndex,
@@ -171,7 +162,7 @@ export function getEvent(cat_id, coords, catIndex){
                 });
             },
             error: function(response){
-                console.log('VIEW ALL ERROR RESPONSE: ', response);
+                //Create a client-side response to inform the user that their connection to meetup was unsuccessful
             }
         });
     }
@@ -195,10 +186,9 @@ export function submit_interests(idArray) {
     return function () {
         if(idArray.length >= 3) {
             instance.post(`${base_url}/insert_interests.php`, {idArray}).then(resp => {
-                console.log('Interests sent ', resp);
-
+                //Create a client-side response to inform the user that their interests were added successfully
             }).catch(err => {
-                console.log('not sent ', err);
+                //Create a client-side response to inform the user that their interests were not added successfully
             });
         }
     }
@@ -225,11 +215,12 @@ export function fetchWeather(coords){
                 });
             },
             error: function(response){
-                console.log('Error: ', response);
+                console.error("Weather service not responding: ",response)
             }
         });
     }
 }
+
 /**
  * @param value
  * @returns {{type, payload: *}}

@@ -62,7 +62,6 @@ class EventCard extends Component {
  * @returns {{all}}
  */
 function mapStateToProps(state) {
-    console.log('Event Card State: ', state);
     return {
         all: state.events.all[0]
     }
