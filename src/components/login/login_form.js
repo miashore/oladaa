@@ -13,7 +13,6 @@ class LoginForm extends Component {
      */
     submitForm(vals) {
         this.props.login_user(vals);
-        console.log('Form submitted: ', vals);
     }
     /**
      * @param input
@@ -38,10 +37,14 @@ class LoginForm extends Component {
             signIn: { width: '100%', margin: '2% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' }
+            body: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
+            logo: { textAlign: 'center' }
         };
         return (
             <Paper style={styles.body} zDepth={4}>
+                <p style={styles.logo}>
+                    <img src="../../src/components/imgs/oladaablue.png" />
+                </p>
                 <h2 style={styles.centeredText}>Sign In</h2>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <div>
@@ -69,7 +72,36 @@ class LoginForm extends Component {
     }
 }
 
+/**
+ * @param username
+ * @returns {boolean}
+ */
+function validateUserName(username){
+    const allowedChars = /[*|\": <>#[\]{}%^`\\?!()';@&$]/;
+    return allowedChars.test(username)
+}
+
+/**
+ * @param vals
+ * @returns {{}}
+ */
+function validate(vals){
+    const errors = {};
+    if(!vals.username) {
+        errors.username = "Please enter a Username";
+    }
+    if(validateUserName(vals.username)){
+        errors.username = 'Please enter a valid Username';
+    }
+    if(!vals.password) {
+        errors.password = "Please enter a Password";
+    }
+    return errors;
+}
+
 LoginForm = reduxForm({
-    form: 'loginForm'
+    form: 'loginForm',
+    validate
 })(LoginForm);
+
 export default connect(null, { login_user })(LoginForm);

@@ -14,6 +14,8 @@ class ViewAllEventsList extends Component {
         this.props.getEvent(id, this.props.location, index);
     }
     renderCategories(){
+
+
         const categories = this.props.categories;
         if(categories !== undefined){
             /**
@@ -36,9 +38,12 @@ class ViewAllEventsList extends Component {
         }
     }
     render(){
+        const styles = {
+            catCard: {fontSize: '1.3em', background: 'rgba(255, 255, 255, 0.2)', marginBottom: '10vw'}
+        };
             return (
             <Paper zDepth={3}>
-                <Card>{this.renderCategories()}</Card>
+                <Card style={styles.catCard}>{this.renderCategories()}</Card>
             </Paper>
         );
     }

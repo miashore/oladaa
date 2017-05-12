@@ -23,20 +23,26 @@ class ViewAllEventCard extends Component {
      * @returns {XML}
      */
     render () {
+        const styles = {
+            card: {width: '75vw', margin: '0 auto 3%'},
+            button: {marginTop: '4%'},
+            text: {letterSpacing: '1px', fontSize: '.9em', padding: '0 16px'},
+            title: {zIndex: '0', fontSize: '1em', lineHeight: '1.1em', textAlign: 'center'}
+        };
+
         const events = this.props.viewall[this.props.catIndex];
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
-                console.log('Event ' + index + ' is:', event);
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
                 return (
-                    <Card style={{width: '75vw', margin: '0 auto 1%'}} key={index}>
+                    <Card zDepth={4} style={styles.card} key={index}>
                         <CardTitle actAsExpander={true}
                                    subtitle={date + ' @ ' + time}
                                    showExpandableButton={true}
                                    title={event.name}
-                                   style={{zIndex: '0'}}/>
-                        <CardText expandable={true}>
+                                   style={styles.title}/>
+                        <CardText style={styles.text} expandable={true}>
                             {event.description}
                             <CardActions>
                                 <a target="_blank" href={event.event_url}><RaisedButton secondary={true} label="See More Details..."/></a>
@@ -52,12 +58,13 @@ class ViewAllEventCard extends Component {
             )
         }
         else {
-            return (<Card style={{width: '75vw', margin: '0 auto 1%'}}>
-                <CardTitle actAsExpander={true}
-                           showExpandableButton={true}
-                           title="Loading..."
-                           style={{zIndex: '0'}}/>
-                <CardText expandable={true}>
+            return (
+                <Card zDepth={4} style={styles.card}>
+                    <CardTitle actAsExpander={true}
+                               showExpandableButton={true}
+                               title="Loading..."
+                               style={{zIndex: '0'}}/>
+                    <CardText expandable={true}>
                 </CardText>
             </Card>)
         }
@@ -68,7 +75,6 @@ class ViewAllEventCard extends Component {
  * @returns {{viewall: (*|viewall|{}|default_state.viewall)}}
  */
 function mapStateToProps(state) {
-    console.log('View All Card Event State: ', state);
     return {
         viewall: state.events.viewall
     }

@@ -6,6 +6,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import LocationModal from '../location/location_modal';
 import {logout_user} from '../../actions/index';
+
 class Header extends Component {
     constructor(props){
     super(props);
