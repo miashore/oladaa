@@ -21,18 +21,18 @@ export default  (
         <Route path="/">
             <IndexRoute path="login" component={ LoginForm }/>
             <Route path="app" component={ App }>
-                <Route path="home" component={ (Home) }/>
-                <Route path="about" component={ (About) }/>
-                <Route path="view_all" component={ (ViewAllEventsList) }/>
-                <Route path="view_all_event_card" component={ (ViewAllEventCard) }/>
-                <Route path="recommended_events" component={ (RecommendedEventList) }/>
-                <Route path="activity_note" component={ (ActivityNote) } />
-                <Route path="welcome_user" component={ (WelcomeNote) }/>
-                <Route path="event_card" component={ (EventCard) } />
+                <Route path="home" component={ Home }/>
+                <Route path="about" component={ About }/>
+                <Route path="view_all" component={ ViewAllEventsList }/>
+                <Route path="view_all_event_card" component={ ViewAllEventCard }/>
+                <Route path="recommended_events" component={ RecommendedEventList }/>
+                <Route path="activity_note" component={ ActivityNote } />
+                <Route path="welcome_user" component={ WelcomeNote }/>
+                <Route path="event_card" component={ EventCard } />
             </Route>
         <Route path="register" component={ RegisterForm }/>
-        <Route path="fitbit_login" component={ (FitbitLogin) } />
-        <Route path="select_interests" component={ (SelectInterests) }/>
+        <Route path="fitbit_login" component={ FitbitLogin } />
+        <Route path="select_interests" component={ SelectInterests }/>
         <Route path="*" component={Teapot}/>
         </Route>
     </div>
