@@ -36,11 +36,16 @@ class Header extends Component {
                     open={this.state.open}
                     style={styles.bar}
                     onRequestChange={(open) => this.setState({open})}>
+<<<<<<< HEAD
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/app/home"/>}>Home</MenuItem>
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/app/about"/>}>About Us</MenuItem>
                     {/*<MenuItem onTouchTap={this.handleClose}><LocationModal/></MenuItem>*/}
+=======
+                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/home"/>}>Home</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/about"/>}>About Us</MenuItem>
+>>>>>>> ebc17f715d3751979b0fc2cb62d4c6e5d0d57280
                     <MenuItem><LocationModal /></MenuItem>
-                    <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="/"/>}>Log Out</MenuItem>
+                    <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="login"/>}>Log Out</MenuItem>
                 </Drawer>
             </div>
         );
