@@ -11,7 +11,7 @@ const instance = axios.create({
 /**
  * @type {string}
  */
-const base_url = './backend/server';
+const base_url = '../backend/server';
 /**
  * @param username
  * @param password
@@ -279,7 +279,7 @@ function getActivityScore(fatBurnMin, cardioMin, peakMin){
 /**
  * @type {string}
  */
-const test_url = './backend/mock_data';
+const test_url = '../backend/mock_data';
 /**
  * @param email
  * @returns {Function}
