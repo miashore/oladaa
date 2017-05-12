@@ -21,7 +21,8 @@ export default  (
     <Route path="/" component={ App }>
             {/*<Route path="home" component={ require_auth(Home) }/>*/}
             <Route path="home" component={ Home }/>
-            <Route path="about" component={ require_auth(About) }/>
+            {/*<Route path="about" component={ require_auth(About) }/>*/}
+        <Route path="about" component={ About }/>
             <Route path="view_all" component={ require_auth(ViewAllEventsList) }/>
             <Route path="view_all_event_card" component={ require_auth(ViewAllEventCard) }/>
             <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
