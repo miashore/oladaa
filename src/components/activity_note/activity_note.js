@@ -22,12 +22,13 @@ class ActivityNote extends Component {
      */
     render(){
         const styles = {
-            paper: {position: 'relative', height: '100%', width: '100%'},
-            h1: {'fontSize': '2em', 'textAlign': 'center'},
+            paper: { width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
+            h1: {fontSize: '2em', textAlign: 'center'},
             h3: {color: '#9CCC65', 'textAlign': 'center'},
             p: {textAlign: 'center', width: '75%', margin: '0 auto'},
-            button: { zIndex: 0, width: '75%', position: 'relative', left: '10%', bottom: '5%', margin: '7% 0 0 0'},
-            spinner: { margin: '0 auto' }
+            button: { zIndex: 0, width: '100%', margin: '3% auto' },
+            spinner: { width: '40vw', margin: '0 auto' },
+            body: {width: '50vw', margin: '0 auto' }
         };
         if(!this.props.ready){
             return (
@@ -36,7 +37,9 @@ class ActivityNote extends Component {
                         <h1 style={styles.h1}>Hey there!</h1>
                         <h3 style={styles.h3}>You've successfully connected to Fitbit!</h3>
                         <p style={styles.p}> Based on your activity level from yesterday and your interests we've found events you may like. Come back tomorrow to see new ones!</p>
-                        <CircularProgress style={styles.spinner} />
+                        <div style={styles.spinner}>
+                            <CircularProgress />
+                        </div>
                     </div>
                 </Paper>
             );

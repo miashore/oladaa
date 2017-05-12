@@ -43,6 +43,7 @@ class RecommendedEventsList extends Component {
 }
 
 function mapStateToProps(state){
+    console.log('Recommended Events State: ', state);
     return {
         auth: state.auth.authenticated,
         fitbit: state.fitbit.fitbit[0]

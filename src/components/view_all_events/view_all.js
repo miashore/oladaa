@@ -15,7 +15,7 @@ class ViewAllEventsList extends Component {
     }
     renderCategories(){
         const styles = {
-            catCard: {fontSize: '1.3em'}
+            catCard: {fontSize: '1.3em', background: 'rgba(255, 255, 255, 0.2)'}
         };
 
         const categories = this.props.categories;
@@ -25,11 +25,10 @@ class ViewAllEventsList extends Component {
              */
             const list_categories = categories.map((event, index) => {
                 return (
-                    <Card key={event.id} value={index} onTouchTap={() => this.getEvent(event.id, index)}>
+                    <Card style={styles.catCard} key={event.id} value={index} onTouchTap={() => this.getEvent(event.id, index)}>
                         <CardHeader actAsExpander={true}
                                     showExpandableButton={true}
                                     title={event.name}
-                                    style={styles.catCard}
                         />
                         <CardText expandable={true}>
                             <ViewAllEventCard catIndex={index} eventId={event.id} location={this.props.location} />

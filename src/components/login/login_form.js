@@ -41,6 +41,7 @@ class LoginForm extends Component {
         };
         return (
             <Paper style={styles.body} zDepth={4}>
+                <img src="../../src/components/imgs/oladaa.png" />
                 <h2 style={styles.centeredText}>Sign In</h2>
                 <form style={styles.form} onSubmit={ handleSubmit( (formValue) => {this.submitForm(formValue)})}>
                     <div>
@@ -68,8 +69,36 @@ class LoginForm extends Component {
     }
 }
 
+/**
+ * @param username
+ * @returns {boolean}
+ */
+function validateUserName(username){
+    const allowedChars = /[*|\": <>#[\]{}%^`\\?!()';@&$]/;
+    return allowedChars.test(username)
+}
+
+/**
+ * @param vals
+ * @returns {{}}
+ */
+function validate(vals){
+    const errors = {};
+    if(!vals.username) {
+        errors.username = "Please enter a Username";
+    }
+    if(validateUserName(vals.username)){
+        errors.username = 'Please enter a valid Username';
+    }
+    if(!vals.password) {
+        errors.password = "Please enter a Password";
+    }
+    return errors;
+}
+
 LoginForm = reduxForm({
-    form: 'loginForm'
+    form: 'loginForm',
+    validate
 })(LoginForm);
 
 export default connect(null, { login_user })(LoginForm);

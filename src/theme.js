@@ -20,7 +20,7 @@ const muiTheme = getMuiTheme({
         primary2Color: blue800,
         primary3Color: blue300,
         accent1Color: teal400,
-        accent2Color: grey50,
+        accent2Color: grey100,
         accent3Color: teal700,
         textColor: blueGrey800,
         alternateTextColor: white,

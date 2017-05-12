@@ -12,7 +12,6 @@ class RegisterForm extends Component {
      * @param vals
      */
     submitForm(vals) {
-        const registerInfo = (vals);
         this.props.register_user(vals);
     }
 
@@ -83,7 +82,7 @@ class RegisterForm extends Component {
                     </div>
                     <RaisedButton style={styles.register} type="submit" label="Register" primary={true} />
                     <h3 style={styles.centeredText}>Already have an account?</h3>
-                    <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
+                    <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/"/>} secondary={true} />
                 </form>
             </Paper>
         )

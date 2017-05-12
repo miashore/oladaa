@@ -24,7 +24,10 @@ class ViewAllEventCard extends Component {
      */
     render () {
         const styles = {
-            card: {width: '90vw', margin: '0 auto 2.5%'}
+            card: {width: '75vw', margin: '0 auto 3%'},
+            button: {marginTop: '4%'},
+            text: {letterSpacing: '1px', fontSize: '.9em', padding: '0 16px'},
+            title: {zIndex: '0', fontSize: '1em', lineHeight: '1.1em', textAlign: 'center'}
         };
 
         const events = this.props.viewall[this.props.catIndex];
@@ -38,8 +41,8 @@ class ViewAllEventCard extends Component {
                                    subtitle={date + ' @ ' + time}
                                    showExpandableButton={true}
                                    title={event.name}
-                                   style={{zIndex: '0'}}/>
-                        <CardText expandable={true}>
+                                   style={styles.title}/>
+                        <CardText style={styles.text} expandable={true}>
                             {event.description}
                             <CardActions>
                                 <a target="_blank" href={event.event_url}><RaisedButton secondary={true} label="See More Details..."/></a>
