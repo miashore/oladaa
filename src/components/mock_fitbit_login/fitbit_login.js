@@ -14,7 +14,7 @@ class FitbitLogin extends Component {
      */
     get_fitbit_data(vals) {
         this.props.get_fitbit(vals);
-        browserHistory.push('/activity_note');
+        browserHistory.push('/app/activity_note');
         this.props.loadSpinner(true);
     }
     /**

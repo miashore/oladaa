@@ -14,7 +14,7 @@ class SelectInterests extends Component {
     submitForm(vals) {
         const idArray = getIds(vals);
         this.props.submit_interests(idArray);
-        browserHistory.push('/welcome_user');
+        browserHistory.push('/app/welcome_user');
     }
     /**
      * @param name
