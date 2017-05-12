@@ -18,23 +18,20 @@ import Teapot from './components/teapot/teapot';
 
 export default  (
     <div>
-    <Route path="/" component={ App }>
-            {/*<Route path="home" component={ require_auth(Home) }/>*/}
-            <Route path="home" component={ Home }/>
-            {/*<Route path="about" component={ require_auth(About) }/>*/}
-        <Route path="about" component={ About }/>
-            <Route path="view_all" component={ require_auth(ViewAllEventsList) }/>
-            <Route path="view_all_event_card" component={ require_auth(ViewAllEventCard) }/>
-            <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
-            <Route path="activity_note" component={ require_auth(ActivityNote) } />
-            <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
-            <Route path="event_card" component={ require_auth(EventCard) } />
-            {/*<Route path="teapot" components={ require_auth(Teapot) } />*/}
-            <Route path="teapot" component={ Teapot } />
-    </Route>
-            <Route path="login" component={ LoginForm }/>
-            <Route path="register" component={ RegisterForm }/>
-            <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
-            <Route path="select_interests" component={ require_auth(SelectInterests) }/>
+        <Route path="/" component={ App }>
+                <Route path="home" component={ require_auth(Home) }/>
+                <Route path="about" component={ require_auth(About) }/>
+                <Route path="view_all" component={ require_auth(ViewAllEventsList) }/>
+                <Route path="view_all_event_card" component={ require_auth(ViewAllEventCard) }/>
+                <Route path="recommended_events" components={ require_auth(RecommendedEventList) }/>
+                <Route path="activity_note" component={ require_auth(ActivityNote) } />
+                <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
+                <Route path="event_card" component={ require_auth(EventCard) } />
+                <Route path="*" components={ Teapot } />
+        </Route>
+        <Route path="login" component={ LoginForm }/>
+        <Route path="register" component={ RegisterForm }/>
+        <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
+        <Route path="select_interests" component={ require_auth(SelectInterests) }/>
     </div>
 );
