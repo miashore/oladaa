@@ -37,11 +37,6 @@ export default function(state = default_state, action){
                 all: [...state, action.payload],
                 ready: true
             };
-        case STORE_INTERESTS:
-            return {
-                ...state,
-                categories: [...state, action.payload]
-            };
         case LOAD_SPINNER:
             return {
                 ...state,
@@ -50,11 +45,11 @@ export default function(state = default_state, action){
         case VIEW_ALL:
             const { viewall } = state;
             viewall[action.catIndex] = action.payload;
-            return { ...state, viewall: { ...viewall } };
-        case EXPAND_CAT:
             return {
                 ...state,
-                expander: false
+                viewall: {
+                    ...viewall
+                }
             };
         default: return state;
     }

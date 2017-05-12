@@ -53,7 +53,6 @@ class ViewAllEventsList extends Component {
  * @returns {{location, events, categories: (*|Array|string), expand}}
  */
 function mapStateToProps(state){
-    console.log('View All State: ', state);
     return {
         location: state.location.coords,
         events: state.events.all[0],
