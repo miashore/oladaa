@@ -18,7 +18,7 @@ import Teapot from './components/teapot/teapot';
 
 export default  (
     <div>
-    <Route path="/" component={ App }>
+        <Route path="/" component={ App }>
             <Route path="home" component={ (Home) }/>
             <Route path="about" component={ (About) }/>
             <Route path="view_all" component={ (ViewAllEventsList) }/>
@@ -27,11 +27,11 @@ export default  (
             <Route path="activity_note" component={ (ActivityNote) } />
             <Route path="welcome_user" components={ (WelcomeNote) }/>
             <Route path="event_card" component={ (EventCard) } />
-            <Route path="teapot" component={ Teapot } />
-    </Route>
-            <Route path="login" component={ LoginForm }/>
-            <Route path="register" component={ RegisterForm }/>
-            <Route path="fitbit_login" component={ FitbitLogin } />
-            <Route path="select_interests" component={ SelectInterests }/>
+        </Route>
+        <Route path="login" component={ LoginForm }/>
+        <Route path="register" component={ RegisterForm }/>
+        <Route path="fitbit_login" component={ FitbitLogin } />
+        <Route path="select_interests" component={ SelectInterests }/>
+        <Route path="*" component={ Teapot } />
     </div>
 );
