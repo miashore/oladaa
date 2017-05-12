@@ -20,7 +20,7 @@ export default  (
     <div>
         <Route path="/">
             <IndexRoute path="login" component={ LoginForm }/>
-            <Route path="app/" component={ App }>
+            <Route path="app" component={ App }>
                 <Route path="home" component={ Home }/>
                 <Route path="about" component={ About }/>
                 <Route path="view_all" component={ ViewAllEventsList }/>
