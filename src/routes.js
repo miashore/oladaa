@@ -27,11 +27,15 @@ export default  (
                 <Route path="activity_note" component={ require_auth(ActivityNote) } />
                 <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
                 <Route path="event_card" component={ require_auth(EventCard) } />
+<<<<<<< HEAD
                 {/*<Route path="*" components={ Teapot } />*/}
+=======
+>>>>>>> 5558725b5af1c976a4ea2cfccf142adafab5efbd
         </Route>
         <Route path="login" component={ LoginForm }/>
         <Route path="register" component={ RegisterForm }/>
         <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
         <Route path="select_interests" component={ require_auth(SelectInterests) }/>
+        <Route path="*" components={ Teapot } />
     </div>
 );
