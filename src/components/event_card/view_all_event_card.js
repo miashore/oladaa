@@ -23,14 +23,17 @@ class ViewAllEventCard extends Component {
      * @returns {XML}
      */
     render () {
+        const styles = {
+            card: {width: '90vw', margin: '0 auto 2.5%'}
+        };
+
         const events = this.props.viewall[this.props.catIndex];
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
-                console.log('Event ' + index + ' is:', event);
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
                 return (
-                    <Card style={{width: '75vw', margin: '0 auto 1%'}} key={index}>
+                    <Card zDepth={4} style={styles.card} key={index}>
                         <CardTitle actAsExpander={true}
                                    subtitle={date + ' @ ' + time}
                                    showExpandableButton={true}
@@ -52,12 +55,13 @@ class ViewAllEventCard extends Component {
             )
         }
         else {
-            return (<Card style={{width: '75vw', margin: '0 auto 1%'}}>
-                <CardTitle actAsExpander={true}
-                           showExpandableButton={true}
-                           title="Loading..."
-                           style={{zIndex: '0'}}/>
-                <CardText expandable={true}>
+            return (
+                <Card zDepth={4} style={styles.card}>
+                    <CardTitle actAsExpander={true}
+                               showExpandableButton={true}
+                               title="Loading..."
+                               style={{zIndex: '0'}}/>
+                    <CardText expandable={true}>
                 </CardText>
             </Card>)
         }
@@ -68,7 +72,6 @@ class ViewAllEventCard extends Component {
  * @returns {{viewall: (*|viewall|{}|default_state.viewall)}}
  */
 function mapStateToProps(state) {
-    console.log('View All Card Event State: ', state);
     return {
         viewall: state.events.viewall
     }

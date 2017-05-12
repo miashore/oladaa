@@ -7,11 +7,11 @@ import {
     teal400,
     teal700,
     grey300,
-    grey50,
+    grey100,
     white,
     darkBlack,
     teal50,
-    blueGrey600
+    blueGrey800
 } from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator'
 const muiTheme = getMuiTheme({
@@ -22,9 +22,9 @@ const muiTheme = getMuiTheme({
         accent1Color: teal400,
         accent2Color: grey50,
         accent3Color: teal700,
-        textColor: blueGrey600,
+        textColor: blueGrey800,
         alternateTextColor: white,
-        canvasColor: grey50,
+        canvasColor: grey100,
         borderColor: grey300,
         disabledColor: fade( darkBlack, 0.3 ),
         pickerHeaderColor: teal50,

@@ -14,7 +14,6 @@ class RegisterForm extends Component {
     submitForm(vals) {
         const registerInfo = (vals);
         this.props.register_user(vals);
-        console.log('Registration Form Info: ', registerInfo)
     }
 
     /**

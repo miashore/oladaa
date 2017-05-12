@@ -11,16 +11,16 @@ class EventCard extends Component {
         const events = this.props.all;
 
         const styles = {
-            card: {width: '75vw', margin: '0 auto 3%'}
+            card: {width: '75vw', margin: '0 auto 3%'},
+            button: {marginTop: '4%'}
         };
 
         if(events !== undefined) {
             const list_events = events.map((event, index) => {
-                console.log('Event ' + index + ' is:', event);
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
                 return (
-                    <Card style={styles.card} key={index}>
+                    <Card zDepth={4} style={styles.card} key={index}>
                         <CardTitle actAsExpander={true}
                                    showExpandableButton={true}
                                    subtitle={date + ' @ ' + time}
@@ -29,7 +29,7 @@ class EventCard extends Component {
                         <CardText expandable={true}>
                             {event.description}
                             <CardActions>
-                                <a target="_blank" href={event.event_url}><RaisedButton secondary={true} label="See More Details..."/></a>
+                                <a target="_blank" href={event.event_url}><RaisedButton style={styles.button} secondary={true} label="See More Details..."/></a>
                             </CardActions>
                         </CardText>
                     </Card>
@@ -42,12 +42,13 @@ class EventCard extends Component {
             )
         }
         else {
-            return (<Card style={styles.card}>
-                <CardTitle actAsExpander={true}
-                           showExpandableButton={true}
-                           title="Loading..."
-                           style={{zIndex: '0'}}/>
-                <CardText expandable={true}>
+            return (
+                <Card zDepth={4} style={styles.card}>
+                    <CardTitle actAsExpander={true}
+                               showExpandableButton={true}
+                               title="Loading..."
+                               style={{zIndex: '0'}}/>
+                    <CardText expandable={true}>
                 </CardText>
             </Card>)
         }
@@ -58,7 +59,6 @@ class EventCard extends Component {
  * @returns {{all}}
  */
 function mapStateToProps(state) {
-    console.log('Event Card State: ', state);
     return {
         all: state.events.all[0]
     }

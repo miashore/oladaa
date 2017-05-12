@@ -13,7 +13,6 @@ class LoginForm extends Component {
      */
     submitForm(vals) {
         this.props.login_user(vals);
-        console.log('Form submitted: ', vals);
     }
     /**
      * @param input
@@ -72,4 +71,5 @@ class LoginForm extends Component {
 LoginForm = reduxForm({
     form: 'loginForm'
 })(LoginForm);
+
 export default connect(null, { login_user })(LoginForm);
