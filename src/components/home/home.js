@@ -29,7 +29,6 @@ class Home extends Component {
  * @returns {{location, weather: (*|weather|{background, summary, timezone}|default_state.weather)}}
  */
 function mapStateToProps(state){
-    console.log('Home state: ', state);
     return {
         location: state.location.coords,
         weather: state.weather.weather
