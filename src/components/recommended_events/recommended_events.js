@@ -14,7 +14,7 @@ class RecommendedEventsList extends Component {
             populatedBody: {width: '90vw', background: 'rgba(255, 255, 255, 0.8)', margin: '3vw auto 0'},
             error: { width: '75vw', background: 'rgba(255, 255, 255, 0.8)', margin: '0 auto 4vw', padding: '3%' },
             center: { textAlign: 'center' },
-            button: {zIndex: 0, width: '60vw', margin: '5% auto'}
+            button: {zIndex: 0, width: '100%', margin: '5% auto'}
         };
 
         if(this.props.auth === true && this.props.fitbit === undefined){
@@ -23,11 +23,9 @@ class RecommendedEventsList extends Component {
                     <Card style={styles.innerBody}>
                         <CardTitle title="Your Recommended Events" />
                         <Paper zDepth={2} style={styles.error}>
-                            <div style={styles.innerBody}>
-                                <h3 style={styles.center}>Please Connect Your Fitbit to See Your Recommended Events</h3>
-                                <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect to FitBit"
-                                              secondary={true}/>
-                            </div>
+                            <h3 style={styles.center}>Please Connect Your Fitbit to See Your Recommended Events</h3>
+                            <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect to FitBit"
+                                          secondary={true}/>
                         </Paper>
                     </Card>
                 </Paper>
