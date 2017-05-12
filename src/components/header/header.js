@@ -39,7 +39,7 @@ class Header extends Component {
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/app/home"/>}>Home</MenuItem>
                     <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/app/about"/>}>About Us</MenuItem>
                     <MenuItem><LocationModal /></MenuItem>
-                    <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="login"/>}>Log Out</MenuItem>
+                    <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="/"/>}>Log Out</MenuItem>
                 </Drawer>
             </div>
         );
