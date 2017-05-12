@@ -11,7 +11,7 @@ const instance = axios.create({
 /**
  * @type {string}
  */
-const base_url = './backend/server';
+const base_url = '../backend/server';
 /**
  * @param username
  * @param password
@@ -68,7 +68,7 @@ export function login_user({ username, password}) {
             }
             else if(resp.data === 1){
                 console.log('User logged in');
-                browserHistory.push('/welcome_user');
+                browserHistory.push('/app/welcome_user');
             }
             else{
                 console.log("user already logged in");
@@ -279,7 +279,7 @@ function getActivityScore(fatBurnMin, cardioMin, peakMin){
 /**
  * @type {string}
  */
-const test_url = './backend/mock_data';
+const test_url = '../backend/mock_data';
 /**
  * @param email
  * @returns {Function}
