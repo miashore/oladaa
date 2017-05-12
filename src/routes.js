@@ -27,7 +27,7 @@ export default  (
                 <Route path="activity_note" component={ require_auth(ActivityNote) } />
                 <Route path="welcome_user" components={ require_auth(WelcomeNote) }/>
                 <Route path="event_card" component={ require_auth(EventCard) } />
-                <Route path="*" components={ Teapot } />
+                {/*<Route path="*" components={ Teapot } />*/}
         </Route>
         <Route path="login" component={ LoginForm }/>
         <Route path="register" component={ RegisterForm }/>
