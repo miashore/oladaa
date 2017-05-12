@@ -39,7 +39,7 @@ class ViewAllEventsList extends Component {
     }
     render(){
         const styles = {
-            catCard: {fontSize: '1.3em', background: 'rgba(255, 255, 255, 0.2)'}
+            catCard: {fontSize: '1.3em', background: 'rgba(255, 255, 255, 0.2)', marginBottom: '10vw'}
         };
             return (
             <Paper zDepth={3}>

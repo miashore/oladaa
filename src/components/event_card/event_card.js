@@ -11,10 +11,10 @@ class EventCard extends Component {
         const events = this.props.all;
 
         const styles = {
-            card: {width: '75vw', margin: '0 auto 3%'},
+            card: {width: '75vw', margin: '0 auto 3%', fontSize: '1em'},
             button: {marginTop: '4%'},
             text: {letterSpacing: '1px', fontSize: '.9em', padding: '0 16px'},
-            title: {zIndex: '0', fontSize: '1.2em', lineHeight: '1.1em', textAlign: 'center'}
+            title: {zIndex: '0', fontSize: '1em', lineHeight: '1.1em', textAlign: 'center'}
         };
 
         if(events !== undefined) {

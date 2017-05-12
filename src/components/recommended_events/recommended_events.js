@@ -9,9 +9,9 @@ import { Link } from 'react-router';
 class RecommendedEventsList extends Component {
     render () {
         const styles = {
-            body: { width: '90vw', background: 'rgba(255, 255, 255, 0.2)', margin: '3vw auto 5vw' },
+            body: { width: '90vw', background: 'rgba(255, 255, 255, 0.2)', margin: '3vw auto 13vw' },
             innerBody: { width: '90vw', background: 'rgba(255, 255, 255, 0.2)', margin: '3vw auto 0', paddingBottom: '2%' },
-            populatedBody: {width: '90vw', background: 'rgba(255, 255, 255, 0.8)', margin: '3vw auto 0'},
+            populatedBody: {width: '90vw', background: 'rgba(255, 255, 255, 0.8)', margin: '3vw auto 13vw'},
             error: { width: '75vw', background: 'rgba(255, 255, 255, 0.8)', margin: '0 auto 4vw', padding: '3%' },
             center: { textAlign: 'center' },
             button: {zIndex: 0, width: '100%', margin: '5% auto'}
