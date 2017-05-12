@@ -33,7 +33,7 @@ export default  (
         <Route path="register" component={ RegisterForm }/>
         <Route path="fitbit_login" component={ require_auth(FitbitLogin) } />
         <Route path="select_interests" component={ require_auth(SelectInterests) }/>
-
+        <Route path="*" component={Teapot}/>
         </Route>
     </div>
 );

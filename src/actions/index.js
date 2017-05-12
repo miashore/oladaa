@@ -68,7 +68,7 @@ export function login_user({ username, password}) {
             }
             else if(resp.data === 1){
                 console.log('User logged in');
-                browserHistory.push('/welcome_user');
+                browserHistory.push('/app/welcome_user');
             }
             else{
                 console.log("user already logged in");
