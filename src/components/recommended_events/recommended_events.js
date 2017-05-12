@@ -22,7 +22,7 @@ class RecommendedEventsList extends Component {
                         <CardTitle title="Your Recommended Events" />
                         <Paper zDepth={2} style={styles.error}>
                             <h2 style={styles.center}>Please Connect Your Fitbit to See Recommended Events</h2>
-                            <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect to FitBit"
+                            <RaisedButton style={styles.button} containerElement={<Link to="/app/fitbit_login"/>} label="Connect to FitBit"
                                           secondary={true}/>
                         </Paper>
                     </Card>

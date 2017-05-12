@@ -12,7 +12,7 @@ const instance = axios.create({
 /**
  * @type {string}
  */
-const base_url = './backend/server';
+const base_url = '../backend/server';
 /**
  * @param username
  * @param password
@@ -69,7 +69,7 @@ export function login_user({ username, password}) {
             }
             else if(resp.data === 1){
                 console.log('User logged in');
-                browserHistory.push('/welcome_user');
+                browserHistory.push('/app/welcome_user');
             }
             else{
                 console.log("user already logged in");
@@ -107,9 +107,6 @@ export function fetchEvents(coords){
     const lat = coords.latitude;
     const long = coords.longitude;
     return function(dispatch){
-
-
-
         console.log("function run");
         instance.post(`${base_url}/get_interests.php`).then(resp=>{
             console.log("response from axios: ",resp);
@@ -233,8 +230,6 @@ export function fetchWeather(coords){
         });
     }
 }
-
-//  END: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
 /**
  * @param value
  * @returns {{type, payload: *}}

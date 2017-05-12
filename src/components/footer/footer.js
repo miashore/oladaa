@@ -48,9 +48,9 @@ class Footer extends Component {
                     }}/>
                     <BottomNavigationItem label="Your Events" icon={ yourEventsIcon } style={styles.bNav}
                                           onTouchTap={() => this.select(1)}
-                                          containerElement={<Link to="/recommended_events"/>}/>
+                                          containerElement={<Link to="/app/recommended_events"/>}/>
                     <BottomNavigationItem label="View All Events" icon={ viewAllEventsIcon } style={styles.bNav}
-                                          onTouchTap={() => this.select(2)} containerElement={<Link to="/view_all"/>}/>
+                                          onTouchTap={() => this.select(2)} containerElement={<Link to="/app/view_all"/>}/>
                 </BottomNavigation>
                 <Snackbar
                     style={styles.snackbar}

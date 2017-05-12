@@ -9,11 +9,9 @@ import { loadSpinner } from '../../actions/index';
 import FitbitHeader from './fitbit_header';
 
 class FitbitLogin extends Component {
-    /**
-     * @param
-     */
+
     setupSpinner() {
-        browserHistory.push('/activity_note');
+        browserHistory.push('/app/activity_note');
         this.props.loadSpinner(true);
     }
     /**
