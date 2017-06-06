@@ -35,6 +35,7 @@ class ViewAllEventCard extends Component {
             const list_events = events.map((event, index) => {
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
+                const eventDescription = event.description.slice(0,180)+'...';
                 return (
                     <Card zDepth={4} style={styles.card} key={index}>
                         <CardTitle actAsExpander={true}
@@ -43,9 +44,11 @@ class ViewAllEventCard extends Component {
                                    title={event.name}
                                    style={styles.title}/>
                         <CardText style={styles.text} expandable={true}>
-                            {event.description}
+                            {eventDescription}
+                            <hr/>
+                            People Attending: {event.yes_rsvp_count}
                             <CardActions>
-                                <a target="_blank" href={event.event_url}><RaisedButton secondary={true} label="See More Details..."/></a>
+                                <a target="_blank" href={event.event_url}><RaisedButton style={styles.button} secondary={true} label="See More Details..."/></a>
                             </CardActions>
                         </CardText>
                     </Card>
