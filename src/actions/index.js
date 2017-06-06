@@ -135,7 +135,6 @@ export function fetchEvents(coords){
                             type: FETCH_EVENTS,
                             payload: response.results
                         });
-                        console.log("Our Response from meetup: ",response);
                     },
                     error: function(response){
                         //Create a client-side response to inform the user that their connection to meetup was unsuccessful
