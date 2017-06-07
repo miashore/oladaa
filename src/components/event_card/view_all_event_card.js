@@ -35,7 +35,7 @@ class ViewAllEventCard extends Component {
             const list_events = events.map((event, index) => {
                 const date = new Date(event.time).toDateString();
                 const time = new Date(event.time).toLocaleTimeString();
-                const eventDescription = event.description.slice(0,180)+'...';
+                const eventDescription = event.description ? event.description.slice(0,180)+'...' : "Please See Meetup page for more details...";
                 return (
                     <Card zDepth={4} style={styles.card} key={index}>
                         <CardTitle actAsExpander={true}
