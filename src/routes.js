@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/app';
+import LandingPage from './components/landing_page/landing_page';
 import Home from './components/home/home'
 import About from './components/aboutus/about_us';
 import SelectInterests from './components/select_interests/select_interests_form';
@@ -19,7 +20,8 @@ import Teapot from './components/teapot/teapot';
 export default  (
     <div>
         <Route path="/">
-            <IndexRoute path="login" component={ LoginForm }/>
+            <IndexRoute component={ LandingPage } />
+            <Route path="login" component={ LoginForm }/>
             <Route path="app" component={ App }>
                 <Route path="home" component={ Home }/>
                 <Route path="about" component={ About }/>
