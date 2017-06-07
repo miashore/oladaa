@@ -83,4 +83,4 @@ if (!isset($_GET['code'])) {
 
     }
 }
-header("location: https://dev.oladaa.com/app/activity_note");
+header("location: https://www.oladaa.com/app/activity_note");
