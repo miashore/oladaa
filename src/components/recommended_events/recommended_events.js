@@ -4,7 +4,6 @@ import Paper from 'material-ui/Paper';
 import EventCard from '../event_card/event_card';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Link } from 'react-router';
 
 class RecommendedEventsList extends Component {
     render () {
@@ -24,7 +23,8 @@ class RecommendedEventsList extends Component {
                         <CardTitle title="Your Recommended Events" />
                         <Paper zDepth={2} style={styles.error}>
                             <h3 style={styles.center}>Please Connect Your Fitbit to See Your Recommended Events</h3>
-                            <RaisedButton style={styles.button} containerElement={<Link to="/fitbit_login"/>} label="Connect to FitBit" secondary={true}/>
+                            <a href="../../../backend/fitbit_library/call_fitbit.php"><RaisedButton style={styles.button}
+                                                                                                    label="Connect to FitBit" secondary={true}/></a>
                         </Paper>
                     </Card>
                 </Paper>
