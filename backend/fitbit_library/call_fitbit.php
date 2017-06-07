@@ -1,4 +1,6 @@
 <?php
+session_start();
+header("Access-Control-Allow-Origin: *");
 use djchen\OAuth2\Client\Provider\Fitbit;
 require_once __DIR__ . '/vendor/autoload.php';
 require('fitbit_credentials.php');
@@ -9,10 +11,9 @@ $provider = new Fitbit([
 'redirectUri'       => $my_callback_url
 ]);
 
-session_start();
 
 if (!isset($_GET['code'])) {
-
+    
     $authorizationUrl = $provider->getAuthorizationUrl(['scope' =>['heartrate']]);
 
     $_SESSION['oauth2state'] = $provider->getState();
@@ -20,14 +21,14 @@ if (!isset($_GET['code'])) {
     header('Location: ' . $authorizationUrl);
     exit;
 
-} elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
+} /*elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
     unset($_SESSION['oauth2state']);
     exit('Invalid state');
 
-} else {
+}*/ else {
 
     try {
-
+        
         $accessToken = $provider->getAccessToken('authorization_code', [
             'code' => $_GET['code']
         ]);
@@ -71,15 +72,15 @@ if (!isset($_GET['code'])) {
             else{
                 $activityScore = 'Invalid Inputs';
             }
-            $_SESSION['activityScore'] = $activityScore;
+            $_SESSION["activity_score"] = $activityScore;
             return $activityScore;
         }
-        echo(getActivityScore($fatBurnMin,$cardioMin,$peakMin));
-
+        $_SESSION["activity_score"] = getActivityScore($fatBurnMin,$cardioMin,$peakMin);
+	print_r($_SESSION);
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
 
     exit($e->getMessage());
 
     }
 }
-
+header("location: https://www.oladaa.com/app/activity_note");

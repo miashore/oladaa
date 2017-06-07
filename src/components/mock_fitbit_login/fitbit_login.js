@@ -5,15 +5,12 @@ import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Paper from 'material-ui/Paper';
-import { get_fitbit, loadSpinner } from '../../actions/index';
+import { loadSpinner } from '../../actions/index';
 import FitbitHeader from './fitbit_header';
 
 class FitbitLogin extends Component {
-    /**
-     * @param vals
-     */
-    get_fitbit_data(vals) {
-        this.props.get_fitbit(vals);
+
+    setupSpinner() {
         browserHistory.push('/app/activity_note');
         this.props.loadSpinner(true);
     }
@@ -63,7 +60,7 @@ class FitbitLogin extends Component {
                                    style={styles.fields}
                             />
                         </div>
-                        <RaisedButton onClick={ handleSubmit((value) => {this.get_fitbit_data(value)}) }
+                        <RaisedButton onClick={ handleSubmit((value) => {this.setupSpinner(value)}) }
                                       style={styles.button}
                                       label="Log in"
                                       secondary={true}
@@ -106,4 +103,4 @@ FitbitLogin = reduxForm({
     form: 'fitbitForm',
     validate
 })(FitbitLogin);
-export default connect(mapStateToProps, { get_fitbit, loadSpinner })(FitbitLogin);
+export default connect(mapStateToProps, { loadSpinner })(FitbitLogin);

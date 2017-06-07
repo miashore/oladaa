@@ -1,7 +1,8 @@
 import axios from 'axios';
 import $ from 'jquery';
 import { browserHistory } from 'react-router';
-import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, FETCH_FITBIT, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL, EXPAND_CAT } from './types';
+
+import { AUTH_ERROR, AUTH_USER, UNAUTH_USER, FETCH_EVENTS, SAVE_LOCATION, FETCH_WEATHER, LOAD_SPINNER, VIEW_ALL } from './types';
 /**
  * @type {AxiosInstance}
  */
@@ -100,21 +101,8 @@ export function fetchEvents(coords){
     const lat = coords.latitude;
     const long = coords.longitude;
     return function(dispatch){
-        /**
-         * @param cookie
-         */
-        function findCookie(cookie){
-            const score = cookie.substr((cookie.indexOf("activity_score")+15),1);
-            //Create a client-side response that informs the user of their activity level
-            return score;
-        }
-        let activity_score;
-        if(!isNaN(findCookie(document.cookie))){
-            activity_score = parseInt(findCookie(document.cookie));
-        }else{
-            activity_score = false
-        }
-        axios.post(`${base_url}/get_interests.php`,{activity_score}).then(resp=>{
+
+        instance.post(`${base_url}/get_interests.php`).then(resp=>{
             if(typeof resp.data !== 'string') {
                 let meetup_url = 'https://api.meetup.com/2/open_events?and_text=False&offset=0&format=json&lon='+long+'&limited_events=False&text_format=plain&photo-host=public&page=10&radius=10&lat='+lat+'&desc=False&status=upcoming&category=';
                 for (let i = 0; i < resp.data.length; i++) {
@@ -144,6 +132,8 @@ export function fetchEvents(coords){
             else{
                 //Create a client-side response to inform the user that the server is not responding
             }
+        }).catch(err=>{
+            //Create a client-side response to inform the user that the server is not responding
         });
     };
 }
@@ -230,67 +220,7 @@ export function fetchWeather(coords){
         });
     }
 }
-/**
- * @param interests
- * @returns {{type, payload: *}}
- */
-export function storeInterests(interests){
-    return {
-        type: STORE_INTERESTS,
-        payload: interests
-    }
-}
-//  START: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
-/**
- * @param fatBurnMin
- * @param cardioMin
- * @param peakMin
- * @returns {number}
- */
-function getActivityScore(fatBurnMin, cardioMin, peakMin){
-    const fatBurnScore = fatBurnMin*2;
-    const cardioScore = cardioMin*3;
-    const peakScore = peakMin*4;
-    const totalScore = (fatBurnScore+cardioScore+peakScore);
-    const totalMin = 60+(fatBurnMin+cardioMin+peakMin);
-    let activityScore = totalScore/totalMin;
-    if (activityScore >= 0 && activityScore < 2){
-        activityScore = Math.round(activityScore);
-    }
-    else if(activityScore > 2){
-        activityScore = 2;
-    }
-    else{
-        activityScore = 'Invalid Inputs'
-    }
-    return activityScore
-}
-/**
- * @type {string}
- */
-const test_url = '../backend/mock_data';
-/**
- * @param email
- * @returns {Function}
- */
-export function get_fitbit({email}) {
-    return function (dispatch) {
-        instance.get(`${test_url}/mockData.json`, {email}).then(resp=>{
-            const user_state = resp.data[email];
-            dispatch({
-                type: FETCH_FITBIT,
-                payload: resp
-            });
-            const fatBurnMin = parseInt(user_state.fatBurn);
-            const cardioMin = parseInt(user_state.cardio);
-            const peakMin = parseInt(user_state.peak);
-            document.cookie = "activity_score="+getActivityScore(fatBurnMin, cardioMin, peakMin);
-        }).catch(err=>{
-            console.log(err);
-        });
-    }
-}
-//  END: TO CALCULATE ACTIVITY SCORE & TO GET USER INFO FROM FITBIT
+
 /**
  * @param value
  * @returns {{type, payload: *}}
@@ -301,15 +231,3 @@ export function loadSpinner(value){
         payload: value
     }
 }
-//  START: EXPANDER
-/**
- * @param boo
- * @returns {{type, payload: *}}
- */
-export function expander(boo) {
-    return{
-        type: EXPAND_CAT,
-        payload: boo
-    }
-}
-//  END: EXPANDER
