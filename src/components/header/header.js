@@ -22,8 +22,7 @@ class Header extends Component {
     handleClose = () => this.setState({open: false});
     render() {
         const styles = {
-            // bar: {textAlign: 'center'},
-            logo: {marginTop: '5px'},
+            logo: {marginTop: '5px', textAlign: 'center'},
             aboutus: {verticalAlign: "-6px", marginRight: "20%"},
             home: {verticalAlign: "-6px", marginRight: "25%"},
             logout: {verticalAlign: "-6px", marginRight: "22%"},
@@ -33,7 +32,7 @@ class Header extends Component {
             <div>
                 <AppBar
                         onLeftIconButtonTouchTap={this.handleToggle}
-                        style={styles.bar}
+                        style={styles.logo}
                         title={<img style={styles.logo} src="../../src/components/imgs/oladaa.png" />}
                 />
                 <Drawer
