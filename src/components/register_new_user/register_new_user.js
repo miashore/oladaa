@@ -42,7 +42,7 @@ class RegisterForm extends Component {
             signIn: { width: '100%', margin: '1% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
+            body: { fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif", width: '90vmin', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
             logo: { textAlign: 'center' }
         };
         return (
@@ -86,7 +86,7 @@ class RegisterForm extends Component {
                     </div>
                     <RaisedButton style={styles.register} type="submit" label="Register" primary={true} />
                     <h3 style={styles.centeredText}>Already have an account?</h3>
-                    <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/"/>} secondary={true} />
+                    <RaisedButton style={styles.signIn} label="Sign In" containerElement={<Link to="/login"/>} secondary={true} />
                 </form>
             </Paper>
         )

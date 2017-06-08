@@ -15,13 +15,13 @@ class LandingPage extends Component {
             logo: { display: 'block', margin: '0 auto', padding: '1%'},
             header: { position: 'fixed', top: '0', width: '100%', zIndex: 5},
             hero: { background: 'url(../../src/components/imgs/oladaa_lander.jpg) no-repeat center -100px fixed', backgroundSize: 'cover', height: '50vh', width: '100%'},
-            register: { width: '10em', marginRight: '3%' },
-            signIn: { width: '10em' },
+            register: { width: '9em', marginRight: '3%' },
+            signIn: { width: '9em' },
             btnContainer: { textAlign: 'center', marginTop: '2%'},
-            typeout: { position: 'relative', top: '20vh', color: 'rgba(255,255,255,1)', textAlign: 'center', width: '80vw', margin: '0 auto', backgroundColor: 'rgba(49, 23, 35, .8)', fontSize: '5vmin', padding: '2% 0 5%', height: '3.5vmin', fontFamily: "'Quicksand', 'Roboto', sans-serif" },
+            typeout: { position: 'relative', top: '20vh', color: 'rgba(255,255,255,1)', textAlign: 'center', width: '80vw', margin: '0 auto', backgroundColor: 'rgba(49, 23, 35, .8)', fontSize: '5vmin', padding: '2% 0 5%', height: '3.5vmin' },
             aboutH2: {textAlign: 'center', marginTop: '6%'},
             about: { width: '70vw', margin: '0 auto', paddingBottom: '5%'},
-            aboutBody: { height: 'auto', backgroundColor: '#fbfeff' }
+            aboutBody: { textAlign: 'justify', height: 'auto', backgroundColor: '#fbfeff', lineHeight: '1.5rem' }
         };
         return (
             <div style={styles.body}>

@@ -37,7 +37,7 @@ class LoginForm extends Component {
             signIn: { width: '100%', margin: '2% auto' },
             fields: { width: '100%' },
             centeredText: { textAlign: 'center', color: '#444' },
-            body: { width: '90vw', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
+            body: { fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif", width: '90vmin', margin:' 6vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
             logo: { textAlign: 'center' }
         };
         return (

@@ -11,9 +11,9 @@ const WelcomeNote = () => {
      * @type {object}
      */
     const styles = {
-        paper: {width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
-        h1: {'fontSize': '2em', textAlign: 'center'},
-        p: {width: '95%', margin: '0 auto 5%', textAlign: 'center'},
+        paper: {width: '90vmin', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)'},
+        h1: {fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif", 'fontSize': '2em', textAlign: 'center'},
+        p: {fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif", width: '95%', margin: '0 auto 5%', textAlign: 'center'},
         button: {zIndex: 0, width: '100%', margin: '7% 0 0 0'}
     };
     return (

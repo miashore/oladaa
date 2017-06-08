@@ -22,18 +22,19 @@ class ActivityNote extends Component {
      */
     render(){
         const styles = {
-            paper: { width: '90vw', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)', padding: '5%'},
-            h1: {fontSize: '2em', textAlign: 'center'},
-            h3: {color: '#9CCC65', 'textAlign': 'center'},
-            p: {textAlign: 'center', width: '75%', margin: '0 auto'},
+            paper: { width: '90vmin', margin:' 5vw auto 2vw', background: 'rgba(255, 255, 255, 0.93)'},
+            h1: { fontSize: '2em', textAlign: 'center' },
+            h3: { color: '#9CCC65', 'textAlign': 'center'},
+            p: { textAlign: 'center', width: '75%', margin: '0 auto'},
             button: { zIndex: 0, width: '100%', margin: '3% auto' },
             spinner: { textAlign: 'center' },
-            body: {width: '50vw', margin: '0 auto' }
+            body: {width: '50vw', margin: '0 auto' },
+            bodyFont: {fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif", padding: '10%'}
         };
         if(!this.props.ready){
             return (
                 <Paper style={styles.paper} zDepth={3}>
-                    <div style={{padding: '10%'}}>
+                    <div style={styles.bodyFont}>
                         <h1 style={styles.h1}>Hey there!</h1>
                         <h3 style={styles.h3}>You've successfully connected to Fitbit!</h3>
                         <p style={styles.p}> Based on your activity level from yesterday and your interests we've found events you may like. Come back tomorrow to see new ones!</p>
@@ -46,7 +47,7 @@ class ActivityNote extends Component {
         }
         return (
             <Paper style={styles.paper} zDepth={3}>
-                <div style={{padding: '10%'}}>
+                <div style={styles.bodyFont}>
                     <h1 style={styles.h1}>Hey there!</h1>
                     <h3 style={styles.h3}>You've successfully connected to Fitbit!</h3>
                     <p style={styles.p}> Based on your activity level from yesterday and your interests we've found events you may like. Come back tomorrow to see new ones!</p>
