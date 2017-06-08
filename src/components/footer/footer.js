@@ -38,7 +38,8 @@ class Footer extends Component {
         const styles = {
             paper: {position: 'fixed', bottom: '0', width: '103%', margin: '0 -5px 0 -10px', zIndex: '3'},
             bNav: {textAlign: 'center'},
-            snackbar: {textAlign: 'center', marginBottom: '15vmin', zIndex: '-2', width: '100vw'}
+            snackbar: {textAlign: 'center', zIndex: '-2', marginBottom: '3.5em'},
+            snackbarBody: {width: '100vw', minWidth: 'none', maxWidth: 'none'}
         };
         return (
             <Paper style={ styles.paper } zDepth={1}>
@@ -59,6 +60,7 @@ class Footer extends Component {
                 </BottomNavigation>
                 <Snackbar
                     style={styles.snackbar}
+                    bodyStyle={styles.snackbarBody}
                     open={this.state.open}
                     message="Update Profile Coming Soon! ☆"
                     autoHideDuration={2500}
