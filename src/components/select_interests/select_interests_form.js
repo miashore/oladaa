@@ -38,7 +38,7 @@ class SelectInterests extends Component {
             submit: { width: '100%', margin: '5% auto' },
             form: { width: '50vmin', margin: '5% auto 0' },
             fields: { width: '100%', float: 'left' },
-            centeredText: { textAlign: 'center', color: '#444' },
+            centeredText: { fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif", textAlign: 'center', color: '#444' },
             body: { width: '85vw', margin:' 8vw auto 0', background: 'rgba(255, 255, 255, 0.93)', padding: '5%' },
         };
         return (

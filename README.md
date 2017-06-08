@@ -1,8 +1,8 @@
 # oladaa - Your Activity Companion
 
-#### What We Do
+## What We Do
 
-#####We recommend activities based on your activity level from the day before and on events going on in your local community. 
+#### We recommend activities based on your activity level from the day before and on events going on in your local community. 
 If you're very active, we suggest activities that will de-stress and relax you; if you work a desk job and want to become more active, we find events you'd like that will get you moving!
     - Currently fully functional in Southern California
     
@@ -22,7 +22,7 @@ If you're very active, we suggest activities that will de-stress and relax you; 
 - Fitbit API
 - DarkSky/Forecast.io API
 
-#####Additional Tools
+##### Additional Tools
 
 - Userforge -> User Personas
 - Balsamiq -> Wireframes
@@ -49,10 +49,6 @@ If you're very active, we suggest activities that will de-stress and relax you; 
 #### Project Manager
 - Collette T
 
-##### Wireframes and Personas
+##### Wireframes
 
 ![Full Set of Screens](https://github.com/Learning-Fuze/C2.17_fitbit_companion/blob/junior_devs/junior_dev_work/imgs/fullsetofscreens.png)
-
-![Active Persona: Braxton](http://app.userforge.com/personas/KFKoTmW8YMs7rr4bm)
-![Moderately Active Persona: Bernstein](http://app.userforge.com/personas/8aGttMSTgwdcNHydg)
-![Inactive Persona: Ellie](http://app.userforge.com/personas/qzta9ab8acFjPm99q)
