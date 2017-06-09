@@ -15,7 +15,8 @@ class ViewAllEventsList extends Component {
     }
     renderCategories(){
         const styles = {
-            text: {fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif"}
+            text: {fontFamily: "'Quicksand', 'Roboto', Helvetica, sans-serif"},
+            title: {fontSize: '1.3em'}
         };
 
         const categories = this.props.categories;
@@ -29,6 +30,7 @@ class ViewAllEventsList extends Component {
                         <CardHeader style={styles.text} actAsExpander={true}
                                     showExpandableButton={true}
                                     title={event.name}
+                                    titleStyle={styles.title}
                         />
                         <CardText expandable={true}>
                             <ViewAllEventCard catIndex={index} eventId={event.id} location={this.props.location} />
