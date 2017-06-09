@@ -1,6 +1,6 @@
-import { FETCH_EVENTS, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL, EXPAND_CAT } from '../actions/types';
+import { FETCH_EVENTS, LOAD_SPINNER, VIEW_ALL } from '../actions/types';
 /**
- * @type {{all: Array, categories: [*], recommendedEvents: Array, single: null, ready: boolean, viewall: {}, expander: boolean}}
+ * @type {{all: Array, categories: [*], recommendedEvents: Array, ready: boolean, viewall: {}}}
  */
 const default_state = {
     all: [],
@@ -19,10 +19,8 @@ const default_state = {
         {name: 'Film', id: 20, events: []}
     ],
     recommendedEvents: [],
-    single: null,
     ready: false,
-    viewall: {},
-    expander: true
+    viewall: {}
 };
 /**
  * @param state

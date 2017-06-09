@@ -8,7 +8,7 @@ class Home extends Component {
     render() {
         const { weather } = this.props;
         const styles = {
-            mid_container: {height: '100vh', width: '100%', 'backgroundImage': `url(../src/components/imgs/weather/${weather.background})`, backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover'},
+            mid_container: {height: '89vh', width: '100%', 'backgroundImage': `url(../src/components/imgs/weather/${weather.background})`, backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed', backgroundSize: 'cover'},
             weather_div: {zIndex: '5', position: 'fixed', top: '10vh', left: '2vh'},
             weather_icon: {margin: '0'},
             location_text: {margin: '3% 2% 0 1%', display: 'inline-block', verticalAlign: 'top', fontSize: '1.2em'},

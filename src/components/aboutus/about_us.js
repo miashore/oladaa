@@ -17,7 +17,7 @@ const About = () => {
                 <img style={styles.us_pic} src="../../src/components/imgs/beats_peeps.jpg"/>
                 <p style={styles.caption}>(From Left to Right: Sean Mee, Miranda Bashore, and Kevin Nguyen)</p>
                 <h4 style={styles.heading4}>Thanks for coming to our site! We hope you enjoyed our application and found it useful. In Hawaiian, <em>"ola"</em> means life, and <em>"daa"</em> stands for dreaming about activities. Together, our goal at Oladaa, is to help people of various activity levels, find events around their communities, in the hopes of bettering one's life.</h4>
-                <small>Weather data Powered by <a href="https://darksky.net/poweredby/">Dark Sky</a></small>
+                <small>Weather data Powered by <a target="_blank" href="https://darksky.net/poweredby/">Dark Sky</a></small>
             </div>
         </Paper>
     )
