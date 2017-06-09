@@ -41,7 +41,7 @@ class ViewAllEventsList extends Component {
     }
     render(){
         const styles = {
-            catCard: {background: 'rgba(255, 255, 255, 0.2)', marginBottom: '15vw'},
+            catCard: {background: 'rgba(255, 255, 255, 0.2)', marginBottom: '3em'},
         };
             return (
             <Paper zDepth={3}>
