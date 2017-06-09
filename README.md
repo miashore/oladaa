@@ -29,13 +29,13 @@ If you're very active, we suggest activities that will de-stress and relax you; 
 - Meistertask -> Task Management
 - Sketch -> Logo
 
-#### Senior Devs
-- Sean M
-- Kevin N
-- Miranda B
-- Ryan A
+##### Senior Devs
+- Sean M -> [Portfolio](http://seanmeedev.com)
+- Kevin N -> [Portfolio](http://kevinnguyendev.com)
+- Miranda B -> [Portfolio](https://mirandabashore.com)
+- Ryan A -> Portfolio (Coming Soon)
 
-#### Junior Devs
+##### Junior Devs
 - Steven F
 - Anna T
 - TJ K
@@ -43,11 +43,15 @@ If you're very active, we suggest activities that will de-stress and relax you; 
 - Jason P
 - Seung L
 
-#### Producer
+##### Producer
 - Eric J
 
-#### Project Manager
+##### Project Manager
 - Collette T
+
+##### Prototypes
+- We spent time prototyping features we wanted to implement in JavaScript and jQuery before we tackled coding the project in React.
+- [Our Prototypes Repo](https://github.com/SeanMee86/beativitiesPrototypes)
 
 ##### Wireframes
 
