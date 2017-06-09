@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import FontIcon from 'material-ui/FontIcon';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import {logout_user} from '../../actions/index';
@@ -20,14 +21,16 @@ class Header extends Component {
     handleClose = () => this.setState({open: false});
     render() {
         const styles = {
-            bar: {textAlign: 'center'},
-            logo: {marginTop: '5px'}
+            logo: {margin: '5px auto 0', display: 'block'},
+            aboutus: {verticalAlign: "-6px", marginRight: "20%"},
+            home: {verticalAlign: "-6px", marginRight: "25%"},
+            logout: {verticalAlign: "-6px", marginRight: "22%"},
+
         };
         return (
             <div>
                 <AppBar
                         onLeftIconButtonTouchTap={this.handleToggle}
-                        style={styles.bar}
                         title={<img style={styles.logo} src="../../src/components/imgs/oladaa.png" />}
                 />
                 <Drawer
@@ -36,9 +39,19 @@ class Header extends Component {
                     open={this.state.open}
                     style={styles.bar}
                     onRequestChange={(open) => this.setState({open})}>
-                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/app/home"/>}>Home</MenuItem>
-                    <MenuItem onTouchTap={this.handleClose} containerElement={<Link to="/app/about"/>}>About Us</MenuItem>
-                    <MenuItem onTouchTap={() => this.logOutUser()} containerElement={<Link to="/"/>}>Log Out</MenuItem>
+
+                    <MenuItem onTouchTap={this.handleClose}
+                              containerElement={<Link to="/app/home"/>}>
+                        <FontIcon className="material-icons"
+                                style={styles.home}>home</FontIcon>Home</MenuItem>
+                    <MenuItem onTouchTap={this.handleClose}
+                              containerElement={<Link to="/app/about"/>}>
+                        <FontIcon className="material-icons"
+                                style={styles.aboutus}>face</FontIcon>About Us</MenuItem>
+                    <MenuItem onTouchTap={() => this.logOutUser()}
+                              containerElement={<Link to="/"/>}>
+                        <FontIcon className="material-icons"
+                                style={styles.logout} >exit_to_app</FontIcon>Log Out</MenuItem>
                 </Drawer>
             </div>
         );
