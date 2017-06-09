@@ -1,4 +1,4 @@
-import { FETCH_EVENTS, STORE_INTERESTS, LOAD_SPINNER, VIEW_ALL } from '../actions/types';
+import { FETCH_EVENTS, LOAD_SPINNER, VIEW_ALL } from '../actions/types';
 /**
  * @type {{all: Array, categories: [*], recommendedEvents: Array, ready: boolean, viewall: {}}}
  */
