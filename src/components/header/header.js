@@ -5,7 +5,6 @@ import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import LocationModal from '../location/location_modal';
 import {logout_user} from '../../actions/index';
 
 class Header extends Component {
@@ -40,19 +39,19 @@ class Header extends Component {
                     open={this.state.open}
                     style={styles.bar}
                     onRequestChange={(open) => this.setState({open})}>
+
                     <MenuItem onTouchTap={this.handleClose}
                               containerElement={<Link to="/app/home"/>}>
                         <FontIcon className="material-icons"
-                                  style={styles.home}>home</FontIcon>Home</MenuItem>
+                                style={styles.home}>home</FontIcon>Home</MenuItem>
                     <MenuItem onTouchTap={this.handleClose}
                               containerElement={<Link to="/app/about"/>}>
                         <FontIcon className="material-icons"
-                                  style={styles.aboutus}>face</FontIcon>About Us</MenuItem>
-                    {/*<MenuItem><LocationModal /></MenuItem>*/}
+                                style={styles.aboutus}>face</FontIcon>About Us</MenuItem>
                     <MenuItem onTouchTap={() => this.logOutUser()}
                               containerElement={<Link to="/"/>}>
                         <FontIcon className="material-icons"
-                                  style={styles.logout} >exit_to_app</FontIcon>Log Out</MenuItem>
+                                style={styles.logout} >exit_to_app</FontIcon>Log Out</MenuItem>
                 </Drawer>
             </div>
         );
