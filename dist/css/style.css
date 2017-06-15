@@ -1,0 +1,29 @@
+#failedLogin{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    background-color: rgba(100,100,100,.5);
+    display: none;
+    top: 0;
+}
+#failedLoginModal {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    font-family: Roboto, sans-serif;
+    font-size: 2vmin;
+    text-align: center;
+    height: 17%;
+    width: 32%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+@media only screen and (max-device-width: 500px) {
+    #failedLoginModal{
+        font-size: 3vmin;
+        width: 50%;
+    }
+}
