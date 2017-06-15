@@ -62,7 +62,7 @@ export function login_user({ username, password}) {
             });
             if(resp.data !== 1){
                 //Create a client-side response for the user based on invalid login credentials
-                $('#failedLogin').css('display','block');
+                $('#failedLogin').css('display','block').append('<div id="failedLoginModal">Invalid Username/Password</div>');
             }
             else {
                 browserHistory.push('/app/welcome_user');
