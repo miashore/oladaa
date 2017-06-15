@@ -58,16 +58,14 @@ export function login_user({ username, password}) {
     return function (dispatch) {
         instance.post(`${base_url}/login.php`, {username, password}).then(resp=>{
             dispatch({
-                type: AUTH_USER
+                type: AUTH_USER,
             });
-            if(resp.data === 0){
+            if(resp.data !== 1){
                 //Create a client-side response for the user based on invalid login credentials
+                $('#failedLogin').css('display','block');
             }
-            else if(resp.data === 1){
+            else {
                 browserHistory.push('/app/welcome_user');
-            }
-            else{
-                //Create a client-side response to inform the user that they're already logged in based on the username provided
             }
         }).catch(err=>{
             //Create a client-side response to inform the user that the server is not responding
