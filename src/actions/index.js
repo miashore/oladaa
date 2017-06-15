@@ -60,7 +60,6 @@ export function login_user({ username, password}) {
             dispatch({
                 type: AUTH_USER,
             });
-            console.log("our response: ", resp);
             if(resp.data !== 1){
                 //Create a client-side response for the user based on invalid login credentials
                 $('#failedLogin').css('display','block');
